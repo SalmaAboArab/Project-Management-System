@@ -1,0 +1,17 @@
+.navbar {
+    background: #fff !important;
+    height: 80px !important;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15) ;
+}
+
+.main-logo {
+    width: 200px !important;
+}
+
+.my-image {
+    border: solid 3px #f09a22;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+}
+

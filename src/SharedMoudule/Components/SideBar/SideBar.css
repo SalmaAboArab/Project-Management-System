@@ -1,0 +1,53 @@
+/* ===============sidebar-container================ */
+
+.sidebar-container {
+    background: rgba(14, 56, 47, 1) !important;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+}
+
+.css-dip3t8 {
+    background: transparent !important;
+}
+
+
+
+.ps-menu-button:hover {
+    background: rgba(239, 155, 40, 0.3) !important;
+    background: transparent !important;
+    border-radius: 10px;
+
+}
+
+
+.collapsed-btn {
+    right: -10px;
+    top: 10px;
+    background: #f09a22;
+}
+
+
+
+
+/*????======================================== */
+
+.css-1t8x7v1:hover{
+    background:linear-gradient(90deg,#f09a22b6 , #f09a2200) !important;
+    border-left: 5px solid #fc9c16;
+
+}
+
+.css-wx7wi4{
+    margin-right: 24px !important;
+    overflow: hidden;
+    transition: all 0.2s;
+    padding: 20px !important;
+    font-size: 1.3rem;
+}
+
+.css-1t8x7v1 >.ps-menu-button {
+
+margin-left: 20px !important;
+
+} 
