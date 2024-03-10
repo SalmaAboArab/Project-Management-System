@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function Register() {
   return (
-    <div>Register</div>
+    <>
+    <div className='Register vh-100 overflow-auto pageOverflow'>
+      Register
+      </div>
+    </>
   )
 }

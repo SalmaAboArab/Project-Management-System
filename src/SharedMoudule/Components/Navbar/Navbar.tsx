@@ -4,9 +4,9 @@ import Notification from "../../../assets/Group.png";
 import avatar from "../../../assets/Avatar.png";
 import { Link } from "react-router-dom";
 
-export default function Navbar({loginData}) {
+export default function Navbar({loginData}:any) {
   return (<>
-     <nav className="navbar  navbar-expand-lg bg-body-tertiary  ">
+     <nav className="navbar  navbar-expand-lg bg-body-tertiary ">
       <div className="container-fluid  px-4">
         <Link to={"/dashboard"}>
           <img className="w-100 main-logo" src={logo} alt="logo" />
@@ -43,7 +43,7 @@ export default function Navbar({loginData}) {
 
                   <div>
                     <h5>{loginData?.userName}</h5>
-                    <p>a{loginData?.userEmail}</p>
+                    <p>{loginData?.userEmail}</p>
                   </div>
 
                 </div>

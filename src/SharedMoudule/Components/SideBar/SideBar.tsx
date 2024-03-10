@@ -1,13 +1,23 @@
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SideBar.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import menu from '../../../assets/menu.png'
+import { ToastContext } from "../../../Context/Components/ToastContext";
 export default function SideBar() {
   const [handleSidebar, setHandleSidebar] = useState(false);
+  const navigate=useNavigate();
+  const {toastSuccess}:any=useContext(ToastContext);
 
   function toggleCollapse() {
     setHandleSidebar(!handleSidebar);
+  }
+  
+  let logout=()=>{
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("loginData");
+    toastSuccess('BYE BYE 🙁')
+    navigate('/');
   }
 
   return (
@@ -51,11 +61,19 @@ export default function SideBar() {
               Projects
             </MenuItem>
             <MenuItem
-              icon={<i className="   fa-solid fa-list" ></i>}
+              icon={<i className="   fa-solid fa-list-check" ></i>}
               component={<Link to={"/dashboard/TasksList"} />}
             >
               
               Tasks
+            </MenuItem>
+
+            <MenuItem
+              icon={<i className="fa fa-arrow-right-from-bracket" ></i>}
+              onClick={logout}
+            >
+              
+              Logout
             </MenuItem>
           </Menu>
         </Sidebar>

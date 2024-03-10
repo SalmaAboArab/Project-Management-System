@@ -1,28 +1,34 @@
 import { useForm } from "react-hook-form";
 import logo from "../../../assets/PMS 3.svg";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
+import { AuthContext } from "../../../Context/Components/AuthContext";
+import { ToastContext } from "../../../Context/Components/ToastContext";
+
 export default function Login() {
+
   const [showPassword, setShowPassword] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  let {baseUrl}:any = useContext(AuthContext);
+  let {toastSuccess,toastError}:any = useContext(ToastContext);
 
 
-async function apiLogin(values) {
+async function handleLogin(values:any) {
   try {
-  const {data} = await axios.post(`https://upskilling-egypt.com:3003/api/v1/Users/Login`,values)
+  const {data} = await axios.post(`${baseUrl}/Users/Login`,values)
     // console.log(data);
-    toast.success("Welcome!")
+    toastSuccess("Welcome!")
     localStorage.setItem('userToken',data.token)
     navigate("/dashboard")
     
     
-  } catch (error) {
+  } catch (error:any) {
     // console.log(error);
-    toast.error(error.response.data.message);
+    toastError(error?.response?.data?.message);
   }
   setIsLoading(false)
 
@@ -36,14 +42,14 @@ async function apiLogin(values) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values:any) => {
     setIsLoading(true)
-    apiLogin(values);
+    handleLogin(values);
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword(!showPassword);
+  // };
   return (
     <>
       <div className="auth-container vh-100  d-flex flex-column justify-content-center align-items-center">
@@ -94,8 +100,8 @@ async function apiLogin(values) {
                   aria-label="readonly input example"
                   autoComplete="off"
                 />
-                {errors.email && (
-                  <p className="mt-1  text-danger">{errors.email.message}</p>
+                {errors?.email && (
+                  <p className="mt-1  text-danger">{errors?.email?.message}</p>
                 )}
               </div>
             </div>
@@ -135,17 +141,17 @@ async function apiLogin(values) {
                   placeholder="Enter your password"
                   aria-label="readonly input example"
                 />
-                <span className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-1">
+                {/* <span className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2">
                   <i
                     className={`far ${
                       showPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
                     onClick={togglePasswordVisibility}
                   ></i>
-                </span>
+                </span> */}
               </div>
-              {errors.password && (
-                <p className="  text-danger">{errors.password.message}</p>
+              {errors?.password && (
+                <p className="  text-danger">{errors?.password?.message}</p>
               )}
             </div>
           </div>

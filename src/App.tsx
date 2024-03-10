@@ -14,22 +14,13 @@ import TasksList from './TasksModule/Components/TasksList/TasksList'
 import UsersList from './UsersModule/Components/UsersList/UsersList'
 import ProjectList from './ProjectModule/Components/ProjectList/ProjectList'
 import VerifyAccount from './AuthModule/Components/VerifyAccount/VerifyAccount'
-import { jwtDecode } from 'jwt-decode'
-import { useEffect, useState } from 'react'
+
+import ProtectedRoute from './SharedMoudule/Components/ProtectedRoute/ProtectedRoute'
+import { useContext } from 'react'
+import { AuthContext } from './Context/Components/AuthContext'
 
 function App() {
-  const [loginData,setLoginData]=useState(null);
-
-  const saveAdminData=()=>{
-    const encodedToken=localStorage.getItem("userToken");
-    const decodedToken=jwtDecode(encodedToken);
-    setLoginData(decodedToken);    
-  }
-  useEffect(()=>{
-    if(localStorage.getItem("userToken")){
-      saveAdminData();
-    }
-  },[])
+  let {loginData}:any=useContext(AuthContext);
   const routers = createBrowserRouter([
     {
       path:"/",element:<AuthLayout/>,
@@ -46,7 +37,12 @@ function App() {
     },
     {
       path:"dashboard",
-      element:<MasterLayout loginData={loginData}/>,
+      element:(
+        <ProtectedRoute loginData={loginData}>
+          <MasterLayout loginData={loginData}/>
+        </ProtectedRoute>
+          // <MasterLayout loginData={loginData}/>
+      ),
       errorElement:<NotFound/>,
       children:
       [
