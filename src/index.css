@@ -150,12 +150,4 @@ form label,
     scrollbar-width: none;  /* Firefox */
   }
 
-  .NotFound{
-    background-image: url(../src/assets/Desktop\ -\ 8.png);
-    background-size: cover;
-    background-position: center center;
-    color: #EF9B28;    ;
-  }
-  .NotFound h4{
-    color: rgb(209, 201, 201);
-  }
+  
