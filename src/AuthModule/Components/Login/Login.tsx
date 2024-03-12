@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form";
 import logo from "../../../assets/PMS 3.svg";
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { toast } from "react-toastify";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
 import { AuthContext } from "../../../Context/Components/AuthContext";
 import { ToastContext } from "../../../Context/Components/ToastContext";
@@ -47,9 +46,9 @@ async function handleLogin(values:any) {
     handleLogin(values);
   };
 
-  // const togglePasswordVisibility = () => {
-  //   setShowPassword(!showPassword);
-  // };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <>
       <div className="auth-container vh-100  d-flex flex-column justify-content-center align-items-center">
@@ -58,7 +57,7 @@ async function handleLogin(values:any) {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="form  col-xl-5 col-lg-6 col-md-7 col-sm-9 col-10 bg-info rounded-4 p-5"
+          className="form  col-xl-5 col-lg-6 col-md-7 col-sm-9 col-10 bg-info rounded-4 p-sm-5 p-3"
         >
          <p className="text-light mb-0 mt-3">welcome to PMS</p>
           <h2 className="form-Name ">
@@ -73,7 +72,6 @@ async function handleLogin(values:any) {
               >
                 <label
                   className="form-label  fw-medium mb-0"
-                  for="formControlReadonly"
                 >
                   E-mail
                 </label>
@@ -93,8 +91,7 @@ async function handleLogin(values:any) {
                       message: "Email must be at least 10 characters",
                     },
                   })}
-                  className="form-input form-control bg-transparent border-0 border border-bottom text-white p-1"
-                  id="formControlReadonly"
+                  className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1"
                   type="text"
                   placeholder="Enter your E-mail"
                   aria-label="readonly input example"
@@ -110,7 +107,6 @@ async function handleLogin(values:any) {
               <div className="form-outline position-relative text-start d-flex flex-wrap">
                 <label
                   className="w-100 form-label fw-medium mb-0"
-                  for="formControl"
                 >
                   Password
                 </label>
@@ -136,26 +132,25 @@ async function handleLogin(values:any) {
                     },
                   })}
                   type={!showPassword ? "text" : "password"}
-                  className="form-input form-control bg-transparent border-0 border border-bottom text-white p-1 pb-0 flex-grow-1"
-                  id="formControl"
+                  className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1 pb-0 flex-grow-1"
                   placeholder="Enter your password"
                   aria-label="readonly input example"
                 />
-                {/* <span className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2">
+                <span className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2">
                   <i
                     className={`far ${
                       showPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
                     onClick={togglePasswordVisibility}
                   ></i>
-                </span> */}
+                </span>
               </div>
               {errors?.password && (
                 <p className="  text-danger">{errors?.password?.message}</p>
               )}
             </div>
           </div>
-          <div className="links d-flex justify-content-between align-items-center text-white mb-5 ">
+          <div className="links flex-wrap d-flex justify-content-between align-items-center text-white mb-5 ">
             <Link to={"/Register"}>Register Now ?</Link>
             <Link to={"/ForgotPassword"}>Forget Password ?</Link>
           </div>
@@ -163,7 +158,7 @@ async function handleLogin(values:any) {
           <div className=" text-center">
             <button
               type="submit"
-              className="btn btn-warning text-center  text-white w-75 rounded-5  "
+              className={`btn btn-warning text-center  text-white w-75 rounded-5  ${isLoading? "noClick":""}`}
             >
               {isLoading ? <Loader/> : "Login"}
             </button>
