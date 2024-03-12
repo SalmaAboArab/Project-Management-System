@@ -1,34 +1,31 @@
 import { useForm } from "react-hook-form";
 import logo from "../../../assets/PMS 3.svg";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
-import { AuthContext } from "../../../Context/Components/AuthContext";
-import { ToastContext } from "../../../Context/Components/ToastContext";
+import { baseUrl } from "../../../Constants/Components/Urls";
 
 export default function Login() {
 
   const [showPassword, setShowPassword] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  let {baseUrl}:any = useContext(AuthContext);
-  let {toastSuccess,toastError}:any = useContext(ToastContext);
 
 
 async function handleLogin(values:any) {
   try {
   const {data} = await axios.post(`${baseUrl}/Users/Login`,values)
     // console.log(data);
-    toastSuccess("Welcome!")
+    toast.success("Welcome!")
     localStorage.setItem('userToken',data.token)
     navigate("/dashboard")
     
     
   } catch (error:any) {
     // console.log(error);
-    toastError(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message);
   }
   setIsLoading(false)
 
