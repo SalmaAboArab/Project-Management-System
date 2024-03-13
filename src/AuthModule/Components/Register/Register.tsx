@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
-import { countryValidation, emailValidation, passwordValidation, phoneNumberValidation, userNameValidation } from "../../../SharedMoudule/Components/Validator/Validator.js";
+import { countryValidation, emailValidation, passwordValidation, phoneNumberValidation, userNameValidation } from "../Validator/Validator.js";
 import defaultImage from "../../../assets/Avatar.png";
 import logo from "../../../assets/PMS 3.svg";
 import styles from "./Register.module.css";
@@ -30,11 +30,9 @@ export default function Register() {
   async function handleRegister(values: any) {
     try {
       const { data } = await axios.post(`${baseUrl}/Users/Register`, values);
-      console.log(data);
       toast.success("Account created successfully.");
       navigate("/VerifyAccount");
     } catch (error: any) {
-      console.log(error);
       toast.error(error?.response?.data?.message || "There's a mistake.");
     }
     setIsLoading(false);
@@ -218,12 +216,13 @@ function handlePic(e:any) {
                   placeholder="Enter your password"
                   aria-label="readonly input example"
                 />
-                <button type="button" className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
+                <button
+                    onClick={togglePasswordVisibility}
+                    type="button" className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
                   <i
                     className={`far ${
                       showPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
-                    onClick={togglePasswordVisibility}
                   ></i>
                 </button>
               </div>
@@ -252,12 +251,13 @@ function handlePic(e:any) {
                   placeholder="Confirm New Password"
                   aria-label="readonly input example"
                 />
-                <button type="button" className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
+                <button
+                    onClick={toggleConfirmPasswordVisibility}
+                    type="button" className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
                   <i
                     className={`far  ${
                       showConfirmPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
-                    onClick={toggleConfirmPasswordVisibility}
                   ></i>
                 </button>
               </div>

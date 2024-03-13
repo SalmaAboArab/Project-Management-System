@@ -22,14 +22,12 @@ useEffect(() => {
 async function handleRegister(values:any) {
   try {
   const {data} = await axios.put(`${baseUrl}/Users/verify `,values)
-    console.log(data);
     toast.success(data?.message)
     navigate("/")  
     localStorage.removeItem("register-Email")
    
     
   } catch (error:any) {
-    console.log(error);
     toast.error(error?.response?.data?.message||"There's a mistake." );
   }
   setIsLoading(false)
@@ -74,43 +72,7 @@ const  values = {
           </h2>
 
           <div className="  d-flex flex-column gap-3  mt-4">
-            {/* <div className=" one-input-group">
-              <div
-                className="form-outline my-2  text-start   "
-                data-mdb-input-init
-              >
-                <label
-                  className="form-label  fw-medium mb-0"
-                >
-                  E-mail
-                </label>
-                <input
-                  {...register("email", {
-                    required: "Email is required",
-                    pattern: {
-                      value: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
-                      message: "Please enter a valid email address",
-                    },
-                    maxLength: {
-                      value: 30,
-                      message: "Email must be at most 30 characters",
-                    },
-                    minLength: {
-                      value: 10,
-                      message: "Email must be at least 10 characters",
-                    },
-                  })}
-                  className="form-input form-control bg-transparent rounded-bottom-0  border-0 border border-bottom text-white p-1"
-                  type="text"
-                  placeholder="Enter your E-mail"
-                  aria-label="readonly input example"
-                  autoComplete="off"
-                />
-                {errors?.email && (
-                  <p className="mt-1  text-danger">{errors?.email?.message}</p>
-                )}
-              </div>
-            </div> */}
+           
 
             <div className=" one-input-group">
               <div className="form-outline position-relative text-start d-flex flex-wrap">
