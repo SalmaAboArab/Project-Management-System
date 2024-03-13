@@ -1,22 +1,21 @@
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import "./SideBar.css";
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import menu from '../../../assets/menu.png'
-import { ToastContext } from "../../../Context/Components/ToastContext";
+import { toast } from "react-toastify";
 export default function SideBar() {
   const [handleSidebar, setHandleSidebar] = useState(false);
   const navigate=useNavigate();
-  const {toastSuccess}:any=useContext(ToastContext);
 
   function toggleCollapse() {
     setHandleSidebar(!handleSidebar);
   }
   
-  let logout=()=>{
+  const logout=()=>{
     localStorage.removeItem("userToken");
     localStorage.removeItem("loginData");
-    toastSuccess('BYE BYE 🙁')
+    toast.success('BYE BYE 🙁')
     navigate('/');
   }
 

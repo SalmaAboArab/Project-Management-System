@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
-import logo from "../../../assets/PMS 3.svg";
-import  { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { baseUrl } from "../../../Constants/Components/Urls";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
-import { AuthContext } from "../../../Context/Components/AuthContext";
-import { ToastContext } from "../../../Context/Components/ToastContext";
+import logo from "../../../assets/PMS 3.svg";
 
 export default function VerifyAccount() {
 const [userEmail, setUserEmail] = useState("")
@@ -17,22 +17,20 @@ useEffect(() => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  let {baseUrl}:any = useContext(AuthContext);
-  let {toastSuccess,toastError}:any = useContext(ToastContext);
 
 
 async function handleRegister(values:any) {
   try {
   const {data} = await axios.put(`${baseUrl}/Users/verify `,values)
     console.log(data);
-    toastSuccess(data?.message)
+    toast.success(data?.message)
     navigate("/")  
     localStorage.removeItem("register-Email")
    
     
   } catch (error:any) {
     console.log(error);
-    toastError(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message||"There's a mistake." );
   }
   setIsLoading(false)
 

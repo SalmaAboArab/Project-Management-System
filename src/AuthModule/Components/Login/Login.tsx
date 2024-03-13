@@ -1,19 +1,18 @@
 import { useForm } from "react-hook-form";
 import { emailValidation ,passwordValidation} from "../../../SharedMoudule/Components/Validator/Validator.js"
 import logo from "../../../assets/PMS 3.svg";
-import  { useContext, useState } from "react";
+import  { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
-import { AuthContext } from "../../../Context/Components/AuthContext";
 import { toast } from "react-toastify";
+import { baseUrl } from "../../../Constants/Components/Urls.js";
 
 export default function Login() {
 
   const [showPassword, setShowPassword] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  let {baseUrl}:any = useContext(AuthContext);
 
 
 async function handleLogin(values:any) {
@@ -80,7 +79,6 @@ async function handleLogin(values:any) {
                   type="text"
                   placeholder="Enter your E-mail"
                   aria-label="readonly input example"
-                  autoComplete="off"
                 />
                 {errors?.email && (
                   <p className="mt-1  text-danger">{errors?.email?.message}</p>

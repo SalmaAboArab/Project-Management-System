@@ -3,12 +3,12 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../../Context/Components/AuthContext";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
 import { countryValidation, emailValidation, passwordValidation, phoneNumberValidation, userNameValidation } from "../../../SharedMoudule/Components/Validator/Validator.js";
 import defaultImage from "../../../assets/Avatar.png";
 import logo from "../../../assets/PMS 3.svg";
 import styles from "./Register.module.css";
+import { baseUrl } from "../../../Constants/Components/Urls.js";
 
 export default function Register() {
   const [userImage, setUserImage] = useState("")
@@ -18,7 +18,6 @@ export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  let { baseUrl }: any = useContext(AuthContext);
 
   const {
     register,

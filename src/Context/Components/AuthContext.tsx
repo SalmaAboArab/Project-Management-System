@@ -6,7 +6,6 @@ export let AuthContext=createContext(null);
 
 export default function AuthContextProvider(props:any){
     const [loginData,setLoginData]=useState(null);
-    let baseUrl=`https://upskilling-egypt.com:3003/api/v1`;
     let requestHeader={
         Authorization:`Bearer ${localStorage.getItem("userToken")}`
       }
@@ -23,7 +22,7 @@ export default function AuthContextProvider(props:any){
       }
     },[])
 
-    return <AuthContext.Provider value={{loginData,baseUrl,requestHeader}}>
+    return <AuthContext.Provider value={{loginData,requestHeader}}>
         {props.children}
     </AuthContext.Provider>
 }
