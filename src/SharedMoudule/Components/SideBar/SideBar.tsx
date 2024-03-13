@@ -39,7 +39,7 @@ export default function SideBar() {
               )}
             </span>
           </div>
-          <Menu className="mt-5   mx-auto ">
+          <Menu className="mt-5 mx-auto ">
             <MenuItem
               icon={<i className="  fa-solid fa-house " ></i>}
               component={<Link to={"/dashboard"} />}

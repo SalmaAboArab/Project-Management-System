@@ -4,7 +4,7 @@ import SideBar from "../SideBar/SideBar";
 
 export default function MasterLayout({loginData}:any) {
   return <>
-  <div className="Navbar ">
+  <div className="Navbar">
 
   <Navbar loginData={loginData}/>
   </div>
