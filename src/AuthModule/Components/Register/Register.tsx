@@ -218,7 +218,7 @@ function handlePic(e:any) {
                   placeholder="Enter your password"
                   aria-label="readonly input example"
                 />
-                <button className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
+                <button type="button" className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
                   <i
                     className={`far ${
                       showPassword ? "fa-eye-slash" : "fa-eye"
@@ -252,7 +252,7 @@ function handlePic(e:any) {
                   placeholder="Confirm New Password"
                   aria-label="readonly input example"
                 />
-                <button className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
+                <button type="button" className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
                   <i
                     className={`far  ${
                       showConfirmPassword ? "fa-eye-slash" : "fa-eye"

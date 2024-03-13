@@ -100,7 +100,7 @@ async function handleLogin(values:any) {
                   placeholder="Enter your password"
                   aria-label="readonly input example"
                 />
-                <button className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2">
+                <button type="button" className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2">
                   <i
                     className={`far ${
                       showPassword ? "fa-eye-slash" : "fa-eye"
