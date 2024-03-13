@@ -27,6 +27,7 @@ a {
     background-image: url(../src/assets/bg1.png);
     background-size: cover;
     background-position: bottom center;
+    min-height: 100vh !important;
 }
 
 
@@ -97,8 +98,13 @@ form label,
     color: rgba(255, 255, 255, 0.712) !important;
 }
 
-.form-input:focus {
-    background: transparent !important;
+
+.form-input:active,.form-input:focus ,.form-input::content,.form-input:checked{
+
+    background: red !important;
+}
+.form-input:focus{
+    
     outline: none !important;
     box-shadow: none !important;
     border-bottom: 1px solid gainsboro !important;
@@ -108,7 +114,7 @@ form label,
 /* ===============one-input-group================ */
 
 .one-input-group {
-    height: 80px;
+    min-height: 80px;
 }
 
 
@@ -142,12 +148,43 @@ form label,
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .pageOverflow::-webkit-scrollbar {
-    display: none;
+    display: none !;
   }
   /* Hide scrollbar for IE, Edge and Firefox */
   .pageOverflow {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none !;  /* IE and Edge */
+    scrollbar-width: none !;  /* Firefox */
   }
 
   
+  /* ================Don't click when you call API====================== */
+  .noClick {
+    pointer-events: none !important;
+}
+
+/* ==============autoComplete handle====================== */
+
+input[type=file]{
+    align-items: center !important;
+    z-index: 9999;
+    background: #000 !important;
+    height: 100px !important ;
+    width: 100%;    
+
+}
+/* ================== */
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus{
+    border: 1px solid green;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 0 0 0px 1000px #29534e00 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+/* ?===============scrollbar=================== */
+html {
+    scrollbar-color: var(--main-color) #1f263e;
+} 

@@ -1,0 +1,59 @@
+
+
+.upload {
+    width: 100px !important;
+    height: 100px !important;
+    position: relative !important;
+    margin: auto;
+    border-radius: 50% !important;
+    border: 5px solid var(--main-color);
+overflow: hidden !important;
+}
+
+.img {
+padding: 2px !important;
+    margin: 0 2px  !important;
+    margin-top: 1px !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50%;
+
+}
+
+.round {
+    padding: 0 !important;
+    margin: 0 !important;
+    position: absolute;
+    height: 100% !important;
+    /* background: #000; */
+    width: 100% !important;
+    border-radius: 50%;
+    color: rgb(255, 255, 255) !important;
+    cursor:  pointer !important;
+    
+    
+}
+i {
+    transition: all 0.3s;
+
+}
+.round:hover i{
+    color: rgb(255, 102, 0) !important;
+    transform: scale(1.2);
+    cursor:  pointer !important;
+
+}
+
+.input {
+    position: absolute ;
+    transform: scale(2);
+    opacity: 0;
+    cursor:  pointer !important;
+    z-index: 999 !important;
+
+}
+
+
+
+
+

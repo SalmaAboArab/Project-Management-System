@@ -1,7 +1,7 @@
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import "./SideBar.css";
-import { useState } from "react";
+import {  useState } from "react";
 import menu from '../../../assets/menu.png'
 import { toast } from "react-toastify";
 export default function SideBar() {
@@ -12,7 +12,7 @@ export default function SideBar() {
     setHandleSidebar(!handleSidebar);
   }
   
-  let logout=()=>{
+  const logout=()=>{
     localStorage.removeItem("userToken");
     localStorage.removeItem("loginData");
     toast.success('BYE BYE 🙁')
