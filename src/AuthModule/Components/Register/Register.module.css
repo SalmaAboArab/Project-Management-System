@@ -10,7 +10,7 @@
 overflow: hidden !important;
 }
 
-.upload img {
+.img {
 padding: 2px !important;
     margin: 0 2px  !important;
     margin-top: 1px !important;
@@ -20,7 +20,7 @@ padding: 2px !important;
 
 }
 
-.upload .round {
+.round {
     padding: 0 !important;
     margin: 0 !important;
     position: absolute;
@@ -28,47 +28,32 @@ padding: 2px !important;
     /* background: #000; */
     width: 100% !important;
     border-radius: 50%;
-    transition: all 0.5s;
     color: rgb(255, 255, 255) !important;
     cursor:  pointer !important;
-
+    
     
 }
+i {
+    transition: all 0.3s;
 
-
-.upload .round:hover{
-    background: #52575894;
+}
+.round:hover i{
+    color: rgb(255, 102, 0) !important;
+    transform: scale(1.2);
     cursor:  pointer !important;
 
 }
 
-.upload .round input[type="file"] {
-    position: absolute;
+.input {
+    position: absolute ;
     transform: scale(2);
     opacity: 0;
     cursor:  pointer !important;
+    z-index: 999 !important;
 
 }
 
 
-input[type=file]{
-    align-items: center !important;
-    z-index: 9999;
-    background: #000 !important;
-    height: 100px !important ;
-    width: 100%;    
-
-}
-/* ================== */
-/* Change autocomplete styles in WebKit */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus{
-    border: 1px solid green;
-    -webkit-text-fill-color: rgb(255, 255, 255);
-    -webkit-box-shadow: 0 0 0px 1000px #29534e00 inset;
-    transition: background-color 5000s ease-in-out 0s;
-}
 
 
 

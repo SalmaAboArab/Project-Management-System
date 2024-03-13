@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
+import { emailValidation ,passwordValidation} from "../../../SharedMoudule/Components/Validator/Validator.js"
 import logo from "../../../assets/PMS 3.svg";
 import  { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
 import { AuthContext } from "../../../Context/Components/AuthContext";
-import { ToastContext } from "../../../Context/Components/ToastContext";
+import { toast } from "react-toastify";
 
 export default function Login() {
 
@@ -13,21 +14,19 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   let {baseUrl}:any = useContext(AuthContext);
-  let {toastSuccess,toastError}:any = useContext(ToastContext);
 
 
 async function handleLogin(values:any) {
   try {
   const {data} = await axios.post(`${baseUrl}/Users/Login`,values)
     // console.log(data);
-    toastSuccess("Welcome!")
+    toast.success("Welcome!")
     localStorage.setItem('userToken',data.token)
     navigate("/dashboard")
     
     
   } catch (error:any) {
-    // console.log(error);
-    toastError(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message || "There's a mistake." );
   }
   setIsLoading(false)
 
@@ -76,21 +75,7 @@ async function handleLogin(values:any) {
                   E-mail
                 </label>
                 <input
-                  {...register("email", {
-                    required: "Email is required",
-                    pattern: {
-                      value: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
-                      message: "Please enter a valid email address",
-                    },
-                    maxLength: {
-                      value: 30,
-                      message: "Email must be at most 30 characters",
-                    },
-                    minLength: {
-                      value: 10,
-                      message: "Email must be at least 10 characters",
-                    },
-                  })}
+                  {...register("email", emailValidation)}
                   className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1"
                   type="text"
                   placeholder="Enter your E-mail"
@@ -111,39 +96,20 @@ async function handleLogin(values:any) {
                   Password
                 </label>
                 <input
-                  {...register("password", {
-                    required: {
-                      value: true,
-                      message: "Password is Required",
-                    },
-                    pattern: {
-                      value:
-                        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&^#])[A-Za-z\d@$!%*?&^#]+$/,
-                      message:
-                        "Password must contain at least one letter, one number, and one special character",
-                    },
-                    maxLength: {
-                      value: 20,
-                      message: "Password must be at most 20 characters",
-                    },
-                    minLength: {
-                      value: 8,
-                      message: "Password must be at least 8 characters",
-                    },
-                  })}
+                  {...register("password", passwordValidation)}
                   type={!showPassword ? "text" : "password"}
                   className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1 pb-0 flex-grow-1"
                   placeholder="Enter your password"
                   aria-label="readonly input example"
                 />
-                <span className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2">
+                <button className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2">
                   <i
                     className={`far ${
                       showPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
                     onClick={togglePasswordVisibility}
                   ></i>
-                </span>
+                </button>
               </div>
               {errors?.password && (
                 <p className="  text-danger">{errors?.password?.message}</p>

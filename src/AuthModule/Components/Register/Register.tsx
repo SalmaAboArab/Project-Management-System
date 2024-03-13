@@ -1,13 +1,14 @@
-import { useForm } from "react-hook-form";
-import logo from "../../../assets/PMS 3.svg";
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import defaultImage from "../../../assets/Avatar.png";
-import Loader from "../../../SharedMoudule/Components/Loading/Loading";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../Context/Components/AuthContext";
-import { ToastContext } from "../../../Context/Components/ToastContext";
-import "./Register.css";
+import Loader from "../../../SharedMoudule/Components/Loading/Loading";
+import { countryValidation, emailValidation, passwordValidation, phoneNumberValidation, userNameValidation } from "../../../SharedMoudule/Components/Validator/Validator.js";
+import defaultImage from "../../../assets/Avatar.png";
+import logo from "../../../assets/PMS 3.svg";
+import styles from "./Register.module.css";
 
 export default function Register() {
   const [userImage, setUserImage] = useState("")
@@ -18,7 +19,6 @@ export default function Register() {
   const navigate = useNavigate();
 
   let { baseUrl }: any = useContext(AuthContext);
-  let { toastSuccess, toastError }: any = useContext(ToastContext);
 
   const {
     register,
@@ -32,11 +32,11 @@ export default function Register() {
     try {
       const { data } = await axios.post(`${baseUrl}/Users/Register`, values);
       console.log(data);
-      toastSuccess("Account created successfully.");
+      toast.success("Account created successfully.");
       navigate("/VerifyAccount");
     } catch (error: any) {
       console.log(error);
-      toastError(error?.response?.data?.message || "There's a mistake.");
+      toast.error(error?.response?.data?.message || "There's a mistake.");
     }
     setIsLoading(false);
   }
@@ -95,50 +95,35 @@ function handlePic(e:any) {
            </h2>
            </div>
           
-          <div className="upload mx-auto my-3 d-flex justify-content-center align-items-center ">
-            <img className="  m-0 p-0" src={userImage||defaultImage} alt="selectImage" />
+          <div className={`${styles.upload} mx-auto  my-3 d-flex flex-wrap justify-content-center align-items-center `}>
+            <img className={`${styles.img}   m-0 p-0`} src={userImage||defaultImage} alt="selectImage" />
 
-            <div className="round  text-center  d-flex align-items-end  text-center justify-content-center mx-auto  ">
               <div className="h4 carousel mx-auto text-center position-relative start-0 w-100">
-                <input
+            <div className={`${styles.round} text-center  d-flex align-items-end  text-center justify-content-center mx-auto `}>
+                 <input
                 onChangeCapture={(e)=>handlePic(e)}
                   {...register("profileImage")}
-                  className="m-0 p-0 position-relative"
+                  className={`${styles.input} `}
                   type="file"
-                />
+                /> 
                 <i className="fa-solid fa-camera"></i>
               </div>
             </div>
           </div>
 
-          <div className="d-flex flex-wrap align-items-center    mt-2 ">
-            <div className=" one-input-group   col-md-6 pe-md-3   my-4  col-12  ">
+          <div className="d-flex flex-wrap align-items-start     mt-2 ">
+            <div className=" one-input-group   col-md-6 pe-lg-5 pe-md-3   my-2  col-12  ">
               <div
                 className="form-outline my-2  text-start   "
                 data-mdb-input-init
               >
-                <label className="form-label  fw-medium pb-0 mb-0">User Name</label>
+                <label htmlFor="userName" className="form-label  fw-medium pb-0 mb-0">User Name</label>
                 <input
-                  {...register("userName", {
-                    required: "UserName is required",
-                    maxLength: {
-                      value: 8,
-                      message: "UserName must be at most 8 characters",
-                    },
-                    minLength: {
-                      value: 3,
-                      message: "UserName must be at least 3 characters",
-                    },
-                    pattern: {
-                      value: /^[a-zA-Z]+[0-9]+$/,
-                      message:
-                        "UserName must contain characters and end with numbers without spaces",
-                    },
-                  })}
+                  {...register("userName", userNameValidation)}
 
                   className="form-input form-control bg-transparent rounded-bottom-0  border-0 border border-bottom text-white p-1"
                   type="text"
-                    
+                    id="userName"
 
 
                   
@@ -152,31 +137,17 @@ function handlePic(e:any) {
                 )}
               </div>
             </div>
-            <div className=" one-input-group       col-md-6 ps-md-3   my-4  col-12 ">
+            <div className=" one-input-group       col-md-6 ps-lg-5 ps-md-3   my-2  col-12 ">
               <div
                 className="form-outline my-2  text-start   "
                 data-mdb-input-init
               >
-                <label className="form-label  fw-medium mb-0">E-mail</label>
+                <label htmlFor="email" className="form-label  fw-medium mb-0">E-mail</label>
                 <input
-                  {...register("email", {
-                    required: "Email is required",
-                    pattern: {
-                      value: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
-                      message: "Please enter a valid email address",
-                    },
-                    maxLength: {
-                      value: 30,
-                      message: "Email must be at most 30 characters",
-                    },
-                    minLength: {
-                      value: 10,
-                      message: "Email must be at least 10 characters",
-                    },
-                  })}
+                  {...register("email", emailValidation)}
                   className="form-input form-control bg-transparent rounded-bottom-0  border-0 border border-bottom text-white p-1"
                   type="email"
-                    
+                    id="email"
 
                   placeholder="Enter your E-mail"
                   aria-label="readonly input example"
@@ -187,20 +158,16 @@ function handlePic(e:any) {
               </div>
             </div>
 
-            <div className=" one-input-group       col-md-6 pe-md-3   my-4  col-12">
+            <div className=" one-input-group       col-md-6 pe-lg-5 pe-md-3   my-2  col-12">
               <div className="form-outline position-relative text-start d-flex flex-wrap">
-                <label className="w-100 form-label fw-medium mb-0">
+                <label htmlFor="country" className="w-100 form-label fw-medium mb-0">
                   Country
                 </label>
                 <input
-                  {...register("country", {
-                    required: {
-                      value: true,
-                      message: "country is Required",
-                    },
-                  })}
+                  {...register("country", countryValidation)}
                   type="text"
                   className="form-input form-control bg-transparent rounded-bottom-0  border-0 border border-bottom text-white p-1 pb-0 flex-grow-1"
+                  id="country"
                     
                   
 
@@ -215,25 +182,16 @@ function handlePic(e:any) {
               )}
             </div>
 
-            <div className=" one-input-group       col-md-6 ps-md-3   my-4 col-12">
+            <div className=" one-input-group       col-md-6 ps-lg-5 ps-md-3   my-2 col-12">
               <div className="form-outline position-relative text-start d-flex flex-wrap">
-                <label className="w-100 form-label fw-medium mb-0">
+                <label htmlFor="phoneNumber" className="w-100 form-label fw-medium mb-0">
                   Phone Number
                 </label>
                 <input
-                  {...register("phoneNumber", {
-                    pattern: {
-                      value: /^(\+2)?01[0125][0-9]{8}$/,
-                      message: "Please enter a valid Egyptian phone number",
-                    },
-                    required: {
-                      value: true,
-                      message: "PhoneNumber is Required",
-                    },
-                  })}
+                  {...register("phoneNumber", phoneNumberValidation)}
                   type="tel"
                   className="form-input form-control bg-transparent rounded-bottom-0  border-0 border border-bottom text-white p-1 pb-0 flex-grow-1"
-                    
+                    id="phoneNumber"
                  
 
                   
@@ -245,60 +203,42 @@ function handlePic(e:any) {
                 <p className="  text-danger">{errors?.phoneNumber?.message}</p>
               )}
             </div>
-            <div className=" one-input-group       col-md-6 pe-md-3   my-4 col-12">
+            <div className=" one-input-group       col-md-6 pe-lg-5 pe-md-3   my-2 col-12">
               <div className="form-outline position-relative text-start d-flex flex-wrap">
-                <label className="w-100 form-label fw-medium mb-0">
+                <label htmlFor="password" className="w-100 form-label fw-medium mb-0">
                   Password
                 </label>
                 <input
-                  {...register("password", {
-                    required: {
-                      value: true,
-                      message: "Password is Required",
-                    },
-                    pattern: {
-                      value:
-                        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&^#])[A-Za-z\d@$!%*?&^#]+$/,
-                      message:
-                        "Phone Number contain at least one letter, one number, and one special character",
-                    },
-                    maxLength: {
-                      value: 20,
-                      message: "Password must be at most 20 characters",
-                    },
-                    minLength: {
-                      value: 8,
-                      message: "Password must be at least 8 characters",
-                    },
-                  })}
+                  {...register("password", passwordValidation)}
                   type={!showPassword ? "text" : "password"}
                   className="form-input form-control bg-transparent rounded-bottom-0  border-0 border border-bottom text-white p-1 pb-0 flex-grow-1"
-                    
+                    id="password"
                   
 
                   
                   placeholder="Enter your password"
                   aria-label="readonly input example"
                 />
-                <span className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
+                <button className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
                   <i
                     className={`far ${
                       showPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
                     onClick={togglePasswordVisibility}
                   ></i>
-                </span>
+                </button>
               </div>
               {errors?.password && (
                 <p className="  text-danger">{errors?.password?.message}</p>
               )}
             </div>
-            <div className=" one-input-group       col-md-6 ps-md-3   my-4 col-12">
+            <div className=" one-input-group       col-md-6 ps-lg-5 ps-md-3   my-2 col-12">
               <div className="form-outline position-relative text-start d-flex flex-wrap">
-                <label className="w-100 form-label fw-medium mb-0">
+                <label htmlFor="confirmPassword" className="w-100 form-label fw-medium mb-0">
                   Confirm Password
                 </label>
                 <input
+                id="confirmPassword"
                   {...register("confirmPassword", {
                     required: "Confirm Password is required",
                     validate: (value: string) =>
@@ -313,14 +253,14 @@ function handlePic(e:any) {
                   placeholder="Confirm New Password"
                   aria-label="readonly input example"
                 />
-                <span className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
+                <button className="input-group-text rounded-bottom-0  border-0  bg-transparent position-absolute mt-4 end-0 pt-2">
                   <i
                     className={`far  ${
                       showConfirmPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
                     onClick={toggleConfirmPasswordVisibility}
                   ></i>
-                </span>
+                </button>
               </div>
               {errors?.confirmPassword && (
                 <p className="  text-danger">
@@ -337,7 +277,7 @@ function handlePic(e:any) {
                 isLoading ? "noClick" : ""
               }`}
             >
-              {isLoading ? <Loader /> : "Save"}
+              {isLoading ? <Loader /> : "Register"}
             </button>
           </div>
         </form>

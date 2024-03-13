@@ -171,7 +171,26 @@ form label,
     pointer-events: none !important;
 }
 
+/* ==============autoComplete handle====================== */
 
+input[type=file]{
+    align-items: center !important;
+    z-index: 9999;
+    background: #000 !important;
+    height: 100px !important ;
+    width: 100%;    
+
+}
+/* ================== */
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus{
+    border: 1px solid green;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 0 0 0px 1000px #29534e00 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
 
 
 /* ?===============scrollbar=================== */

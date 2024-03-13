@@ -57,7 +57,6 @@ const  values = {
   const onSubmit = async (data:any) => {
     setIsLoading(true)
     handleData(data)
-    // handleRegister(values);
   };
 
  
@@ -127,10 +126,6 @@ const  values = {
                     required: {
                       value: true,
                       message: "OTP is Required",
-                    },
-                      maxLength: {
-                      value: 8,
-                      message: "OTP code must be at most 8 characters",
                     },
                     minLength: {
                       value: 4,
