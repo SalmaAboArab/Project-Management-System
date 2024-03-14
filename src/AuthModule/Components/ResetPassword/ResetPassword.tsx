@@ -14,14 +14,14 @@ export default function ResetPassword() {
   // ########################## submit New password ##################################
 
   const [isLoading,setIsLoading]=useState(false);
-  const {register,handleSubmit,formState:{errors}}=useForm();
+  const {register,handleSubmit,watch,getValues,formState:{errors}}=useForm();
 
   const submitNewPassword=async(data:any)=>{
     try {
       setIsLoading(true);
       const response = await axios.post(`${baseUrl}/Users/Reset`,data);
         console.log(response);
-        toast.success(" reset New password please!")
+        toast.success(" You can login Now!")
       
         navigate("/")
     
@@ -31,11 +31,16 @@ export default function ResetPassword() {
       setIsLoading(false);
     }
     }
-// ########################## show password ##################################
 
     const[showPassword,setShowPassword]=useState(true);
 const togglePassword=()=>{
   setShowPassword(!showPassword);
+}
+
+
+const[showConfirmPassword,setShowConfirmPassword]=useState(true);
+const toggleConfirmPassword=()=>{
+  setShowConfirmPassword(!showConfirmPassword);
 }
 
 
@@ -130,19 +135,24 @@ const togglePassword=()=>{
                 </label>
                 <input
                   {...register("confirmPassword", passwordValidation)}
-                  type={!showPassword ? "text" : "password"}
+                  
+                  type={!showConfirmPassword ? "text" : "password"}
                   className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1 pb-0 flex-grow-1"
                   placeholder="Confirm New password"
                   aria-label="readonly input example"
                 />
+                 {watch("confirmPassword") !== watch("password") &&
+  getValues("confirmPassword") ? (
+    <p className='text-danger'>password not match</p>
+  ) : null}
                 <button
-                  onClick={togglePassword}
+                  onClick={toggleConfirmPassword}
                   type="button"
                   className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2"
                 >
                   <i
                     className={`far ${
-                      showPassword ? "fa-eye-slash" : "fa-eye"
+                      showConfirmPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
                   ></i>
                 </button>

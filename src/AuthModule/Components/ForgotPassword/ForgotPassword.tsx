@@ -12,7 +12,7 @@ export default function ForgotPassword() {
 const navigate=useNavigate();
 const [isLoading,setIsLoading]=useState(false);
 
-// ########################## submit function ##################################
+
 const {register,handleSubmit,formState:{errors}}=useForm();
 const submitEmail=async(data:any)=>{
   try {
@@ -21,7 +21,7 @@ const submitEmail=async(data:any)=>{
       console.log(response);
       toast.success("Reset Account Please!")
     
-      navigate("/ResetPassword")
+      navigate("/resetPassword")
   
   } catch (error) {
     console.log(error)

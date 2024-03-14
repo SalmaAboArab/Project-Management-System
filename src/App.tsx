@@ -30,7 +30,7 @@ function App() {
         {index:true,element:<Login/>},
         {path:"Register",element:<Register/>},
         {path:"ForgotPassword",element:<ForgotPassword/>},
-        {path:"ResetPassword",element:<ResetPassword/>},
+        {path:"resetPassword",element:<ResetPassword/>},
         {path:"VerifyAccount",element:<VerifyAccount/>},
         {path:"ChangePassword",element:<ChangePassword/>},
       ]
