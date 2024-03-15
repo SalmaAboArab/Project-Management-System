@@ -230,6 +230,8 @@ function handlePic(e:any) {
                 <p className="  text-danger">{errors?.password?.message}</p>
               )}
             </div>
+
+
             <div className=" one-input-group       col-md-6 ps-lg-5 ps-md-3   my-2 col-12">
               <div className="form-outline position-relative text-start d-flex flex-wrap">
                 <label htmlFor="confirmPassword" className="w-100 form-label fw-medium mb-0">
@@ -267,6 +269,9 @@ function handlePic(e:any) {
                 </p>
               )}
             </div>
+
+
+            
           </div>
 
           <div className=" text-center">

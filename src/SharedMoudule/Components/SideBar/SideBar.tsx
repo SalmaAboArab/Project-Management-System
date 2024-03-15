@@ -70,7 +70,7 @@ export default function SideBar() {
             <MenuItem
               
               icon={<i className="fa-solid fa-unlock-keyhole"></i>}
-              component={<Link to={"/ChangePassword"} />}
+              component={<Link to={"ChangePassword"} />}
             >
               
               ChangePassword

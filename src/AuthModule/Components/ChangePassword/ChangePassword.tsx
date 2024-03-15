@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { passwordValidation } from "../Validator/Validator.js";
 import logo from "../../../assets/PMS 3.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
 import { toast } from "react-toastify";
@@ -10,29 +10,42 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Context/Components/AuthContext.tsx";
 
 export default function ChangePassword() {
-  const [showPassword, setShowPassword] = useState(true);
+  const [showPasswordOldPassword, setShowPasswordOldPassword] = useState(true);
+  const [showPasswordNewPassword, setShowPasswordNewPassword] = useState(true);
+  const [showPasswordConfirmPassword, setShowPasswordConfirmPassword] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+ // const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   let {  requestHeader }: any =useContext(AuthContext);
 
   async function handleLChangePassword(values: any) {
-    try {
-      const { data } = await axios.put(`${baseUrl}/Users/ChangePassword`, values,
-      { headers: requestHeader });
-      toast.success("password changed successfully");
-      localStorage.setItem("userToken", data.token);
-      navigate("/dashboard");
-    } catch (error: any) {
-      toast.error(error?.response?.data?.message || "There's a mistake.");
+
+    
+      try {
+        const { data } = await axios.put(`${baseUrl}/Users/ChangePassword`, values,
+        { headers: requestHeader });
+        toast.success("password changed successfully");
+        localStorage.setItem("userToken", data.token);
+        navigate("/dashboard");
+      } catch (error: any) {
+        toast.error(error?.response?.data?.message || "There's a mistake.");
+      }
+      setIsLoading(false);
     }
-    setIsLoading(false);
-  }
+
+  
+ 
+   
+
+
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors },watch,
   } = useForm();
+
+  let confirmPassword = watch("newPassword");
 
 
   const onSubmit = async (values: any) => {
@@ -41,14 +54,26 @@ export default function ChangePassword() {
   };
 
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const togglePasswordVisibilityOldPassword = () => {
+    setShowPasswordOldPassword(!showPasswordOldPassword);
+   
+  };
+
+  const togglePasswordVisibilityNewPassword = () => {
+    
+    setShowPasswordNewPassword(!showPasswordNewPassword);
+   
+  };
+
+  const togglePasswordVisibilityConfirmPassword = () => {
+    
+    setShowPasswordConfirmPassword(!showPasswordConfirmPassword);
   };
   return (
     <>
      <div className="auth-container vh-100  d-flex flex-column justify-content-center align-items-center">
         <div className="logo">
-          <img className="form-logo pb-2 " src={logo} alt="logo" />
+          <img className="form-logo pb-2 " src={logo} alt="projectManagementSystem-logo" />
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -69,19 +94,20 @@ export default function ChangePassword() {
                 </label>
                 <input
                   {...register("oldPassword", passwordValidation)}
-                  type={!showPassword ? "text" : "password"}
+                  type={!showPasswordOldPassword ? "text" : "password"}
                   className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1 pb-0 flex-grow-1"
                   placeholder="Enter your Old Password"
                   aria-label="readonly input example"
                 />
+
                 <button
-                  onClick={togglePasswordVisibility}
+                  onClick={togglePasswordVisibilityOldPassword}
                   type="button"
                   className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2"
                 >
                   <i
                     className={`far ${
-                      showPassword ? "fa-eye-slash" : "fa-eye"
+                      showPasswordOldPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
                   ></i>
                 </button>
@@ -98,19 +124,19 @@ export default function ChangePassword() {
                 </label>
                 <input
                   {...register("newPassword", passwordValidation)}
-                  type={!showPassword ? "text" : "password"}
+                  type={!showPasswordNewPassword ? "text" : "password"}
                   className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1 pb-0 flex-grow-1"
                   placeholder="Enter your New Password"
                   aria-label="readonly input example"
                 />
                 <button
-                  onClick={togglePasswordVisibility}
+                  onClick={togglePasswordVisibilityNewPassword}
                   type="button"
                   className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2"
                 >
                   <i
                     className={`far ${
-                      showPassword ? "fa-eye-slash" : "fa-eye"
+                      showPasswordNewPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
                   ></i>
                 </button>
@@ -126,20 +152,26 @@ export default function ChangePassword() {
                 Confirm New Password
                 </label>
                 <input
-                  {...register("confirmNewPassword", passwordValidation)}
-                  type={!showPassword ? "text" : "password"}
+                 
+                  {...register("confirmNewPassword", {
+                    required: "Confirm Password is required",
+                    validate: (value: string) =>
+                      value === confirmPassword || "Passwords do not match",
+                  })}
+                  type={!showPasswordConfirmPassword ? "text" : "password"}
                   className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1 pb-0 flex-grow-1"
                   placeholder="Confirm New Password"
                   aria-label="readonly input example"
+                  
                 />
                 <button
-                  onClick={togglePasswordVisibility}
+                  onClick={togglePasswordVisibilityConfirmPassword}
                   type="button"
                   className="input-group-text border-0  bg-transparent position-absolute mt-4 end-0 p-2"
                 >
                   <i
                     className={`far ${
-                      showPassword ? "fa-eye-slash" : "fa-eye"
+                      showPasswordConfirmPassword ? "fa-eye-slash" : "fa-eye"
                     } eye`}
                   ></i>
                 </button>
@@ -153,7 +185,7 @@ export default function ChangePassword() {
 
           </div>
          
-
+             
           <div className=" text-center mt-5">
             <button
               type="submit"
@@ -161,9 +193,10 @@ export default function ChangePassword() {
                 isLoading ? "noClick" : ""
               }`}
             >
-              {isLoading ? <Loader /> : "Save"}
+              {isLoading ? <Loader /> : "Save Changes"}
             </button>
           </div>
+
         </form>
       </div>
     </>
