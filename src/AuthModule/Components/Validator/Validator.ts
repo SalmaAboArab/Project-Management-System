@@ -21,6 +21,7 @@ export const emailValidation = {
     },
   };
   
+  
   export const userNameValidation = {
     required: "User Name is required",
     minLength: {
