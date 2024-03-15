@@ -23,7 +23,9 @@ function App() {
   let {loginData}:any=useContext(AuthContext);
   const routers = createBrowserRouter([
     {
-      path:"/",element:<AuthLayout/>,
+      path:"/",element:
+      
+      <AuthLayout/>,
       errorElement:<NotFound/>,
       children:
       [
@@ -32,7 +34,8 @@ function App() {
         {path:"ForgotPassword",element:<ForgotPassword/>},
         {path:"resetPassword",element:<ResetPassword/>},
         {path:"VerifyAccount",element:<VerifyAccount/>},
-        {path:"ChangePassword",element:<ChangePassword/>},
+        
+       
       ]
     },
     {
@@ -50,6 +53,8 @@ function App() {
         {path:"TasksList",element:<TasksList/>},
         {path:"UsersList",element:<UsersList/>},
         {path:"ProjectList",element:<ProjectList/>},
+        {path:"ChangePassword",element:<ChangePassword/>},
+        
       ]
     }
   ])

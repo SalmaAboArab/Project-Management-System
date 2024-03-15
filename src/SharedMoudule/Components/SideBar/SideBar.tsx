@@ -68,6 +68,15 @@ export default function SideBar() {
             </MenuItem>
 
             <MenuItem
+              
+              icon={<i className="fa-solid fa-unlock-keyhole"></i>}
+              component={<Link to={"ChangePassword"} />}
+            >
+              
+              ChangePassword
+            </MenuItem>
+
+            <MenuItem
               icon={<i className="fa fa-arrow-right-from-bracket" ></i>}
               onClick={logout}
             >
