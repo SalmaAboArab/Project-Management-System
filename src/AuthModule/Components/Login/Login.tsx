@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { emailValidation, passwordValidation } from "../Validator/Validator.js";
 import logo from "../../../assets/PMS 3.svg";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,17 +7,20 @@ import Loader from "../../../SharedMoudule/Components/Loading/Loading";
 import { toast } from "react-toastify";
 import { baseUrl } from "../../../Constants/Components/Urls.js";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../Context/Components/AuthContext.js";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const {saveLoginData}:any=useContext(AuthContext)
 
   async function handleLogin(values: any) {
     try {
       const { data } = await axios.post(`${baseUrl}/Users/Login`, values);
       toast.success("Welcome!");
       localStorage.setItem("userToken", data.token);
+      saveLoginData();
       navigate("/dashboard");
     } catch (error: any) {
       toast.error(error?.response?.data?.message || "There's a mistake.");

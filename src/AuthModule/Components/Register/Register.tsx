@@ -30,7 +30,7 @@ export default function Register() {
   async function handleRegister(values: any) {
     try {
       const { data } = await axios.post(`${baseUrl}/Users/Register`, values);
-      toast.success("Account created successfully.");
+      toast.success("Account created successfully, Check your email please.");
       navigate("/VerifyAccount");
     } catch (error: any) {
       toast.error(error?.response?.data?.message || "There's a mistake.");

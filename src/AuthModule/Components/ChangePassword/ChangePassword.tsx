@@ -7,7 +7,6 @@ import Loader from "../../../SharedMoudule/Components/Loading/Loading";
 import { toast } from "react-toastify";
 import { baseUrl } from "../../../Constants/Components/Urls.js";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../../Context/Components/AuthContext.tsx";
 
 export default function ChangePassword() {
   const [showPasswordOldPassword, setShowPasswordOldPassword] = useState(true);
@@ -16,16 +15,14 @@ export default function ChangePassword() {
   const [isLoading, setIsLoading] = useState(false);
  // const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-  let {  requestHeader }: any =useContext(AuthContext);
-
+  const token=localStorage.getItem('userToken');
   async function handleLChangePassword(values: any) {
 
     
       try {
         const { data } = await axios.put(`${baseUrl}/Users/ChangePassword`, values,
-        { headers: requestHeader });
+        { headers: {Authorization:token} });
         toast.success("password changed successfully");
-        localStorage.setItem("userToken", data.token);
         navigate("/dashboard");
       } catch (error: any) {
         toast.error(error?.response?.data?.message || "There's a mistake.");

@@ -41,26 +41,26 @@ export default function SideBar() {
           </div>
           <Menu className="mt-5 mx-auto ">
             <MenuItem
-              icon={<i className="  fa-solid fa-house " ></i>}
+              icon={<i className="  fa-solid fa-house me-3" ></i>}
               component={<Link to={"/dashboard"} />}
             >
               Home
             </MenuItem>
             <MenuItem
-              icon={<i className="fa fa-users" ></i>}
+              icon={<i className="fa fa-users me-3" ></i>}
               component={<Link to={"/dashboard/UsersList"} />}
             >
               users
             </MenuItem>
             <MenuItem
               // icon={<i className="   fa-solid fa-briefcase" ></i>}
-              icon={<img src={menu}/>}
+              icon={<img src={menu} className=" me-3"/>}
               component={<Link to={"/dashboard/ProjectList"} />}
             >
               Projects
             </MenuItem>
             <MenuItem
-              icon={<i className="   fa-solid fa-list-check" ></i>}
+              icon={<i className="   fa-solid fa-list-check me-3" ></i>}
               component={<Link to={"/dashboard/TasksList"} />}
             >
               
@@ -69,15 +69,15 @@ export default function SideBar() {
 
             <MenuItem
               
-              icon={<i className="fa-solid fa-unlock-keyhole"></i>}
+              icon={<i className="fa-solid fa-unlock-keyhole me-3"></i>}
               component={<Link to={"ChangePassword"} />}
             >
-              
               ChangePassword
+              {/* <span className="fs-6">ChangePassword</span> */}
             </MenuItem>
 
             <MenuItem
-              icon={<i className="fa fa-arrow-right-from-bracket" ></i>}
+              icon={<i className="fa fa-arrow-right-from-bracket  me-3" ></i>}
               onClick={logout}
             >
               

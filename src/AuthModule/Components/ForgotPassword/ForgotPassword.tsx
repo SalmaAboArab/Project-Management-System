@@ -19,12 +19,12 @@ const submitEmail=async(data:any)=>{
     setIsLoading(true);
     const response = await axios.post(`${baseUrl}/Users/Reset/Request`,data);
       console.log(response);
-      toast.success("Reset Account Please!")
+      toast("Check your email please")
     
       navigate("/resetPassword")
   
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     toast.error(error?.response?.data?.message);
     setIsLoading(false);
   }
@@ -75,7 +75,7 @@ const submitEmail=async(data:any)=>{
                 isLoading ? "noClick" : ""
               }`}
             >
-              {isLoading ? <Loader /> : "Reset"}
+              {isLoading ? <Loader /> : "Verify"}
             </button>
           </div>
         </form>

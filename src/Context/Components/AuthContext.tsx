@@ -14,13 +14,13 @@ export default function AuthContextProvider(props:any){
       setLoginData(decodedToken);
       localStorage.setItem('loginData',JSON.stringify(decodedToken));    
     }
-    useEffect(()=>{
-      if(localStorage.getItem("userToken")){
-        saveLoginData();
-      }
-    },[])
+    // useEffect(()=>{
+    //   if(localStorage.getItem("userToken")){
+    //     saveLoginData();
+    //   }
+    // },[])
 
-    return <AuthContext.Provider value={{loginData}}>
+    return <AuthContext.Provider value={{loginData,saveLoginData}}>
         {props.children}
     </AuthContext.Provider>
 }

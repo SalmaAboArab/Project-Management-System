@@ -28,22 +28,22 @@ export default function Navbar({loginData}:any) {
             
 
                 <div className="Notification">
-                  <img src={Notification} alt="" />
+                  <img src={Notification} alt="Notification-Bill" />
                 </div>
 
-                <div className="info  bg d-flex align-items-center justify-content-between ">
+                <div className="info  bg d-flex align-items-center justify-content-between">
 
                   <div >
                     <img
                       className="w-100 ms-3 me-2 my-image"
                       src={avatar}
-                      alt=""
+                      alt="userImg"
                     />
                   </div>
 
                   <div>
                     <h5>{loginData?.userName}</h5>
-                    <p>{loginData?.userEmail}</p>
+                    <h6>{loginData?.userEmail}</h6>
                   </div>
 
                 </div>

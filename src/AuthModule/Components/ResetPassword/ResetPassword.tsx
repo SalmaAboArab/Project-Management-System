@@ -20,13 +20,13 @@ export default function ResetPassword() {
     try {
       setIsLoading(true);
       const response = await axios.post(`${baseUrl}/Users/Reset`,data);
-        console.log(response);
+        // console.log(response);
         toast.success(" You can login Now!")
       
         navigate("/")
     
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       toast.error(error?.response?.data?.message);
       setIsLoading(false);
     }
@@ -59,7 +59,7 @@ const toggleConfirmPassword=()=>{
             <span>R</span>eset Password
           </h2>
 
-          <div className="  d-flex flex-column  mt-2">
+          <div className="  d-flex flex-column  mt-3 mb-2">
 
           <div className=" one-input-group">
               <div
@@ -134,7 +134,7 @@ const toggleConfirmPassword=()=>{
                 Confirm Password
                 </label>
                 <input
-                  {...register("confirmPassword", passwordValidation)}
+                  {...register("confirmPassword")}
                   
                   type={!showConfirmPassword ? "text" : "password"}
                   className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1 pb-0 flex-grow-1"
@@ -143,7 +143,7 @@ const toggleConfirmPassword=()=>{
                 />
                  {watch("confirmPassword") !== watch("password") &&
   getValues("confirmPassword") ? (
-    <p className='text-danger'>password not match</p>
+    <p className='text-danger'>passwords don't match</p>
   ) : null}
                 <button
                   onClick={toggleConfirmPassword}
@@ -171,7 +171,7 @@ const toggleConfirmPassword=()=>{
                 isLoading ? "noClick" : ""
               }`}
             >
-              {isLoading ? <Loader /> : "Save"}
+              {isLoading ? <Loader /> : "Reset"}
             </button>
           </div>
         </form>
