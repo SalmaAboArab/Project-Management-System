@@ -188,3 +188,7 @@ input:-webkit-autofill:focus{
 html {
     scrollbar-color: var(--main-color) #1f263e;
 } 
+
+.logout{
+    cursor: pointer;
+}

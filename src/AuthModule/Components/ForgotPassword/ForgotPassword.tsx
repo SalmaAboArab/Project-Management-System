@@ -21,7 +21,7 @@ const submitEmail=async(data:any)=>{
       console.log(response);
       toast("Check your email please")
     
-      navigate("/resetPassword")
+      navigate("/reset-password")
   
   } catch (error) {
     // console.log(error)
@@ -68,7 +68,7 @@ const submitEmail=async(data:any)=>{
           </div>
       
 
-          <div className=" text-center">
+          <div className=" text-center mt-5">
             <button
               type="submit"
               className={`btn btn-warning text-center  text-white w-75 rounded-5  ${

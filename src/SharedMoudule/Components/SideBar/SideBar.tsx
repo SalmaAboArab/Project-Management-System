@@ -48,20 +48,20 @@ export default function SideBar() {
             </MenuItem>
             <MenuItem
               icon={<i className="fa fa-users me-3" ></i>}
-              component={<Link to={"/dashboard/UsersList"} />}
+              component={<Link to={"/dashboard/users-list"} />}
             >
               users
             </MenuItem>
             <MenuItem
               // icon={<i className="   fa-solid fa-briefcase" ></i>}
               icon={<img src={menu} className=" me-3"/>}
-              component={<Link to={"/dashboard/ProjectList"} />}
+              component={<Link to={"/dashboard/project-list"} />}
             >
               Projects
             </MenuItem>
             <MenuItem
               icon={<i className="   fa-solid fa-list-check me-3" ></i>}
-              component={<Link to={"/dashboard/TasksList"} />}
+              component={<Link to={"/dashboard/tasks-list"} />}
             >
               
               Tasks
@@ -70,7 +70,7 @@ export default function SideBar() {
             <MenuItem
               
               icon={<i className="fa-solid fa-unlock-keyhole me-3"></i>}
-              component={<Link to={"ChangePassword"} />}
+              component={<Link to={"change-password"} />}
             >
               ChangePassword
               {/* <span className="fs-6">ChangePassword</span> */}

@@ -107,8 +107,8 @@ export default function Login() {
             </div>
           </div>
           <div className="links flex-wrap d-flex justify-content-between align-items-center text-white mb-5 ">
-            <Link to={"/Register"}>Register Now ?</Link>
-            <Link to={"/ForgotPassword"}>Forget Password ?</Link>
+            <Link to={"/register"}>Register Now ?</Link>
+            <Link to={"/forgot-password"}>Forget Password ?</Link>
           </div>
 
           <div className=" text-center">

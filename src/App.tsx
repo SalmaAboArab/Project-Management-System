@@ -30,10 +30,10 @@ function App() {
       children:
       [
         {index:true,element:<Login/>},
-        {path:"Register",element:<Register/>},
-        {path:"ForgotPassword",element:<ForgotPassword/>},
-        {path:"resetPassword",element:<ResetPassword/>},
-        {path:"VerifyAccount",element:<VerifyAccount/>},
+        {path:"register",element:<Register/>},
+        {path:"forgot-password",element:<ForgotPassword/>},
+        {path:"reset-password",element:<ResetPassword/>},
+        {path:"verify-account",element:<VerifyAccount/>},
         
        
       ]
@@ -50,10 +50,10 @@ function App() {
       children:
       [
         {index:true,element:<Dashboard/>},
-        {path:"TasksList",element:<TasksList/>},
-        {path:"UsersList",element:<UsersList/>},
-        {path:"ProjectList",element:<ProjectList/>},
-        {path:"ChangePassword",element:<ChangePassword/>},
+        {path:"tasks-list",element:<TasksList/>},
+        {path:"users-list",element:<UsersList/>},
+        {path:"project-list",element:<ProjectList/>},
+        {path:"change-password",element:<ChangePassword/>},
         
       ]
     }

@@ -134,7 +134,7 @@ const toggleConfirmPassword=()=>{
                 Confirm Password
                 </label>
                 <input
-                  {...register("confirmPassword")}
+                  {...register("confirmPassword",{required: "Confirm Password is required"})}
                   
                   type={!showConfirmPassword ? "text" : "password"}
                   className="form-input form-control bg-transparent border-0 rounded-bottom-0  border border-bottom text-white p-1 pb-0 flex-grow-1"
