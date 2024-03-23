@@ -1,0 +1,45 @@
+.title{
+    background-color: #F5F5F5;
+    }
+    .borderless input{
+        border: none; /* Remove the border */
+        outline: none; /* Remove the outline when focused */
+        border-radius: 10px; /* Add rounded corners */
+        padding: 8px; 
+    }
+    .test1{
+        border-top-right-radius: 20px;
+        
+    }
+    .test2{
+        border-top-left-radius: 20px;
+        
+    }
+    .bg th{
+        background-color:#315951;
+        color: #F5F5F5;
+    }
+    .solid {
+        border: none;
+        outline: none;
+        background: none;
+        color:black
+    }
+    
+    .solid:hover{
+        background-color:#589085;
+    }
+    .verticalRule {
+        border-left: 1px solid rgb(255, 255, 255);
+        height: 50px; /* Adjust the height as needed */
+      }
+      .paginationBtn{
+        background-color: #315951;
+        border: 1px solid #f6e377;
+        color: rgb(249, 246, 246) !important;
+        cursor: pointer;
+        transition: all 0.4s;
+      }
+      .paginationBtn:hover{
+        background-color: #6da99d;
+      }

@@ -94,9 +94,11 @@ form label,
 
 
 /* ================inputs===================== */
-::placeholder {
-    color: rgba(255, 255, 255, 0.712) !important;
-}
+.auth-container{
+    ::placeholder {
+        color: rgba(255, 255, 255, 0.712) ;
+    }}
+    
 
 
 .form-input:active,.form-input:focus ,.form-input::content,.form-input:checked{
