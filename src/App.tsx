@@ -18,6 +18,7 @@ import VerifyAccount from './AuthModule/Components/VerifyAccount/VerifyAccount'
 import ProtectedRoute from './SharedMoudule/Components/ProtectedRoute/ProtectedRoute'
 import { useContext } from 'react'
 import { AuthContext } from './Context/Components/AuthContext'
+import AddTasks from './TasksModule/Components/AddTasks/AddTasks'
 
 function App() {
   let {loginData}:any=useContext(AuthContext);
@@ -54,6 +55,7 @@ function App() {
         {path:"users-list",element:<UsersList/>},
         {path:"project-list",element:<ProjectList/>},
         {path:"change-password",element:<ChangePassword/>},
+        {path:"add-tasks",element:<AddTasks/>}
         
       ]
     }
