@@ -13,8 +13,9 @@ export default function SideBar() {
   }
   
   const logout=()=>{
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("loginData");
+    // localStorage.removeItem("userToken");
+    // localStorage.removeItem("loginData");
+    localStorage.clear();
     toast.success('BYE BYE 🙁')
     navigate('/');
   }

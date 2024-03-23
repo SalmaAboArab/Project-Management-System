@@ -1,0 +1,6 @@
+.ProjectForm{
+    ::placeholder{
+        color: rgb(210, 206, 206);
+        
+    }
+}
