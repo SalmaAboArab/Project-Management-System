@@ -12,7 +12,7 @@ export default function MasterLayout({loginData}:any) {
     <div className="sidebar-container ">
       <SideBar/>
     </div>
-    <div className="main-Content w-100 vh-100 overflow-auto pageOverflow">
+    <div className="main-Content w-100   overflow-auto pageOverflow mt-3 ">
       <Outlet/>
     </div>
   </div>

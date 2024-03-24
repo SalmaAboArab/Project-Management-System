@@ -14,7 +14,7 @@ export default function Navbar({loginData}:any) {
   //   navigate('/');
   // }
   return (<>
-     <nav className="navbar  navbar-expand-lg bg-body-tertiary ">
+     <nav className="navbar  navbar-expand-lg bg-body-tertiary  ">
       <div className="container-fluid  px-4">
         <Link to={"/dashboard"}>
           <img className="w-100 main-logo" src={logo} alt="logo" />

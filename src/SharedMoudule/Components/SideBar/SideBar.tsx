@@ -31,8 +31,8 @@ export default function SideBar() {
             onClick={toggleCollapse}
             className="collapsed-btn position-absolute"
           >
-            <span className="collapsed-btn ps-1 pe-3 py-2 rounded-2">
-              {!handleSidebar ? (
+            <span className="collapsed-btn ps-1 pe-3  py-2 rounded-2">
+              {handleSidebar ? (
                 <i className="fa-solid fa-chevron-left text-white"></i>
               ) : (
                 <i className="fa-solid fa-chevron-right text-white"></i>

@@ -1,0 +1,9 @@
+.triangle {
+    top: -28px;
+    right: 3px;
+    color: rgba(223, 217, 217, 0.63);
+}
+.dropBtn button:focus {
+background: #ececec !important;
+color: black;
+}
