@@ -8,16 +8,16 @@ import NoData from "../../../noData/noData.js";
 export default function TasksList() {
   const [taskList, setTaskList] = useState([]);
   const [titleSearch, setTitleSearch] = useState("");
-  const [statusSearch, setStatusSearch] = useState("");
+  const [statusSearch, setStatusSearch] = useState([]);
   const [pagesArray, setPagesArray] = useState([]);
 
   const token = localStorage.getItem("userToken");
-  const getTitleValue = (input: any) => {
+  const getTitleValue = (input: string) => {
     setTitleSearch(input.target.value);
 
     getTasksList(1, 10, statusSearch, input.target.value);
   };
-  const getStatusValue = (input: any) => {
+  const getStatusValue = (input: string) => {
     setStatusSearch(input.target.value);
     getTasksList(1, 10, input.target.value, titleSearch);
   };
@@ -26,10 +26,10 @@ export default function TasksList() {
     navigate("/dashboard/add-tasks");
   };
   const getTasksList = async (
-    pageNo: any,
-    pageSize: any,
-    status: any,
-    title: any
+    pageNo: number,
+    pageSize: number,
+    status: string,
+    title: string
   ) => {
     try {
       let response = await axios.get(`${baseUrl}/Task/manager?`, {
@@ -51,7 +51,7 @@ export default function TasksList() {
       console.log(response.data.totalNumberOfPages);
       setTaskList(response.data.data);
       //toast.success("password changed successfully");
-    } catch (error: any) {
+    } catch (error: string) {
       toast.error(error?.response?.data?.message || "There's a mistake.");
     }
   };
@@ -81,14 +81,23 @@ export default function TasksList() {
           />
         </div>
 
-        <div className="col-md-6">
+      {     <div className="col-md-6">
+          <select className="form-control" onChange={getStatusValue}>
+            <option value="">search by status</option>
+           <option>ToDo</option>
+           <option>InProgress</option>
+           <option>Done</option>
+          </select>
+            </div>} 
+
+        {/*<div className="col-md-6">
           <input
             type="text"
             className="form-control "
             placeholder="Search by status"
             onChange={getStatusValue}
           />
-        </div>
+  </div>*/}
       </div>
 
       <div className="table-container  text-center px-5 ">
