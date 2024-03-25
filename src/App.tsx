@@ -52,12 +52,12 @@ function App() {
       children:
       [
         {index:true,element:<Dashboard/>},
-        {path:"tasks-list",element:<TasksList/>},
-        {path:"users-list",element:<UsersList/>},
-        {path:"project-list",element:<ProjectList/>},
+        {path:"tasks",element:<TasksList/>},
+        {path:"users",element:<UsersList/>},
+        {path:"project",element:<ProjectList/>},
         {path:"change-password",element:<ChangePassword/>},
-        {path:"project-form/:action",element:<ProjectForm/>},
-        {path:"tasks-form/:action",element:<TasksForm/>}
+        {path:"project/project-form/:action",element:<ProjectForm/>},
+        {path:"tasks/tasks-form/:action",element:<TasksForm/>}
         
       ]
     }
