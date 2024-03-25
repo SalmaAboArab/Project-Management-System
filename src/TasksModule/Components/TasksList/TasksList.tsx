@@ -7,19 +7,19 @@ import NoData from "../../../noData/noData.js";
 
 export default function TasksList() {
   const [taskList, setTaskList] = useState([]);
-  const [titleSearch, setTitleSearch] = useState("");
+  const [searchByTitle, setSearchByTitle] = useState("");
   const [statusSearch, setStatusSearch] = useState([]);
   const [pagesArray, setPagesArray] = useState([]);
 
   const token = localStorage.getItem("userToken");
-  const getTitleValue = (input: string) => {
-    setTitleSearch(input.target.value);
+  const getTitleValue = (e: string) => {
+    setSearchByTitle(e.target.value);
 
-    getTasksList(1, 10, statusSearch, input.target.value);
+    getTasksList(1, 10, searchByTitle, e.target.value);
   };
-  const getStatusValue = (input: string) => {
-    setStatusSearch(input.target.value);
-    getTasksList(1, 10, input.target.value, titleSearch);
+  const getStatusValue = (e: string) => {
+    setStatusSearch(e.target.value);
+    getTasksList(1, 10, e.target.value, searchByTitle);
   };
   const navigate = useNavigate();
   const goToAddTasks = () => {
@@ -47,7 +47,7 @@ export default function TasksList() {
           .fill()
           .map((_, i) => i + 1)
       );
-      
+
       console.log(response.data.totalNumberOfPages);
       setTaskList(response.data.data);
       //toast.success("password changed successfully");
@@ -81,14 +81,16 @@ export default function TasksList() {
           />
         </div>
 
-      {     <div className="col-md-6">
-          <select className="form-control" onChange={getStatusValue}>
-            <option value="">search by status</option>
-           <option>ToDo</option>
-           <option>InProgress</option>
-           <option>Done</option>
-          </select>
-            </div>} 
+        {
+          <div className="col-md-6">
+            <select className="form-control" onChange={getStatusValue}>
+              <option value="">search by status</option>
+              <option>ToDo</option>
+              <option>InProgress</option>
+              <option>Done</option>
+            </select>
+          </div>
+        }
 
         {/*<div className="col-md-6">
           <input
@@ -112,7 +114,7 @@ export default function TasksList() {
               </tr>
             </thead>
             <tbody>
-              {taskList.map((task: any) => (
+              {taskList.map((task: object) => (
                 <tr key={task.id}>
                   <td>{task.title}</td>
                   <td>{task.status}</td>
@@ -126,29 +128,31 @@ export default function TasksList() {
           <NoData />
         )}
         <nav aria-label="Page navigation example">
-          <ul className="pagination">
-            <li className="page-item">
+          <ul className="pagination justify-content-center">
+            <button className="page-item btn btn-white">
               <a className="page-link" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
                 <span className="sr-only">Previous</span>
               </a>
-            </li>
-            {pagesArray.map((pageNo:number) => (
-              <li
+            </button>
+            {pagesArray.map((pageNo: number) => (
+              <button
                 key={pageNo}
-                onClick={() => getTasksList(pageNo, 10,statusSearch,titleSearch)}
-                className="page-item"
+                onClick={() =>
+                  getTasksList(pageNo, 10, statusSearch, searchByTitle)
+                }
+                className="page-item btn btn-white"
               >
                 <a className="page-link">{pageNo}</a>
-              </li>
+              </button>
             ))}
 
-            <li className="page-item">
+            <button className="page-item btn btn-white">
               <a className="page-link" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
                 <span className="sr-only">Next</span>
               </a>
-            </li>
+            </button>
           </ul>
         </nav>
       </div>
