@@ -3,7 +3,6 @@
     }
     .borderless input{
         border: none; /* Remove the border */
-        outline: none; /* Remove the outline when focused */
         border-radius: 10px; /* Add rounded corners */
         padding: 8px; 
     }
@@ -26,9 +25,7 @@
         color:black
     }
     
-    .solid:hover{
-        background-color:#589085;
-    }
+    
     .verticalRule {
         border-left: 1px solid rgb(255, 255, 255);
         height: 50px; /* Adjust the height as needed */
@@ -41,5 +38,6 @@
         transition: all 0.4s;
       }
       .paginationBtn:hover{
-        background-color: #6da99d;
+        background-color: #0d9c80;
+        color: black !important; 
       }

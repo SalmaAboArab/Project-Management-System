@@ -13,7 +13,7 @@ const[projects,setProjects]=useState([]);
 const {register,handleSubmit,setValue,formState:{errors}}=useForm();
 const[pageArray,setPageArray]=useState([]);
 
-const getAllProject=async(pageNo:any,pageSize:any,title:any)=>{
+const getAllProject=async(pageNo:number,pageSize:number,title:string)=>{
 try {
   const token=localStorage.getItem("userToken");
   const response=await axios.get(`${baseUrl}/Project/manager`,
@@ -36,9 +36,9 @@ getAllProject(1,5);
 },[])
 // ##################### Filtration ##############################
 const[titleSearch,setTitleSearch]=useState("");
-const getSearchByTitle=(data:any)=>{
-setTitleSearch(data.target.value)
-getAllProject(1,5,data.target.value,titleSearch)
+const searchByTitle=(title:string)=>{
+setTitleSearch(title)
+getAllProject(1,5,title,titleSearch)
 }
 
 
@@ -53,10 +53,10 @@ getAllProject(1,5,data.target.value,titleSearch)
       <button className="btn-warning rounded-4 btn"><i className="fa-solid fa-plus"></i>Add New Project</button>
     </div>
 <div className={`p-3 w-75 m-auto ${styles.borderless}`}  >
-  <input type="text"  className="form-control rounded-5 "  onChange={getSearchByTitle} placeholder="Search By Title"/>
+  <input type="text"  className="form-control rounded-5 "  onChange={(e)=>searchByTitle(e.target.value)} placeholder="Search By Title"/>
 </div>
     <div className="table p-3 ">
-    {projects.length>0?<table className ="table table-striped caption-top">
+    {projects.length>0?<table className ="table table-striped text-center caption-top">
    
   <thead className={`${styles.bg}`}>
 <tr>
@@ -78,19 +78,13 @@ getAllProject(1,5,data.target.value,titleSearch)
     <td>{pro.title}</td>
     <td>{pro.description}</td>
     <td>{pro.task.length}</td>
-    <td><Dropdown>
-      <Dropdown.Toggle className= {`${styles.solid}`} id="dropdown-basic">
-     
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">  <button   className={`${styles.solid}`} ><i 
-   className='fa fa-edit text-warning mx-2' aria-hidden="true"> </i></button></Dropdown.Item>
-        <Dropdown.Item href="#/action-2"><button   className={`${styles.solid}`}  >
-  <i className='fa fa-trash text-danger mx-2' aria-hidden="true"></i></button></Dropdown.Item>
+    <td>
+         <button   className={`${styles.solid}`} ><i 
+   className='fa fa-edit text-warning mx-2' aria-hidden="true"> </i></button>
+       <button   className={`${styles.solid}`}  >
+  <i className='fa fa-trash text-danger mx-2' aria-hidden="true"></i></button>
       
-      </Dropdown.Menu>
-    </Dropdown></td>
+    </td>
  
   </tr>
   ))}
@@ -100,22 +94,23 @@ getAllProject(1,5,data.target.value,titleSearch)
   <img src={noData} className="w-50 "/>
   </div>}
     </div>
-    <div className='d-flex justify-content-center bg-white pt-3  '>
+    
+    <div className='d-flex justify-content-center bg-white pt-1  '>
 <nav aria-label="Page navigation example">
   <ul className="pagination">
     <li className="page-item">
-      <a className={`page-link ${styles.paginationBtn}`} href="#" aria-label="Previous">
+      <button className={`page-link ${styles.paginationBtn}`}  aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
-      </a>
+      </button>
     </li>
     {pageArray.map((pageNo,index)=>(
- <li key={index} className="page-item" onClick={()=>getAllProject(pageNo)}>
-  <a className={`page-link ${styles.paginationBtn}`}  >{pageNo}</a></li>
+ <li key={index} className="page-item" >
+  <button onClick={()=>getAllProject(pageNo)} aria-label={`go to page${pageNo}`} className={`page-link ${styles.paginationBtn}`}  >{pageNo}</button></li>
     ))}
     <li className="page-item">
-      <a className={`page-link ${styles.paginationBtn}`}  href="#" aria-label="Next">
+      <button className={`page-link ${styles.paginationBtn}`}   aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
-      </a>
+      </button>
     </li>
   </ul>
 </nav>
