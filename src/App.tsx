@@ -18,6 +18,8 @@ import VerifyAccount from './AuthModule/Components/VerifyAccount/VerifyAccount'
 import ProtectedRoute from './SharedMoudule/Components/ProtectedRoute/ProtectedRoute'
 import { useContext } from 'react'
 import { AuthContext } from './Context/Components/AuthContext'
+import ProjectForm from './ProjectModule/Components/ProjectForm/ProjectForm'
+import TasksForm from './TasksModule/Components/TasksForm/TasksForm'
 
 function App() {
   let {loginData}:any=useContext(AuthContext);
@@ -50,10 +52,12 @@ function App() {
       children:
       [
         {index:true,element:<Dashboard/>},
-        {path:"tasks-list",element:<TasksList/>},
-        {path:"users-list",element:<UsersList/>},
-        {path:"project-list",element:<ProjectList/>},
+        {path:"tasks",element:<TasksList/>},
+        {path:"users",element:<UsersList/>},
+        {path:"projects",element:<ProjectList/>},
         {path:"change-password",element:<ChangePassword/>},
+        {path:"projects/projects-form/:action",element:<ProjectForm/>},
+        {path:"tasks/tasks-form/:action",element:<TasksForm/>}
         
       ]
     }
