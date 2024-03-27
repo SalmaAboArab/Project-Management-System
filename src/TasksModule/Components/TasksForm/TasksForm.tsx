@@ -17,7 +17,7 @@ export default function TasksForm() {
   } = useForm();
   const token = localStorage.getItem("userToken");
   const { action } = useParams();
-  const [currentTask, setCurrentTask] = useState(null);
+  // const [currentTask, setCurrentTask] = useState(null);
   const curruntTaskId = localStorage.getItem("curruntTaskId");
   const [ProjectsList, setProjectsList] = useState(null);
   const [UsersList, setUsersList] = useState(null);
@@ -25,12 +25,7 @@ export default function TasksForm() {
 
   const onSubmit = async (data: object) => {
     setIsLoading(true);
-    console.log(data);
-    // if(data?.employeeId==''){
-    //   console.log('helloooo');
-      
-    //   setValue("employeeId", currentTask?.employee?.id);
-    // }
+    // console.log(data);
     const url =
       action == "update"
         ? `${baseUrl}/Task/${curruntTaskId}`
@@ -59,7 +54,7 @@ export default function TasksForm() {
         headers: { Authorization: token },
       });
       console.log("current task ", response.data);
-      setCurrentTask(response.data);
+      // setCurrentTask(response.data);
       const currentTask = response.data;
       setValue("title", currentTask?.title);
       setValue("description", currentTask?.description);
@@ -71,7 +66,7 @@ export default function TasksForm() {
 
   const getprojectsList = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/Project/manager`, {
+      const response = await axios.get(`${baseUrl}/Project/?pageSize=10000&pageNumber=1`, {
         headers: { Authorization: token },
       });
       console.log("projects list ", response.data.data);
@@ -83,7 +78,7 @@ export default function TasksForm() {
 
   const getusersList = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/Users`, {
+      const response = await axios.get(`${baseUrl}/Users/?pageSize=10000&pageNumber=1`, {
         headers: { Authorization: token },
       });
       console.log("users list ", response.data.data);
@@ -159,15 +154,18 @@ export default function TasksForm() {
                     required: action == "add" ? "User is required" : false,
                   })}
                 >
-                  {action == "add" ? (
+                  <option value="" selected hidden>
+                      Select an employee
+                    </option>
+                  {/* {action == "add" ? (
                     <option value="" disabled selected hidden>
                       Select an employee
                     </option>
                   ) : (
-                    <option value="" selected>
-                      {currentTask?.employee?.userName}
+                    <option value="" hidden selected >
+                      Select an employee
                     </option>
-                  )}
+                  )} */}
                   {UsersList?.map((user: object) => (
                     <option key={user?.id} value={user?.id}>
                       {user?.userName}
