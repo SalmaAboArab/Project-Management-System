@@ -14,7 +14,7 @@ export default function ProjectList() {
     setOpenDeleteModal(false);
   };
 
-  const getdata = async () => {
+  const getProjects = async () => {
     const response = await axios.get(`${baseUrl}/Project`, {
       headers: { Authorization: token },
     });
@@ -22,14 +22,14 @@ export default function ProjectList() {
     setProjects(response.data.data);
   };
   useEffect(() => {
-    getdata();
+    getProjects();
   }, []);
   return (
     <>
       <div>ProjectList</div>
       <button
         className="btn btn-info"
-        onClick={() => navigate("/dashboard/project/project-form/add")}
+        onClick={() => navigate("/dashboard/projects/projects-form/add")}
       >
         add
       </button>
@@ -37,7 +37,7 @@ export default function ProjectList() {
         className="btn btn-warning"
         onClick={() => {
           localStorage.setItem("curruntProjectId", projects[0].id);
-          navigate("/dashboard/project/project-form/update");
+          navigate("/dashboard/projects/projects-form/update");
         }}
       >
         update
@@ -55,7 +55,7 @@ export default function ProjectList() {
         <DeleteModal
           id={currentProjectId}
           closeDeleteModal={closeModal}
-          getList={getdata}
+          getList={getProjects}
           type={"Project"}
         />
       )}

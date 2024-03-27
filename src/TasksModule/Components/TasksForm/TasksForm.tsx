@@ -25,16 +25,21 @@ export default function TasksForm() {
 
   const onSubmit = async (data: object) => {
     setIsLoading(true);
-    // console.log(data);
+    console.log(data);
+    // if(data?.employeeId==''){
+    //   console.log('helloooo');
+      
+    //   setValue("employeeId", currentTask?.employee?.id);
+    // }
     const url =
       action == "update"
         ? `${baseUrl}/Task/${curruntTaskId}`
         : `${baseUrl}/Task`;
     const proccess = action == "update" ? "Updated" : "Added";
-    const method = action == "update" ? axios.put : axios.post;
+    const method = action == "update" ? 'put' : 'post';
 
     try {
-      const response = await method(url, data, {
+      const response = await axios[method](url, data, {
         headers: { Authorization: token },
       });
       console.log(`${proccess} task response `, response);
@@ -46,6 +51,7 @@ export default function TasksForm() {
       toast.error(error?.response?.data?.message || "Somthing went wrong!");
     }
   };
+
 
   const getCurrentTask = async () => {
     try {
@@ -147,7 +153,6 @@ export default function TasksForm() {
               <div className={action == "add" ? "col-md-6" : "col-md-12"}>
                 <label htmlFor="">User</label>
                 <select
-                  name="user"
                   id=""
                   className="w-100 form-select mt-2 rounded-4 p-3"
                   {...register("employeeId", {
@@ -156,7 +161,7 @@ export default function TasksForm() {
                 >
                   {action == "add" ? (
                     <option value="" disabled selected hidden>
-                      No Users Selected
+                      Select an employee
                     </option>
                   ) : (
                     <option value="" selected>
@@ -165,7 +170,7 @@ export default function TasksForm() {
                   )}
                   {UsersList?.map((user: object) => (
                     <option key={user?.id} value={user?.id}>
-                      {user?.userName}{" "}
+                      {user?.userName}
                     </option>
                   ))}
                 </select>
@@ -185,7 +190,7 @@ export default function TasksForm() {
                     })}
                   >
                     <option value="" disabled selected hidden>
-                      No Status Selected
+                    Select a project
                     </option>
                     {ProjectsList?.map((project: object) => (
                       <option key={project?.id} value={project?.id}>

@@ -14,7 +14,7 @@ export default function TasksList() {
     setOpenDeleteModal(false);
   };
 
-  const getdata = async () => {
+  const getTasks = async () => {
     const response = await axios.get(
       `${baseUrl}/Task/manager?pageSize=10&pageNumber=1`,
       { headers: { Authorization: token } }
@@ -23,7 +23,7 @@ export default function TasksList() {
     setTasks(response.data.data);
   };
   useEffect(() => {
-    getdata();
+    getTasks();
   }, []);
   return (
     <>
@@ -56,7 +56,7 @@ export default function TasksList() {
         <DeleteModal
           id={currentTaskId}
           closeDeleteModal={closeModal}
-          getList={getdata}
+          getList={getTasks}
           type={"Task"}
         />
       )}

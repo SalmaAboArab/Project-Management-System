@@ -27,15 +27,15 @@ export default function ProjectForm() {
         ? `${baseUrl}/Project/${curruntProjectId}`
         : `${baseUrl}/Project`;
     const proccess = action == "update" ? "Updated" : "Added";
-    const method = action == "update" ? axios.put : axios.post;
+    const method = action == "update" ? 'put' : 'post';
 
     try {
-      const response = await method(url, data, {
+      const response = await axios[method](url, data, {
         headers: { Authorization: token },
       });
       console.log(`${proccess} project response `, response);
       toast.success(`Project ${proccess} Successfuly`);
-      navigate("/dashboard/project");
+      navigate("/dashboard/projects");
     } catch (error) {
       setIsLoading(false);
       console.log(error);
@@ -118,7 +118,7 @@ export default function ProjectForm() {
             <div className="cancel col-xxl-3 col-md-6 my-3 row justify-content-start text-center px-1">
               <button
                 className="btn border border-black rounded-5 col-md-5"
-                onClick={() => navigate("/dashboard/project")}
+                onClick={() => navigate("/dashboard/projects")}
               >
                 Cancel
               </button>

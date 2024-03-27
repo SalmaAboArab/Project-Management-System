@@ -56,7 +56,7 @@ export default function SideBar() {
             <MenuItem
               // icon={<i className="   fa-solid fa-briefcase" ></i>}
               icon={<img src={menu} className=" me-3"/>}
-              component={<Link to={"/dashboard/project"} />}
+              component={<Link to={"/dashboard/projects"} />}
             >
               Projects
             </MenuItem>

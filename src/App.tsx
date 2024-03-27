@@ -54,9 +54,9 @@ function App() {
         {index:true,element:<Dashboard/>},
         {path:"tasks",element:<TasksList/>},
         {path:"users",element:<UsersList/>},
-        {path:"project",element:<ProjectList/>},
+        {path:"projects",element:<ProjectList/>},
         {path:"change-password",element:<ChangePassword/>},
-        {path:"project/project-form/:action",element:<ProjectForm/>},
+        {path:"projects/projects-form/:action",element:<ProjectForm/>},
         {path:"tasks/tasks-form/:action",element:<TasksForm/>}
         
       ]
