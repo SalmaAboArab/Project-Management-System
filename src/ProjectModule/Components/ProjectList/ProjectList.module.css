@@ -33,11 +33,12 @@
       .paginationBtn{
         background-color: #315951;
         border: 1px solid #f6e377;
-        color: rgb(249, 246, 246) !important;
+        color: rgb(252, 248, 248) !important;
         cursor: pointer;
-        transition: all 0.4s;
+        transition:transform .2s;
       }
       .paginationBtn:hover{
-        background-color: #0d9c80;
-        color: black !important; 
+        background-color: #9ce4d6;
+        color: #000 !important;
       }
+      

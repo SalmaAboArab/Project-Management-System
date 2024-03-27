@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
-import Modal from 'react-bootstrap/Modal';
-import Dropdown from 'react-bootstrap/Dropdown';
+
 import axios from "axios";
 import { baseUrl } from "../../../Constants/Components/Urls";
 import styles from "./ProjectList.module.css"
-import { useForm } from "react-hook-form";
 import noData from "../../../assets/noData.jpg"
 
 export default function ProjectList() {
 const[projects,setProjects]=useState([]);
-
-const {register,handleSubmit,setValue,formState:{errors}}=useForm();
 const[pageArray,setPageArray]=useState([]);
 
-const getAllProject=async(pageNo:number,pageSize:number,title:string)=>{
+const paginationData={pageNumber:1,
+  pageSize:5,
+ title:"myProject",
+ }
+
+const getAllProject=async(paginationData:any)=>{
 try {
   const token=localStorage.getItem("userToken");
   const response=await axios.get(`${baseUrl}/Project/manager`,
   {headers:{Authorization:token}
-  ,params:{pageSize:pageSize,
-    pageNumber:pageNo,
-  title:title}})
+  ,params:{pageSize:paginationData.pageSize,
+    pageNumber:paginationData.pageNo,
+  title:paginationData.title}})
 
   setPageArray(Array(response.data.totalNumberOfPages).fill().map((_,i)=>i+1));
 
@@ -32,13 +33,13 @@ try {
 }
 
 useEffect(()=>{ 
-getAllProject(1,5);
+getAllProject(paginationData.pageNumber,paginationData.pageSize,paginationData.title);
 },[])
 // ##################### Filtration ##############################
 const[titleSearch,setTitleSearch]=useState("");
 const searchByTitle=(title:string)=>{
 setTitleSearch(title)
-getAllProject(1,5,title,titleSearch)
+getAllProject(paginationData,titleSearch)
 }
 
 
@@ -79,9 +80,9 @@ getAllProject(1,5,title,titleSearch)
     <td>{pro.description}</td>
     <td>{pro.task.length}</td>
     <td>
-         <button   className={`${styles.solid}`} ><i 
+         <button  className={`${styles.solid}`} ><i 
    className='fa fa-edit text-warning mx-2' aria-hidden="true"> </i></button>
-       <button   className={`${styles.solid}`}  >
+       <button  className={`${styles.solid}`}  >
   <i className='fa fa-trash text-danger mx-2' aria-hidden="true"></i></button>
       
     </td>
@@ -95,21 +96,25 @@ getAllProject(1,5,title,titleSearch)
   </div>}
     </div>
     
-    <div className='d-flex justify-content-center bg-white pt-1  '>
+    <div className='d-flex justify-content-center bg-white pt-2  '>
 <nav aria-label="Page navigation example">
   <ul className="pagination">
     <li className="page-item">
-      <button className={`page-link ${styles.paginationBtn}`}  aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
+      <button  className={`${styles.solid} p-0 m-0`}
+       aria-label="Previous">
+        <span className={`page-link ${styles.paginationBtn}`} aria-hidden="true">&laquo;</span>
       </button>
     </li>
     {pageArray.map((pageNo,index)=>(
  <li key={index} className="page-item" >
-  <button onClick={()=>getAllProject(pageNo)} aria-label={`go to page${pageNo}`} className={`page-link ${styles.paginationBtn}`}  >{pageNo}</button></li>
+  <button className={`${styles.solid} p-0 m-0`} onClick={()=>getAllProject(pageNo)}
+   aria-label={`go to page${pageNo}`}>
+    <span className={`page-link ${styles.paginationBtn}`}  >{pageNo}</span></button></li>
     ))}
     <li className="page-item">
-      <button className={`page-link ${styles.paginationBtn}`}   aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
+      <button   className={`${styles.solid} p-0 m-0`}
+       aria-label="Next">
+        <span className={`page-link ${styles.paginationBtn}`} aria-hidden="true">&raquo;</span>
       </button>
     </li>
   </ul>
