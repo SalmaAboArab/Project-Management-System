@@ -1,14 +1,16 @@
 /* ===============sidebar-container================ */
 
 .sidebar-container {
+    color: white;
+    padding: 0;
+    margin: 0;
     background: rgba(14, 56, 47, 1) !important;
     font-size: 1.2rem;
-    cursor: pointer;
-
 }
 
 .css-dip3t8 {
     background: transparent !important;
+    
 }
 
 
@@ -25,6 +27,8 @@
     right: -10px;
     top: 10px;
     background: #f09a22;
+    cursor: pointer;
+
 }
 
 
@@ -39,7 +43,7 @@
 }
 
 .css-wx7wi4{
-    margin-right: 24px !important;
+    margin-right: 10px !important;
     overflow: hidden;
     transition: all 0.2s;
     padding: 20px !important;

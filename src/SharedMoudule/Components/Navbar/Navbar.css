@@ -1,9 +1,25 @@
 .navbar {
     background: #fff !important;
-    height: 80px !important;
+    min-height: 80px !important;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15) ;
 }
-
+ .smell-screen-link{
+    padding: 10px ;
+    font-weight: 600 ;
+    width: 100% ;
+    text-align: center ;
+    border-radius: 10px ;
+    display: flex ; 
+    justify-content: center ;
+}
+.smell-screen-link:hover {
+    background: #3d5f57 ;
+    transition: 0.7s;
+}
+li:hover a {
+    transition: 0.7s;
+    color: #fff !important;
+}
 .main-logo {
     width: 200px !important;
 }

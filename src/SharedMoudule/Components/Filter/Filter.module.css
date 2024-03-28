@@ -1,0 +1,24 @@
+.searchInput {
+    border: #c3c4ca solid 2px !important;
+    color: #565a66 ;
+}
+@media screen and (min-width: 600px) {
+    .searchInput {
+        width: 20% ;
+        min-width:270px ;
+        border: #c3c4ca solid 2px ;
+        color: #565a66 ;
+    }
+}
+
+
+input::placeholder {
+    color: #565a66 !important;
+}
+
+select {
+    border: #c3c4ca solid 2px ;
+    color: #565a66 ;
+
+
+}
