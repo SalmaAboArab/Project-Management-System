@@ -4,7 +4,13 @@ import "./SideBar.css";
 import {  useState } from "react";
 import menu from '../../../assets/menu.png'
 import { toast } from "react-toastify";
+import { useContext } from 'react'
+
+import { ThemeContext, ITheme } from "../../../Context/Components/ThemeContext";
+///import { AuthContext } from "../../../Context/Components/AuthContext";
 export default function SideBar() {
+  // let {loginData}:any=useContext(AuthContext);
+  const { toggleTheme, isDarkMode }:ITheme = useContext(ThemeContext);
   const [handleSidebar, setHandleSidebar] = useState(false);
   const navigate=useNavigate();
 
@@ -84,6 +90,17 @@ export default function SideBar() {
               
               Logout
             </MenuItem>
+
+             {<MenuItem
+            onClick={toggleTheme}
+            icon={
+              isDarkMode === true ? (<i className="fa-solid fa-toggle-on"></i>) : (<i className="fa-solid fa-toggle-off"></i>)
+            }
+          >
+            {
+              isDarkMode === true ? ("Light theme") : ("Dark theme")
+            }
+          </MenuItem>} 
           </Menu>
         </Sidebar>
       </div>

@@ -21,8 +21,13 @@ import { AuthContext } from './Context/Components/AuthContext'
 import ProjectForm from './ProjectModule/Components/ProjectForm/ProjectForm'
 import TasksForm from './TasksModule/Components/TasksForm/TasksForm'
 
+import { ThemeContext, ITheme } from "./Context/Components/ThemeContext";
+
+
 function App() {
   let {loginData}:any=useContext(AuthContext);
+  const {isDarkMode, themeClass}:ITheme = useContext(ThemeContext);
+
   const routers = createBrowserRouter([
     {
       path:"/",element:
@@ -65,7 +70,9 @@ function App() {
 
   return (
     <>
+    <div className={`app ${themeClass}`}>
     <RouterProvider router={routers} />
+    </div>
     </>
   )
 }

@@ -3,9 +3,13 @@ import logo from "../../../assets/nav-logo.png";
 import Notification from "../../../assets/Group.png";
 import avatar from "../../../assets/Avatar.png";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from 'react'
+import logo1 from "../../../assets/PMS 3.png";
 // import { toast } from "react-toastify";
+import { ThemeContext, ITheme } from "../../../Context/Components/ThemeContext";
 
 export default function Navbar({loginData}:any) {
+  const { isDarkMode }:ITheme = useContext(ThemeContext);
   // const navigate=useNavigate();
   // const logout=()=>{
   //   localStorage.removeItem("userToken");
@@ -16,8 +20,13 @@ export default function Navbar({loginData}:any) {
   return (<>
      <nav className="navbar  navbar-expand-lg bg-body-tertiary ">
       <div className="container-fluid  px-4">
+        
         <Link to={"/dashboard"}>
+        {isDarkMode ? (
+        <img className="w-100 main-logo" src={logo1} alt="Dark Logo" />
+      ) : (
           <img className="w-100 main-logo" src={logo} alt="logo" />
+          )}
         </Link>
         <button
           className="navbar-toggler"

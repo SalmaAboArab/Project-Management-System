@@ -1,0 +1,84 @@
+:root {
+    --main-color: #ef9b28;
+    --second-color: rgba(49, 89, 81, 0.9);
+    --main-dark-color: #121826;
+    --main-bg-dark-color: #060F20;
+  }
+  
+  .dark-theme {
+
+    transition: all 0.3s ease-in-out;
+  /*   background-color: #060f20; */
+  
+    background-color: var(--main-bg-dark-color);
+  
+    /* background-color: #121826; */
+    color: #fff;
+  }
+  .fa-toggle-on, .fa-toggle-off{
+   font-size: 2rem;
+  }
+  /* side bar dark mode */
+  .dark-theme .sidebar-container .ps-sidebar-container,
+  
+  ._sidebar_gufjs_21 {
+    background-color: var(--main-dark-color);
+  
+  }
+  
+  .dark-theme ._container1_9ea38_1 ._sidebar_9ea38_21 {
+    background-color: #121826;
+  
+  }
+  .dark-theme .sidebar-container .ps-sidebar-root{
+    border-right: 1px solid #121826;
+  }
+  .dark-theme  .sidebar-container .ps-sidebar-container .ps-menu-button:hover {
+    /* background-color: #292f3b; */
+    background-color: #ef9b28;
+  }
+  .dark-theme  .fa-bell{
+    color: var(--main-dark-color);
+  }
+  .dark-theme .navbar{
+    background-color: #394251!important;
+    color: #fff;
+  }
+  .dark-theme .nav-text,.dark-theme .badge,.dark-theme .fa-bell {
+    color: #fff;
+  }
+  .dark-theme  table th {
+    background-color: var(--main-color)!important;
+  }
+  .dark-theme  .custom-input {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+  .dark-theme  .custom-input::placeholder {
+    color:#000 !important; /* Set the desired color */
+  }
+  .dark-theme  .pagination .page-link:focus, .pagination .page-link:active,.active>.page-link, .page-link.active{
+    background-color: var(--main-color) !important;
+    border-color: var(--main-color) !important;
+  }
+  .dark-theme td{
+    background-color:  var(--main-dark-color) !important;
+    color: #fff  !important;
+  }
+  .btn-hover-custom{
+    background-color:  var(--main-dark-color) !important;
+  }
+  
+  
+  .dark-theme .text-dark-light{
+    color: #fff !important;
+  }
+  
+  
+ 
+  .dark-theme .icon-bg-custom{
+    background-color:   var(--main-dark-color) !important;
+  }
+  
+  
+  
