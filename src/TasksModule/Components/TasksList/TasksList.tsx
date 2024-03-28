@@ -15,7 +15,7 @@ export default function TasksList() {
   const getTitleValue = (e: string) => {
     setSearchByTitle(e.target.value);
 
-    getTasksList(1, 10, searchByTitle, e.target.value);
+    getTasksList(1, 10, statusSearch, e.target.value);
   };
   const getStatusValue = (e: string) => {
     setStatusSearch(e.target.value);

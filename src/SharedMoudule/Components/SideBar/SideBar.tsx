@@ -5,6 +5,7 @@ import {  useState } from "react";
 import menu from '../../../assets/menu.png'
 import { toast } from "react-toastify";
 export default function SideBar() {
+  
   const [handleSidebar, setHandleSidebar] = useState(false);
   const navigate=useNavigate();
 
@@ -83,6 +84,8 @@ export default function SideBar() {
               
               Logout
             </MenuItem>
+          
+        
           </Menu>
         </Sidebar>
       </div>
