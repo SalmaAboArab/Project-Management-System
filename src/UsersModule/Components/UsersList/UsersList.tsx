@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Watch } from "react-loader-spinner";
 import PagesHeader from "../../../SharedMoudule/Components/PagesHeader/PagesHeader";
 import Filter from "../../../SharedMoudule/Components/Filter/Filter";
@@ -10,8 +10,12 @@ import Loading from "../../../SharedMoudule/Components/Loading/Loading";
 import { Button, Modal } from "react-bootstrap";
 import Pagination from "../../../SharedMoudule/Components/Pagination/Pagination";
 import ViewModal from "../../../SharedMoudule/Components/ViewModal/ViewModal";
-import noData from "../../../assets/noData.jpeg"
+import noData from "../../../assets/noData.jpeg";
+import { AuthContext } from "../../../Context/Components/AuthContext";
+import { useNavigate } from "react-router-dom";
 export default function UsersList() {
+  let { loginData } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [pagesArray, setPagesArray] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [usersList, setUsersList] = useState([]);
@@ -21,7 +25,6 @@ export default function UsersList() {
   const [userDetails, setUserDetails] = useState({});
   const [pageNum, setPageNum] = useState(1);
   const [showView, setShowView] = useState(false);
-
 
   const handleCloseView = () => setShowView(false);
   const handleShowView = () => setShowView(true);
@@ -65,7 +68,6 @@ export default function UsersList() {
           },
         }
       );
-      console.log(data.data);
 
       setUsersList(data.data.data);
       setPagesArray(
@@ -80,7 +82,11 @@ export default function UsersList() {
   }
 
   useEffect(() => {
-    getUsersList();
+    if (loginData?.userGroup === "Manager") {
+      getUsersList();
+    } else {
+      navigate("/dashboard")
+    }
   }, [pageNum]);
 
   //? ===========handle Date==============>>
@@ -121,7 +127,7 @@ export default function UsersList() {
                         phoneNumber,
                         creationDate,
                       } = user) => (
-                        <tr key={id}>
+                        <tr className="tr-info" key={id}>
                           <td>{userName}</td>
                           <td>{email}</td>
                           <td>
@@ -216,10 +222,11 @@ export default function UsersList() {
                   </tfoot>
                 </table>
               </div>
-            ) :  <div className="mt-5 text-center">
-              
-            <img src={noData} alt="noData" />
-          </div>}
+            ) : (
+              <div className="mt-5 text-center">
+                <img src={noData} alt="noData" />
+              </div>
+            )}
           </>
         ) : (
           <div className="  pt-5 mt-5 ">
@@ -240,7 +247,6 @@ export default function UsersList() {
           </Modal.Header>
           <Modal.Body className="h5 text-center">
             {isActivatedUser
-            
               ? "Are you sure you want to deactivate this user ?😔"
               : "Are you sure to make this user active ?😍"}
           </Modal.Body>

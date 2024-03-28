@@ -1,8 +1,5 @@
 * {
     font-family: sans-serif;
-    /* margin: 0 !important;
-    padding: 0 !important; */
-    /* box-sizing: border-box !important; */
 }
 body {
     background: #f5f5f5;
@@ -33,7 +30,9 @@ a {
     min-height: 100vh !important;
 }
 
-
+.auth-container ::placeholder{
+    color: rgb(202, 202, 202) !important;
+}
 
 .form {
     background: #29534eb2 !important;
@@ -97,9 +96,6 @@ form label,
 
 
 /* ================inputs===================== */
-::placeholder {
-    color: rgba(255, 255, 255, 0.712) !important;
-}
 
 
 .form-input:active,.form-input:focus ,.form-input::content,.form-input:checked{
@@ -195,12 +191,18 @@ html {
 .logout{
     cursor: pointer;
 }
-
+/* =============Pagination================ */
 .page-link{
     color: #000 !important; 
     cursor: pointer;
 }
-.active-link {
 
-    font-weight: 900; /* You can add other styles as well */
+.active-link ,.active-link:hover  {
+background: #3d5f57 ;
+color: white !important;
+    font-weight: 900; 
+  }
+  /* =============================== */
+  .form-input-change-pass {
+    color: black !important;
   }

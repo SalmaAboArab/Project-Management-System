@@ -44,7 +44,6 @@ function App() {
         <ProtectedRoute loginData={loginData}>
           <MasterLayout loginData={loginData}/>
         </ProtectedRoute>
-          // <MasterLayout loginData={loginData}/>
       ),
       errorElement:<NotFound/>,
       children:
