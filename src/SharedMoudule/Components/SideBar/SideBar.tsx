@@ -18,13 +18,12 @@ export default function SideBar() {
   function toggleCollapse() {
     setHandleSidebar(!handleSidebar);
   }
-
-  const logout = () => {
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("loginData");
-    toast.success("BYE BYE 🙁");
-    navigate("/");
-  };
+  
+  const logout=()=>{
+    localStorage.clear();
+    toast.success('BYE BYE 🙁')
+    navigate('/');
+  }
 
   return (
     <>

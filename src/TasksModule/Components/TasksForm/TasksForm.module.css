@@ -1,0 +1,17 @@
+.TaskForm{
+    ::placeholder{
+        color: rgb(210, 206, 206);
+        
+    }
+    select {
+        /* background: rgb(194, 222, 209); */
+      }
+/* 
+      option:checked{
+        color: rgb(246, 250, 0);
+        background-color: rgb(5, 26, 1);
+      } */
+      /* option:disabled{
+        color: red;
+      } */
+}
