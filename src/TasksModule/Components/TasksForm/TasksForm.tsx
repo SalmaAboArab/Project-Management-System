@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TasksForm.module.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { baseUrl } from "../../../Constants/Components/Urls";
@@ -98,10 +98,10 @@ export default function TasksForm() {
     <>
       <div className="TaskFormContainer vh-100 bg-light overflow-auto pageOverflow pb-2">
         <div className="TaskFormHeader bg-white ps-5 py-4">
-          <a href="/dashboard/tasks-list" className="text-black">
+          <Link to="/dashboard/tasks" className="text-black">
             <i className="fa fa-arrow-left me-2"></i>
             View All Tasks
-          </a>
+          </Link>
           <h2 className="mt-2">
             {action == "add" ? "Add a New Task" : "Update Task"}
           </h2>

@@ -1,10 +1,10 @@
 * {
-  font-family: sans-serif;
-  /* margin: 0 !important;
-    padding: 0 !important; */
-  /* box-sizing: border-box !important; */
+    font-family: sans-serif;
 }
+body {
+    background: #f5f5f5;
 
+}
 a {
   text-decoration: none;
   color: white !important;
@@ -29,6 +29,10 @@ a {
   min-height: 100vh !important;
 }
 
+.auth-container ::placeholder{
+    color: rgb(202, 202, 202) !important;
+}
+
 .form {
   background: #29534eb2 !important;
 }
@@ -48,6 +52,10 @@ a {
 }
 
 /* !=================== __ UnderLine Form-Name===================== */
+.form-Name {
+
+  color: #f09a22 !important;
+}
 
 .form-Name span {
   position: relative;
@@ -120,6 +128,7 @@ a {
 
 .one-input-group {
   min-height: 80px;
+  color: #f09a22;
 }
 
 /* *===========Form Button  Login Register Reset ..... =============== */
@@ -176,20 +185,41 @@ input[type="file"] {
 }
 /* ================== */
 /* Change autocomplete styles in WebKit */
-/* input:-webkit-autofill,
+ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus{
     border: 1px solid green;
     -webkit-text-fill-color: rgb(255, 255, 255);
     -webkit-box-shadow: 0 0 0px 1000px #29534e00 inset;
     transition: background-color 5000s ease-in-out 0s;
-} */
+} 
 
 /* ?===============scrollbar=================== */
 html {
   scrollbar-color: var(--main-color) #1f263e;
 }
 
-.logout {
-  cursor: pointer;
+.logout{
+    cursor: pointer;
 }
+/* =============Pagination================ */
+.page-link{
+    color: #000 !important; 
+    cursor: pointer;
+}
+.page-link:hover {
+  color: #000 !important; 
+}
+
+.active-link ,.active-link:hover  {
+background: #3d5f57 ;
+color: white !important;
+    font-weight: 900; 
+  }
+  /* =============================== */
+  .form-input-change-pass {
+    color: black !important;
+  }
+  .logout {
+    cursor: pointer;
+  }

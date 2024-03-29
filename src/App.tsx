@@ -10,9 +10,9 @@ import ResetPassword from './AuthModule/Components/ResetPassword/ResetPassword'
 import ChangePassword from './AuthModule/Components/ChangePassword/ChangePassword'
 import MasterLayout from './SharedMoudule/Components/MasterLayout/MasterLayout'
 import Dashboard from './DashboardModule/Components/Dashboard/Dashboard'
-import TasksList from './TasksModule/Components/TasksList/TasksList'
-import UsersList from './UsersModule/Components/UsersList/UsersList'
-import ProjectList from './ProjectModule/Components/ProjectList/ProjectList'
+import TasksList from './TasksModule/Components/Tasks/Tasks'
+import UsersList from './UsersModule/Components/Users/Users'
+import ProjectList from './ProjectModule/Components/Project/Project'
 import VerifyAccount from './AuthModule/Components/VerifyAccount/VerifyAccount'
 
 import ProtectedRoute from './SharedMoudule/Components/ProtectedRoute/ProtectedRoute'
@@ -46,7 +46,6 @@ function App() {
         <ProtectedRoute loginData={loginData}>
           <MasterLayout loginData={loginData}/>
         </ProtectedRoute>
-          // <MasterLayout loginData={loginData}/>
       ),
       errorElement:<NotFound/>,
       children:

@@ -1,0 +1,26 @@
+.triangle {
+    top: -28px;
+    right: 3px;
+    color: rgba(223, 217, 217, 0.63);
+}
+.dropBtn button:focus {
+background: #ececec !important;
+color: black;
+}
+th {
+    background: #0e382fcb !important ;
+    padding: 30px !important;
+    color: white !important;
+}
+th:last-child {
+border-radius: 0 20px 0 0 !important;
+
+}
+th:first-child {
+border-radius:  20px 0 0 0  !important;
+
+}
+.tr-info:hover {
+    background-color : #dd0b0b !important;
+
+}
