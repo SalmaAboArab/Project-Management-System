@@ -52,6 +52,10 @@ a {
 }
 
 /* !=================== __ UnderLine Form-Name===================== */
+.form-Name {
+
+  color: #f09a22 !important;
+}
 
 .form-Name span {
   position: relative;
@@ -83,6 +87,29 @@ a {
 }
 
 /* ================inputs===================== */
+.auth-container {
+  ::placeholder {
+    color: rgba(255, 255, 255, 0.712);
+  }
+
+  /* *===========Login Register Reset ..... =============== */
+  .form-Name,
+  form label,
+  .eye {
+    color: var(--main-color);
+    font-weight: 700;
+  }
+
+  /* Change autocomplete styles in WebKit */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    border: 1px solid green;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 0 0 0px 1000px #29534e00 inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
 
 .form-input:active,
 .form-input:focus,
@@ -101,6 +128,7 @@ a {
 
 .one-input-group {
   min-height: 80px;
+  color: #f09a22;
 }
 
 /* *===========Form Button  Login Register Reset ..... =============== */
@@ -157,14 +185,14 @@ input[type="file"] {
 }
 /* ================== */
 /* Change autocomplete styles in WebKit */
-/* input:-webkit-autofill,
+ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus{
     border: 1px solid green;
     -webkit-text-fill-color: rgb(255, 255, 255);
     -webkit-box-shadow: 0 0 0px 1000px #29534e00 inset;
     transition: background-color 5000s ease-in-out 0s;
-} */
+} 
 
 /* ?===============scrollbar=================== */
 html {
@@ -179,6 +207,9 @@ html {
     color: #000 !important; 
     cursor: pointer;
 }
+.page-link:hover {
+  color: #000 !important; 
+}
 
 .active-link ,.active-link:hover  {
 background: #3d5f57 ;
@@ -189,7 +220,6 @@ color: white !important;
   .form-input-change-pass {
     color: black !important;
   }
-  /* ==================== */
   .logout {
     cursor: pointer;
   }

@@ -70,7 +70,7 @@ export default function ChangePassword({ show, handleClose }) {
         <Modal.Body>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className=" rounded-2"
+            className="rounded-2"
           >
             <h2 className="form-Name ">
               <span>C</span>hange Password

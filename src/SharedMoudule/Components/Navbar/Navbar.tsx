@@ -79,7 +79,7 @@ export default function Navbar() {
               </li>
               {loginData?.userGroup === "Manager" ? (
                 <li className="mx-auto smell-screen-link position-relative d-flex align-items-center">
-                  <Link to={"/dashboard/users-list"} className="text-black">
+                  <Link to={"/dashboard/users"} className="text-black">
                     Users
                   </Link>
                 </li>
@@ -87,12 +87,12 @@ export default function Navbar() {
                 ""
               )}
               <li className="mx-auto smell-screen-link position-relative d-flex align-items-center">
-                <Link to={"/dashboard/project-list"} className="text-black">
+                <Link to={"/dashboard/projects"} className="text-black">
                   Projects
                 </Link>
               </li>
               <li className="mx-auto smell-screen-link position-relative d-flex align-items-center">
-                <Link to={"/dashboard/tasks-list"} className="text-black">
+                <Link to={"/dashboard/tasks"} className="text-black">
                   Tasks
                 </Link>
               </li>

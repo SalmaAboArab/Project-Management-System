@@ -5,7 +5,7 @@ import Filter from "../../../SharedMoudule/Components/Filter/Filter";
 import axios from "axios";
 import { baseUrl } from "../../../Constants/Components/Urls";
 import { toast } from "react-toastify";
-import styles from "./UsersList.module.css/";
+import styles from "./Users.module.css";
 import Loading from "../../../SharedMoudule/Components/Loading/Loading";
 import { Button, Modal } from "react-bootstrap";
 import Pagination from "../../../SharedMoudule/Components/Pagination/Pagination";
@@ -13,6 +13,8 @@ import ViewModal from "../../../SharedMoudule/Components/ViewModal/ViewModal";
 import noData from "../../../assets/noData.jpeg";
 import { AuthContext } from "../../../Context/Components/AuthContext";
 import { useNavigate } from "react-router-dom";
+import noActive from "../../../assets/delete.png"
+import active from "../../../assets/Active.jpg"
 export default function UsersList() {
   let { loginData } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -246,9 +248,17 @@ export default function UsersList() {
             <Modal.Title>Change employee status</Modal.Title>
           </Modal.Header>
           <Modal.Body className="h5 text-center">
+            
+          
             {isActivatedUser
-              ? "Are you sure you want to deactivate this user ?😔"
-              : "Are you sure to make this user active ?😍"}
+              ? <div>
+                <img className="w-100 mx-auto d-block mb-2" src={noActive} alt="noActive" />
+                <span> "Are you sure you want to deactivate this user ?😔"</span>
+                </div>
+              : <div>
+              <img className="w-75 mx-auto d-block mb-2" src={active} alt="noActive" />
+              <span> "Are you sure to make this user active ?😍"</span>
+              </div>}
           </Modal.Body>
           <Modal.Footer>
             <Button

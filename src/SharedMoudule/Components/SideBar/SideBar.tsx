@@ -56,7 +56,7 @@ export default function SideBar() {
               <>
                 <MenuItem
                   icon={<i className="fa fa-users me-3"></i>}
-                  component={<Link to={"/dashboard/users-list"} />}
+                  component={<Link to={"/dashboard/users"} />}
                 >
                   Users
                 </MenuItem>
@@ -67,13 +67,13 @@ export default function SideBar() {
 
             <MenuItem
               icon={<img src={menu} className=" me-3" />}
-              component={<Link to={"/dashboard/project-list"} />}
+              component={<Link to={"/dashboard/projects"} />}
             >
               Projects
             </MenuItem>
             <MenuItem
               icon={<i className="   fa-solid fa-list-check me-3"></i>}
-              component={<Link to={"/dashboard/tasks-list"} />}
+              component={<Link to={"/dashboard/tasks"} />}
             >
               Tasks
             </MenuItem>
