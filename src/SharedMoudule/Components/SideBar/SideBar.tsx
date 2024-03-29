@@ -1,11 +1,14 @@
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import "./SideBar.css";
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import menu from '../../../assets/menu.png'
 import { toast } from "react-toastify";
+import { AuthContext } from "../../../Context/Components/AuthContext.js";
+
 export default function SideBar() {
   const [handleSidebar, setHandleSidebar] = useState(false);
+  const {userRole}:any=useContext(AuthContext)
   const navigate=useNavigate();
 
   function toggleCollapse() {
@@ -13,8 +16,6 @@ export default function SideBar() {
   }
   
   const logout=()=>{
-    // localStorage.removeItem("userToken");
-    // localStorage.removeItem("loginData");
     localStorage.clear();
     toast.success('BYE BYE 🙁')
     navigate('/');
@@ -60,13 +61,23 @@ export default function SideBar() {
             >
               Projects
             </MenuItem>
+            {userRole=='Manager'?
             <MenuItem
-              icon={<i className="   fa-solid fa-list-check me-3" ></i>}
-              component={<Link to={"/dashboard/tasks"} />}
-            >
-              
-              Tasks
-            </MenuItem>
+            icon={<i className="   fa-solid fa-list-check me-3" ></i>}
+            component={<Link to={"/dashboard/tasks"} />}
+          >
+            
+            Tasks
+          </MenuItem>:''}
+            
+            {userRole=='Employee'?
+            <MenuItem
+            icon={<i className="   fa-solid fa-list-check me-3" ></i>}
+            component={<Link to={"/dashboard/tasks-board"} />}
+          >
+            
+            Tasks Board
+          </MenuItem>:''}
 
             <MenuItem
               
