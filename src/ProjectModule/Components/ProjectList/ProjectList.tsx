@@ -11,7 +11,7 @@ const[pageArray,setPageArray]=useState([]);
 
 const paginationData={pageNumber:1,
   pageSize:5,
- title:"myProject",
+ title:"",
  }
 
 const getAllProject=async(paginationData:any)=>{
