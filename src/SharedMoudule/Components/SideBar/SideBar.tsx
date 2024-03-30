@@ -94,7 +94,7 @@ export default function SideBar() {
              {<MenuItem
             onClick={toggleTheme}
             icon={
-              isDarkMode === true ? (<i className="fa-solid fa-toggle-on"></i>) : (<i className="fa-solid fa-toggle-off"></i>)
+              isDarkMode === true ? (<i className="fa-solid fa-toggle-on me-3 "></i>) : (<i className="fa-solid fa-toggle-off me-3"></i>)
             }
           >
             {

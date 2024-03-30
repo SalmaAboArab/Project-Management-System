@@ -97,7 +97,7 @@ export default function TasksForm() {
   return (
     <>
       <div className="TaskFormContainer vh-100 bg-light overflow-auto pageOverflow pb-2">
-        <div className="TaskFormHeader bg-white ps-5 py-4">
+        <div className="TaskFormHeader bg-white ps-5 py-4 bgDark">
           <a href="/dashboard/tasks-list" className="text-black">
             <i className="fa fa-arrow-left me-2"></i>
             View All Tasks
@@ -209,7 +209,7 @@ export default function TasksForm() {
           <div className="line border-top py-4 px-4 row justify-content-between mt-3">
             <div className="cancel col-xxl-3 col-md-6 my-3 row justify-content-start text-center px-1">
               <button
-                className="btn border border-black rounded-5 col-md-5"
+                className="btn border border-black rounded-5 col-md-5 text-black"
                 onClick={() => navigate("/dashboard/tasks")}
               >
                 Cancel

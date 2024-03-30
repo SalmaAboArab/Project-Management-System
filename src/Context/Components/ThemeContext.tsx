@@ -28,11 +28,11 @@ const ThemeContextProvider: React.FC<ThemeContextProviderProps> = (props) => {
     // setTheme((current)=> (current === 'light' ? 'dark' : 'light' ))
     setIsDarkMode((previousValue: boolean) => !previousValue);
   };
-  useEffect(() => {
+  /*useEffect(() => {
     // Save the theme preference to localStorage
 
     localStorage.setItem("isDarkMode", isDarkMode);
-  }, [isDarkMode]);
+  }, [isDarkMode]);*/
 
   // isDarkMode variable  is used to condition the rendering according to the theme.
   const themeClass = isDarkMode ? "dark-theme" : "light-theme";
