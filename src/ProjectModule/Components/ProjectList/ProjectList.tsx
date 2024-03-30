@@ -38,6 +38,7 @@ getAllProject(paginationData.pageNumber,paginationData.pageSize,paginationData.t
 // ##################### Filtration ##############################
 const[titleSearch,setTitleSearch]=useState("");
 const searchByTitle=(title:string)=>{
+  paginationData.title=titleSearch;
 setTitleSearch(title)
 getAllProject(paginationData,titleSearch)
 }
@@ -54,7 +55,8 @@ getAllProject(paginationData,titleSearch)
       <button className="btn-warning rounded-4 btn"><i className="fa-solid fa-plus"></i>Add New Project</button>
     </div>
 <div className={`p-3 w-75 m-auto ${styles.borderless}`}  >
-  <input type="text"  className="form-control rounded-5 "  onChange={(e)=>searchByTitle(e.target.value)} placeholder="Search By Title"/>
+  <input type="text"  className="form-control rounded-5 "
+    onChange={(e)=>searchByTitle(e.target.value)}  value={titleSearch} placeholder="Search By Title"/>
 </div>
     <div className="table p-3 ">
     {projects.length>0?<table className ="table table-striped text-center caption-top">
