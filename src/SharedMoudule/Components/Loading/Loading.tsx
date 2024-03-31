@@ -22,8 +22,8 @@ export default function Loading({components}) {
   <div className=" loader mx-auto">
     <ThreeDots
         visible={true}
-        height="40"
-        width="40"
+        height="35"
+        width="35"
         color="#fff"
         radius="9"
         ariaLabel="three-dots-loading"

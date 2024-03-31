@@ -26,7 +26,7 @@ export default function TasksList() {
     getTasks();
   }, []);
   return (
-    <>
+    <div className="slide-in-bottom">
       <div>TasksList</div>
       <button
         className="btn btn-info"
@@ -60,6 +60,6 @@ export default function TasksList() {
           type={"Task"}
         />
       )}
-    </>
+    </div>
   );
 }

@@ -62,7 +62,7 @@ const closeModal = () => {
 
   return (
     <>
-      <div className={`${styles.title} vh-100`}>
+      <div className={`${styles.title} vh-100 slide-in-bottom`}>
         <div className={`d-flex justify-content-between p-3 bg-white`}>
           <h3>Projects</h3>
           <button
