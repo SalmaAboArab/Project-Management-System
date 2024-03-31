@@ -96,7 +96,7 @@ export default function TasksForm() {
 
   return (
     <>
-      <div className="TaskFormContainer vh-100 bg-light overflow-auto pageOverflow pb-2">
+      <div className="TaskFormContainer slide-in-bottom vh-100 bg-light overflow-auto pageOverflow pb-2">
         <div className="TaskFormHeader bg-white ps-5 py-4">
           <Link to="/dashboard/tasks" className="text-black">
             <i className="fa fa-arrow-left me-2"></i>

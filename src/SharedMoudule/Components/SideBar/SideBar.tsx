@@ -52,12 +52,14 @@ export default function SideBar() {
             >
               Home
             </MenuItem>
+            {userRole === "Manager" ?
             <MenuItem
               icon={<i className="fa fa-users me-3"></i>}
               component={<Link to={"/dashboard/users"} />}
             >
-              users
+              Users
             </MenuItem>
+            :""}
             <MenuItem
               // icon={<i className="   fa-solid fa-briefcase" ></i>}
               icon={<img src={menu} className=" me-3" />}

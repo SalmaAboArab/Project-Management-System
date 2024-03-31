@@ -86,10 +86,10 @@ export default function UsersList() {
   useEffect(() => {
     if (loginData?.userGroup === "Manager") {
       getUsersList();
-    } else {
+    } else  if (loginData?.userGroup === "Employee"){
       navigate("/dashboard")
     }
-  }, [pageNum]);
+  }, [pageNum,loginData?.userGroup ]);
 
   //? ===========handle Date==============>>
   const formatDate = (timestamp: string) => {

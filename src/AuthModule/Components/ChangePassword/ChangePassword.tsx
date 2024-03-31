@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { passwordValidation } from "../Validator/Validator.js";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
 import { toast } from "react-toastify";
@@ -24,6 +23,7 @@ export default function ChangePassword({ show, handleClose }) {
       );
       toast.success("password changed successfully");
       handleClose();
+      clearInputs()
     } catch (error: any) {
       toast.error(error?.response?.data?.message || "There's a mistake.");
     }
@@ -31,15 +31,27 @@ export default function ChangePassword({ show, handleClose }) {
   }
 
   const {
+    setValue,
     register,
     handleSubmit,
     formState: { errors },
     watch,
   } = useForm();
 
+function clearInputs() {
+  setValue("oldPassword","")
+  setValue("newPassword","")
+  setValue("confirmNewPassword","")
+}
+
+
+
+
   let confirmPassword = watch("newPassword");
 
   const onSubmit = async (values: any) => {
+    console.log(values);
+    
     setIsLoading(true);
     handleLChangePassword(values);
   };
@@ -76,6 +88,7 @@ export default function ChangePassword({ show, handleClose }) {
         </Modal.Header>
         <Modal.Body>
           <form
+          autoComplete="off"
             onSubmit={handleSubmit(onSubmit)}
             className="rounded-2 p-4"
           >
@@ -179,22 +192,26 @@ export default function ChangePassword({ show, handleClose }) {
                 )}
               </div>
             </div>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
+
+            <div className="text-end mt-3">
+            
+          
           <button
                 type="submit"
-                className={`btn btn-warning text-center  text-white   ${
+                className={`btn btn-warning rounded-5 w-50 text-center me-3 text-white   ${
                   isLoading ? "noClick" : ""
                 }`}
               >
                 {isLoading ? <Loader /> : "Save Changes"}
               </button>
-          {" "}
-        </Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+      
+        </div>
+          </form>
+        </Modal.Body>
+       
       </Modal>
       </div>
     </>
