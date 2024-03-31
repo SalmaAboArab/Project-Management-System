@@ -27,8 +27,8 @@ const getTasksCount=async()=>{
   
     console.log(response?.data);
    
-  } catch (error) {
-    console.log(error)
+  } catch (errors) {
+    console.log(errors)
   }
 }
 
@@ -81,15 +81,20 @@ const dataActive = {
 };
 
 useEffect(()=>{
-  getTasksCount();
-  getUsersCount();
+  if(userRole=="Manager"){
+    getTasksCount();
+    getUsersCount();
+  }else{
+    getTasksCount();
+  }
+ 
  
 },[])
 
   return (
     <>
-    <div className="container-fluid  pt-3">
-      <div className="row ">
+    <div className="container-fluid  pt-5">
+      <div className="row gy-3">
         <div className="col-md-6 ">
 <div className="row gx-0">
   <div>
