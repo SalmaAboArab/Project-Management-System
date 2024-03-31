@@ -16,13 +16,13 @@ export default function DeleteModal({id,closeDeleteModal,getList,type}) {
       setIsLoading(true);
         try{
           let response=await axios.delete(`${baseUrl}/${type}/${id}`,{headers:{Authorization:token}})
-          console.log(response);
+          // console.log(response);
           deleteHandleClose();
           toast.success(`${type} deleted succefully`)
           getList()
         }catch(error){
           setIsLoading(false);
-          console.log(error);
+          // console.log(error);
           toast.error('Something went wrong!')
         }
       }

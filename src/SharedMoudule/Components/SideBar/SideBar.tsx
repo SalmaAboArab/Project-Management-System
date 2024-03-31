@@ -4,26 +4,26 @@ import "./SideBar.css";
 import { useContext, useState } from "react";
 import menu from "../../../assets/menu.png";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../../Context/Components/AuthContext";
+import { AuthContext } from "../../../Context/Components/AuthContext.js";
 import ChangePassword from "../../../AuthModule/Components/ChangePassword/ChangePassword";
+
 export default function SideBar() {
+  const [handleSidebar, setHandleSidebar] = useState(false);
+  const { userRole }: any = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [handleSidebar, setHandleSidebar] = useState(false);
-  const { loginData }: any = useContext(AuthContext);
-
   const navigate = useNavigate();
 
   function toggleCollapse() {
     setHandleSidebar(!handleSidebar);
   }
-  
-  const logout=()=>{
+
+  const logout = () => {
     localStorage.clear();
-    toast.success('BYE BYE 🙁')
-    navigate('/');
-  }
+    toast.success("BYE BYE");
+    navigate("/");
+  };
 
   return (
     <>
@@ -37,8 +37,8 @@ export default function SideBar() {
             onClick={toggleCollapse}
             className="collapsed-btn position-absolute"
           >
-            <span className="collapsed-btn ps-1 pe-3  py-2 rounded-2">
-              {handleSidebar ? (
+            <span className="collapsed-btn ps-1 pe-3 py-2 rounded-2">
+              {!handleSidebar ? (
                 <i className="fa-solid fa-chevron-left text-white"></i>
               ) : (
                 <i className="fa-solid fa-chevron-right text-white"></i>
@@ -52,31 +52,40 @@ export default function SideBar() {
             >
               Home
             </MenuItem>
-            {loginData?.userGroup === "Manager" ? (
-              <>
-                <MenuItem
-                  icon={<i className="fa fa-users me-3"></i>}
-                  component={<Link to={"/dashboard/users"} />}
-                >
-                  Users
-                </MenuItem>
-              </>
-            ) : (
-              ""
-            )}
-
             <MenuItem
+              icon={<i className="fa fa-users me-3"></i>}
+              component={<Link to={"/dashboard/users"} />}
+            >
+              users
+            </MenuItem>
+            <MenuItem
+              // icon={<i className="   fa-solid fa-briefcase" ></i>}
               icon={<img src={menu} className=" me-3" />}
               component={<Link to={"/dashboard/projects"} />}
             >
               Projects
             </MenuItem>
-            <MenuItem
-              icon={<i className="   fa-solid fa-list-check me-3"></i>}
-              component={<Link to={"/dashboard/tasks"} />}
-            >
-              Tasks
-            </MenuItem>
+
+            {userRole == "Employee" ? 
+            // (
+            //   <MenuItem
+            //     icon={<i className="   fa-solid fa-list-check me-3"></i>}
+            //     component={<Link to={"/dashboard/tasks-board"} />}
+            //   >
+            //     Tasks Board
+            //   </MenuItem>
+            // ) 
+            ''
+            : 
+            (
+              <MenuItem
+                icon={<i className="   fa-solid fa-list-check me-3"></i>}
+                component={<Link to={"/dashboard/tasks"} />}
+              >
+                Tasks
+              </MenuItem>
+            )
+            }
 
             <MenuItem
               onClick={handleShow}

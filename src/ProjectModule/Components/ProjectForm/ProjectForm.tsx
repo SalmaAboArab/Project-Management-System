@@ -33,12 +33,12 @@ export default function ProjectForm() {
       const response = await axios[method](url, data, {
         headers: { Authorization: token },
       });
-      console.log(`${proccess} project response `, response);
+      // console.log(`${proccess} project response `, response);
       toast.success(`Project ${proccess} Successfuly`);
       navigate("/dashboard/projects");
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
+      // console.log(error);
       toast.error(error?.response?.data?.message || "Somthing went wrong!");
     }
   };
@@ -49,12 +49,13 @@ export default function ProjectForm() {
         `${baseUrl}/Project/${curruntProjectId}`,
         { headers: { Authorization: token } }
       );
-      console.log("current project ", response?.data);
+      // console.log("current project ", response?.data);
       const currentProject = response?.data;
       setValue("title", currentProject?.title);
       setValue("description", currentProject?.description);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toast.error(error?.response?.data?.message || "Somthing went wrong!");
     }
   };
   useEffect(() => {
