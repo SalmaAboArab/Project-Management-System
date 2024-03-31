@@ -6,8 +6,10 @@ import styles from "./ProjectList.module.css";
 import noData from "../../../assets/noData.jpg"
 import { useNavigate } from "react-router-dom";
 import DeleteModal from "../../../SharedMoudule/Components/DeleteModal/DeleteModal";
+import Loading from "../../../SharedMoudule/Components/Loading/Loading";
 
 export default function ProjectList() {
+  const[isLoading,setIsLoading]=useState(true);
   const navigate = useNavigate();
   const [currentProjectId, setCurrentProjectId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -23,6 +25,7 @@ const closeModal = () => {
 
   const getAllProject = async (paginationData: any) => {
     try {
+     setIsLoading(true)
       const response = await axios.get(`${baseUrl}/Project/manager`, {
         headers: { Authorization: token },
         params: {
@@ -40,8 +43,10 @@ const closeModal = () => {
 
       console.log(response.data);
       setProjects(response.data.data);
+setIsLoading(false)     
     } catch (error) {
       console.log(error);
+      setIsLoading(false)
     }
   };
 
@@ -81,7 +86,13 @@ const closeModal = () => {
             placeholder="Search By Title"
           />
         </div>
-        <div className="table p-3 ">
+        {isLoading?(<div className="  pt-5 mt-5 ">
+            <Loading components={1} />
+          </div>):
+          
+        (<>
+        
+          <div className="table p-3 ">
           {projects.length > 0 ? (
             <table className="table table-striped text-center caption-top">
               <thead className={`${styles.bg}`}>
@@ -106,48 +117,50 @@ const closeModal = () => {
                   </th>
                 </tr>
               </thead>
+      
+ <tbody>
+ {projects.map((pro: any) => (
+   <tr key={pro.id}>
+     <th scope="row">{pro.id}</th>
+     <td>{pro.title}</td>
+     <td>{pro.description}</td>
+     <td>{pro.task.length}</td>
+     <td>
+       <button
+         className={`${styles.solid}`}
+         onClick={() => {
+           localStorage.setItem(
+             "curruntProjectId",
+             pro.id
+           );
+           navigate("/dashboard/projects/projects-form/update");
+         }}
+       >
+         <i
+           className="fa fa-edit text-warning mx-2"
+           aria-hidden="true"
+         >
+           {" "}
+         </i>
+       </button>
+       <button
+         className={`${styles.solid}`}
+         onClick={() => {
+           setOpenDeleteModal(true);
+           setCurrentProjectId(pro.id);
+         }}
+       >
+         <i
+           className="fa fa-trash text-danger mx-2"
+           aria-hidden="true"
+         ></i>
+       </button>
+     </td>
+   </tr>
+ ))}
+</tbody> 
 
-              <tbody>
-                {projects.map((pro: any) => (
-                  <tr key={pro.id}>
-                    <th scope="row">{pro.id}</th>
-                    <td>{pro.title}</td>
-                    <td>{pro.description}</td>
-                    <td>{pro.task.length}</td>
-                    <td>
-                      <button
-                        className={`${styles.solid}`}
-                        onClick={() => {
-                          localStorage.setItem(
-                            "curruntProjectId",
-                            pro.id
-                          );
-                          navigate("/dashboard/projects/projects-form/update");
-                        }}
-                      >
-                        <i
-                          className="fa fa-edit text-warning mx-2"
-                          aria-hidden="true"
-                        >
-                          {" "}
-                        </i>
-                      </button>
-                      <button
-                        className={`${styles.solid}`}
-                        onClick={() => {
-                          setOpenDeleteModal(true);
-                          setCurrentProjectId(pro.id);
-                        }}
-                      >
-                        <i
-                          className="fa fa-trash text-danger mx-2"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+             
             </table>
           ) : (
             <div className="text-center">
@@ -156,7 +169,6 @@ const closeModal = () => {
             </div>
           )}
         </div>
-
         <div className="d-flex justify-content-center bg-white pt-2  ">
           <nav aria-label="Page navigation example">
             <ul className="pagination">
@@ -199,6 +211,10 @@ const closeModal = () => {
             </ul>
           </nav>
         </div>
+        </>)}
+       
+        
+       
       </div>
       {openDeleteModal && (
         <DeleteModal

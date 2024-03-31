@@ -1,0 +1,14 @@
+.designTask{
+    width: 150px;
+    height: 150px;
+    
+}
+.vertical{
+    width: 2px;
+    height: 70px;
+    background-color: rgb(214, 185, 55);
+
+}
+.bg{
+    background-color: rgba(243, 248, 248, 0.7);
+}
