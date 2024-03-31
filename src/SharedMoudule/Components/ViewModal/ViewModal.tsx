@@ -11,19 +11,19 @@ export default function ViewModal({ userDetails, handleCloseView, showView }) {
           keyboard={true}
         >
           <Modal.Header closeButton>
-            <Modal.Title>User Details📑🙋‍♂️</Modal.Title>
+            <Modal.Title><h3>User Details</h3></Modal.Title>
           </Modal.Header>
 
           <Modal.Body className="h5">
             
-              <div className="d-flex flex-column gap-3 ">
+              <div className="d-flex flex-column gap-3 text-center my-4">
                 <h5 className="text-success">
-                ✅ User Name <span className="mx-1 fw-bold text-black">:</span>
+                 User Name <span className="mx-1 fw-bold text-black">:</span>
                   <span className="text-black"> {userDetails.userName}</span>
                 </h5>
 
                 <h5 className="text-success">
-                👤 This user<span className="mx-1 fw-bold text-black">:</span>
+                 This user<span className="mx-1 fw-bold text-black">:</span>
                   <span className={`${userDetails.isActivated ? "bg-success " : "bg-danger"} text-black p-1 rounded-2
                     `}>
                     
@@ -31,11 +31,11 @@ export default function ViewModal({ userDetails, handleCloseView, showView }) {
                   </span>
                 </h5>
                 <h5 className="text-success">
-                📞PhoneNumber<span className="mx-1 fw-bold text-black">:</span>
+                PhoneNumber<span className="mx-1 fw-bold text-black">:</span>
                   <span className="text-black"> {userDetails.phoneNumber}</span>
                 </h5>
                 <h5 className="text-success">
-                📧 Email<span className="mx-1 fw-bold text-black">:</span>
+                 Email<span className="mx-1 fw-bold text-black">:</span>
                   <span className="text-black"> {userDetails.email}</span>
                 </h5>
               </div>

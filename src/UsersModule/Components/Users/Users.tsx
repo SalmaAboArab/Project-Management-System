@@ -107,7 +107,7 @@ export default function UsersList() {
           <>
             <Filter setUsersList={setUsersList} />
             {usersList.length > 0 ? (
-              <div className="table-responsive w-100">
+              <div className={`${styles.userslistContainer} table-responsive w-100`}>
                 <table className="w-100   table text-center">
                   <thead className=" p-4">
                     <tr>
@@ -244,30 +244,36 @@ export default function UsersList() {
           centered
           keyboard={true}
         >
+
           <Modal.Header closeButton>
-            <Modal.Title>Change employee status</Modal.Title>
           </Modal.Header>
           <Modal.Body className="h5 text-center">
             
           
-            {isActivatedUser
-              ? <div>
-                <img className="w-100 mx-auto d-block mb-2" src={noActive} alt="noActive" />
-                <span> "Are you sure you want to deactivate this user ?😔"</span>
-                </div>
-              : <div>
-              <img className="w-75 mx-auto d-block mb-2" src={active} alt="noActive" />
-              <span> "Are you sure to make this user active ?😍"</span>
-              </div>}
+            {isActivatedUser? 
+              <div className='my-2 mx-5'>
+            <div className="text-center">
+            <img src={noActive} alt="noActive" className='w-100' />
+            <h5 className='fw-bold mt-2'>Deactive This User  ?</h5>
+            <h6>Are you sure you want to deactivate this user ?</h6>
+            </div>
+            <div className="text-end pt-3 border-top">
+            <button className='btn btn-outline-danger fw-bold' onClick={() => getToggleActivatedEmployee()}> Yes</button>
+            </div>
+          </div>
+              : 
+              <div className='my-2 mx-5'>
+            <div className="text-center">
+            <img src={active} alt="active" className='w-75 mb-3' />
+            <h5 className='fw-bold mt-2'>Active This User  ?</h5>
+            <h6>Are you sure to make this user active ?</h6>
+            </div>
+            <div className="text-end pt-3 border-top">
+            <button className='btn btn-outline-danger fw-bold' onClick={() => getToggleActivatedEmployee()}> Yes</button>
+            </div>
+          </div>
+              }
           </Modal.Body>
-          <Modal.Footer>
-            <Button
-              onClick={() => getToggleActivatedEmployee()}
-              variant={!isActivatedUser ? "success" : "danger"}
-            >
-              Yes
-            </Button>
-          </Modal.Footer>
         </Modal>
 
         <ViewModal

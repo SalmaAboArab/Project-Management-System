@@ -58,23 +58,27 @@ export default function ChangePassword({ show, handleClose }) {
 
   return (
     <>
+
+      <div className="bg-danger">
       <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        centered={true}
       >
         <Modal.Header closeButton>
-          <Modal.Title>welcome to PMS</Modal.Title>
+          <Modal.Title>
+            <h2 className="form-Name">
+              <span>C</span>hange Password
+            </h2>
+            </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="rounded-2"
+            className="rounded-2 p-4"
           >
-            <h2 className="form-Name ">
-              <span>C</span>hange Password
-            </h2>
 
             <div className=" d-flex flex-column gap-3  mt-4">
               <div className=" one-input-group">
@@ -175,25 +179,24 @@ export default function ChangePassword({ show, handleClose }) {
                 )}
               </div>
             </div>
-
-            <div className=" text-center">
-              <button
-                type="submit"
-                className={`btn btn-warning text-center  text-white w-75 rounded-5  ${
-                  isLoading ? "noClick" : ""
-                }`}
-              >
-                {isLoading ? <Loader /> : "Save Changes"}
-              </button>
-            </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>{" "}
+          </Button>
+          <button
+                type="submit"
+                className={`btn btn-warning text-center  text-white   ${
+                  isLoading ? "noClick" : ""
+                }`}
+              >
+                {isLoading ? <Loader /> : "Save Changes"}
+              </button>
+          {" "}
         </Modal.Footer>
       </Modal>
+      </div>
     </>
   );
 }

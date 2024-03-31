@@ -12,7 +12,6 @@ import MasterLayout from './SharedMoudule/Components/MasterLayout/MasterLayout'
 import Dashboard from './DashboardModule/Components/Dashboard/Dashboard'
 import TasksList from './TasksModule/Components/Tasks/Tasks'
 import UsersList from './UsersModule/Components/Users/Users'
-import ProjectList from './ProjectModule/Components/Project/Project'
 import VerifyAccount from './AuthModule/Components/VerifyAccount/VerifyAccount'
 
 import ProtectedRoute from './SharedMoudule/Components/ProtectedRoute/ProtectedRoute'
@@ -20,6 +19,7 @@ import { useContext } from 'react'
 import { AuthContext } from './Context/Components/AuthContext'
 import ProjectForm from './ProjectModule/Components/ProjectForm/ProjectForm'
 import TasksForm from './TasksModule/Components/TasksForm/TasksForm'
+import ProjectList from './ProjectModule/Components/ProjectList/ProjectList'
 
 function App() {
   let {loginData}:any=useContext(AuthContext);
