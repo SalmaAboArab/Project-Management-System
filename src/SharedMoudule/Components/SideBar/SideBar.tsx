@@ -69,15 +69,14 @@ export default function SideBar() {
             </MenuItem>
 
             {userRole == "Employee" ? 
-            // (
-            //   <MenuItem
-            //     icon={<i className="   fa-solid fa-list-check me-3"></i>}
-            //     component={<Link to={"/dashboard/tasks-board"} />}
-            //   >
-            //     Tasks Board
-            //   </MenuItem>
-            // ) 
-            ''
+            (
+              <MenuItem
+                icon={<i className="   fa-solid fa-list-check me-3"></i>}
+                component={<Link to={"/dashboard/tasks-board"} />}
+              >
+                Tasks Board
+              </MenuItem>
+            ) 
             : 
             (
               <MenuItem

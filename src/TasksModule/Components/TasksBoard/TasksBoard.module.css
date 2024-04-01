@@ -1,0 +1,16 @@
+.boardContainer{
+     background-color: #315951;
+     min-height: 50%;
+     box-sizing: border-box;
+
+     section{
+        background-color: #EF9B28;
+        cursor: grab;
+     }
+}
+.grab{
+   cursor: grab;
+}
+.isGrabbing{
+   cursor: grabbing;
+}

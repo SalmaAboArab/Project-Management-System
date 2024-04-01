@@ -20,6 +20,7 @@ import { AuthContext } from './Context/Components/AuthContext'
 import ProjectForm from './ProjectModule/Components/ProjectForm/ProjectForm'
 import TasksForm from './TasksModule/Components/TasksForm/TasksForm'
 import ProjectList from './ProjectModule/Components/ProjectList/ProjectList'
+import TasksBoard from './TasksModule/Components/TasksBoard/TasksBoard'
 
 function App() {
   let {loginData}:any=useContext(AuthContext);
@@ -56,7 +57,8 @@ function App() {
         {path:"projects",element:<ProjectList/>},
         {path:"change-password",element:<ChangePassword/>},
         {path:"projects/projects-form/:action",element:<ProjectForm/>},
-        {path:"tasks/tasks-form/:action",element:<TasksForm/>}
+        {path:"tasks/tasks-form/:action",element:<TasksForm/>},
+        {path:"tasks-board",element:<TasksBoard/>}
         
       ]
     }
