@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./TasksForm.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -6,9 +6,11 @@ import axios from "axios";
 import { baseUrl } from "../../../Constants/Components/Urls";
 import { toast } from "react-toastify";
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
+import { AuthContext } from "../../../Context/Components/AuthContext";
 
 export default function TasksForm() {
   const navigate = useNavigate();
+  const{userRole}=useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -89,6 +91,9 @@ export default function TasksForm() {
   };
 
   useEffect(() => {
+    if(userRole!="Manager"){
+      navigate('/dashboard');
+    }
     getusersList();
     if (action == "update") getCurrentTask();
     else getprojectsList();
@@ -116,7 +121,7 @@ export default function TasksForm() {
               <input
                 type="text"
                 placeholder="Name"
-                className="form-control rounded-4 p-3 mt-2"
+                className="form-control rounded-4 p-3 mt-2 "
                 {...register(
                   "title",
                   action == "add" ? { required: "Task title is required" } : {}
@@ -131,7 +136,7 @@ export default function TasksForm() {
               <label htmlFor="">Description</label>
               <textarea
                 placeholder="Description"
-                className="form-control rounded-4 mt-2 pt-3 ps-3 pe-1 pb-5"
+                className="form-control rounded-4 mt-2 pt-3 ps-3 pe-1 pb-5 "
                 {...register(
                   "description",
                   action == "add"
@@ -149,7 +154,7 @@ export default function TasksForm() {
                 <label htmlFor="">User</label>
                 <select
                   id=""
-                  className="w-100 form-select mt-2 rounded-4 p-3"
+                  className="w-100 form-select mt-2 rounded-4 p-3 "
                   {...register("employeeId", {
                     required: action == "add" ? "User is required" : false,
                   })}
@@ -182,7 +187,7 @@ export default function TasksForm() {
                   <select
                     name="project"
                     id=""
-                    className="w-100 form-select mt-2 rounded-4 p-3"
+                    className="w-100 form-select mt-2 rounded-4 p-3 "
                     {...register("projectId", {
                       required: "Project is required",
                     })}

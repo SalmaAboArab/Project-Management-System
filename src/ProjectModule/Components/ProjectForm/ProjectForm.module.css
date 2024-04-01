@@ -3,4 +3,12 @@
         color: rgb(210, 206, 206);
         
     }
+    input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus{
+    border: 1px solid rgb(215, 215, 215);
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px #29534e00 inset;
+    transition: background-color 5000s ease-in-out 0s;
+} 
 }

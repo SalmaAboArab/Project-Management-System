@@ -1,20 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from "./Home.module.css"
 import { Doughnut } from 'react-chartjs-2';
+
 import axios from 'axios';
 import {Tooltip,Title,ArcElement,Legend,Chart as ChartJS} from "chart.js"
 import { baseUrl } from '../../../Constants/Components/Urls';
 import { AuthContext } from '../../../Context/Components/AuthContext';
 ChartJS.register(Tooltip,Title,ArcElement,Legend);
-
-
 export default function Home() {
 const[taskToDo,setTaskToDo]=useState(0);
 const[taskProgres,setTaskProgres]=useState(0);
 const[taskDone,setTaskDone]=useState(0);
 const[userActive,setUserActive]=useState(0);
 const[userInActive,setUserInActive]=useState(0);
-const{userRole}=useContext(AuthContext)
+const{userRole}=useContext(AuthContext);
 
 
 const getTasksCount=async()=>{
@@ -25,7 +24,7 @@ const getTasksCount=async()=>{
     setTaskProgres(response.data.inProgress);
     setTaskDone(response.data.done);
   
-    console.log(response?.data);
+    // console.log(response?.data);
    
   } catch (errors) {
     console.log(errors)
@@ -40,7 +39,7 @@ const getUsersCount=async()=>{
     setUserActive(response.data.activatedEmployeeCount);
     setUserInActive(response.data.deactivatedEmployeeCount);
    
-    console.log(response?.data);
+    // console.log(response?.data);
   } catch (error) {
     console.log(error)
   }
@@ -93,8 +92,8 @@ useEffect(()=>{
 
   return (
     <>
-    <div className="container-fluid  pt-5">
-      <div className="row">
+    <div className="container-fluid  pt-5 slide-in-bottom">
+      <div className="row justify-content-center">
         <div className="col-md-6 ">
 <div className="row">
   <div>
@@ -166,7 +165,7 @@ useEffect(()=>{
          
         </div>
 
-    <div className="row m-auto pt-2">
+    <div className="row m-auto pt-2 justify-content-center">
       <div className="col-md-6 ">
         <div style={{width:"50%"}} className='m-auto pt-1'>
         <Doughnut  data={dataProgress}/>

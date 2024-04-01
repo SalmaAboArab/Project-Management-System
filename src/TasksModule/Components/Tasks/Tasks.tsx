@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../../../Constants/Components/Urls";
 import DeleteModal from "../../../SharedMoudule/Components/DeleteModal/DeleteModal";
+import { AuthContext } from "../../../Context/Components/AuthContext";
 
 export default function TasksList() {
   const navigate = useNavigate();
@@ -10,6 +11,8 @@ export default function TasksList() {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [currentTaskId, setCurrentTaskId] = useState(null);
   const [Tasks, setTasks] = useState(null);
+  const{userRole}=useContext(AuthContext);
+  
   const closeModal = () => {
     setOpenDeleteModal(false);
   };
@@ -23,6 +26,9 @@ export default function TasksList() {
     setTasks(response.data.data);
   };
   useEffect(() => {
+    if(userRole!="Manager"){
+      navigate('/dashboard');
+    }
     getTasks();
   }, []);
   return (
