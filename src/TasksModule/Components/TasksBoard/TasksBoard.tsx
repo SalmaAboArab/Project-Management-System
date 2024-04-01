@@ -16,7 +16,6 @@ type updateStatus = (e: any, newStatus: Status) => void;
 export default function TasksBoard() {
   const token = localStorage.getItem("userToken");
   const {userRole}:string=useContext(AuthContext);
-  
   const [tasks, setTasks] = useState<TaskData[]>([]);
 
   const toDoTasks : TaskData[]= tasks.filter(({status})=> status ==="ToDo");
@@ -41,6 +40,13 @@ export default function TasksBoard() {
     const oldstatus: string = e.dataTransfer.getData("curruntStatus");
 
     if (newstatus != oldstatus) {
+      const newCards = tasks.map((task) => {
+        if (task.id != id) return task;
+        if (task.status == newstatus) task;
+        const newCard = { ...task, status: newstatus };
+        return newCard;
+      });
+      setTasks(newCards);
       try {
         const response =await axios.put(
           `${baseUrl}/Task/${id}/change-status`,

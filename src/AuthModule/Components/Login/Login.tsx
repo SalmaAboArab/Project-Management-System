@@ -23,7 +23,8 @@ export default function Login() {
       saveLoginData();
       navigate("/dashboard");
     } catch (error: any) {
-      toast.error(error?.response?.data?.message || "There's a mistake.");
+      
+      toast.error(error?.message || "There's a mistake.");
     }
     setIsLoading(false);
   }
