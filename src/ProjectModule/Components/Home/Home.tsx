@@ -94,9 +94,9 @@ useEffect(()=>{
   return (
     <>
     <div className="container-fluid  pt-5">
-      <div className="row gy-3">
+      <div className="row">
         <div className="col-md-6 ">
-<div className="row gx-0">
+<div className="row">
   <div>
   <div className='d-flex '>
       <div className={`${styles.vertical}`}></div>
@@ -105,7 +105,7 @@ useEffect(()=>{
         
       </div>
   </div>
-  <div className="col-md-4">
+  <div className="col-lg-4 col-md-6 ">
   <div className={` ${styles.designTask} rounded-4 pt-2 px-3 `} style={{backgroundColor:"#d5d7e7"}}>
 
 <i className={`fa-brands fa-squarespace  rounded-4 p-2 fa-2x mx-2 my-2`} style={{backgroundColor:"#ced1f5"}}></i>
@@ -114,14 +114,14 @@ useEffect(()=>{
 <h4>{taskToDo}</h4>
 </div>
   </div>
-  <div className="col-md-4">
+  <div className="col-lg-4 col-md-6">
   <div className={` ${styles.designTask} rounded-4  pt-2 px-3`} style={{backgroundColor:"#efefd8"}}>
 <i className={`fa-solid fa-bars-progress  rounded-4 p-2 fa-2x mx-2 my-2`} style={{backgroundColor:"#d0d0a4"}}></i>
 <h5 className='text-muted'>In Progress</h5>
 <h4>{taskProgres}</h4>
 </div>
   </div>
-  <div className="col-md-4">
+  <div className="col-lg-4 col-md-6">
   <div className={` ${styles.designTask} rounded-4 pt-2 px-3`} style={{backgroundColor:"#F4E5ED"}}>
 <i className={`fa-regular fa-circle-check  rounded-4 p-2 fa-2x mx-2 my-2`} style={{backgroundColor:"#E7C3D7"}}></i>
 <h5 className='text-muted'>Done</h5>
@@ -133,7 +133,7 @@ useEffect(()=>{
         </div>
       {userRole=="Employee"?"":(
  <div className="col-md-6 ">
- <div className='row gx-5 ' >
+ <div className='row  ' >
 <div className='d-flex '>
 <div className={`${styles.vertical}`}></div>
 <div className='p-3'><h3>Users</h3>
@@ -142,7 +142,7 @@ useEffect(()=>{
 
 </div>
 
-<div className='col-md-3'>
+<div className='col-lg-4 col-md-6'>
 
 <div className={` ${styles.designTask} rounded-4 pt-2 px-3`} style={{backgroundColor:"#E5E6F4"}}>
 <i className={`fa-solid fa-chart-line rounded-4 p-2 fa-2x mx-2 my-2`} style={{backgroundColor:"#CFD1EC"}}></i>
@@ -151,7 +151,7 @@ useEffect(()=>{
 <h4>{userActive}</h4>
 </div>
 </div>
-   <div className='col-md-3'>
+   <div className='col-lg-4 col-md-6'>
 
 <div className={` ${styles.designTask} rounded-4  pt-2 px-3`} style={{backgroundColor:"#F4F4E5"}}>
 
