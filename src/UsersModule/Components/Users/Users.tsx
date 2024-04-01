@@ -101,7 +101,7 @@ export default function UsersList() {
   };
   return (
     <>
-      <div className="container-fluid d-flex flex-column   ">
+      <div className="container-fluid d-flex flex-column   slide-in-bottom">
         <PagesHeader title={"Users"} />
         {!isLoading ? (
           <>
@@ -227,6 +227,7 @@ export default function UsersList() {
             ) : (
               <div className="mt-5 text-center">
                 <img src={noData} alt="noData" />
+                <h3 className="text-warning mt-2">No Data!</h3>
               </div>
             )}
           </>
