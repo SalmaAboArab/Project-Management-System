@@ -81,7 +81,7 @@ export default function TasksList() {
     <>
       <div className="TasksListContainer slide-in-bottom">
       <div className="title d-flex justify-content-between bg-white p-3 mb-3 mx-3">
-        <h3>Tasks</h3>
+        <h3 className="textColer">Tasks</h3>
         <button
           onClick={goToAddTasks}
           className="btn btn-warning rounded-5 text-white"

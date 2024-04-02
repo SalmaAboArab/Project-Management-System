@@ -7,8 +7,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../Context/Components/AuthContext";
 import { toast } from "react-toastify";
 import ChangePassword from "../../../AuthModule/Components/ChangePassword/ChangePassword";
+import { ThemeContext, ITheme } from "../../../Context/Components/ThemeContext";
+import logo1 from "../../../assets/PMS 3.png";
+
 
 export default function Navbar() {
+  const { isDarkMode }:ITheme = useContext(ThemeContext);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   let { loginData } = useContext(AuthContext);
@@ -28,7 +32,11 @@ export default function Navbar() {
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid px-4">
           <Link to={"/dashboard"}>
-            <img className="w-100 main-logo" src={logo} alt="logo" />
+          {isDarkMode ? (
+        <img className="w-100 main-logo" src={logo1} alt="Dark Logo" />
+      ) : (
+          <img className="w-100 main-logo" src={logo} alt="logo" />
+          )}
           </Link>
           <button
             className="navbar-toggler "

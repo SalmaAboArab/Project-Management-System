@@ -8,13 +8,16 @@ import 'react-toastify/dist/ReactToastify.css'
 import AuthContextProvider from './Context/Components/AuthContext.tsx'
 import React from 'react'
 import './index.css'
+import  ThemeContext  from './Context/Components/ThemeContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <ThemeContext>
     <AuthContextProvider>
       <ToastContainer/>
       <App />
     </AuthContextProvider>
+    </ThemeContext>
   </React.StrictMode>
   
 )

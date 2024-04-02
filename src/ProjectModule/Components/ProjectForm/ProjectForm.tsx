@@ -66,11 +66,11 @@ export default function ProjectForm() {
     <>
       <div className="ProjectFormContainer slide-in-bottom vh-100 bg-light overflow-auto pageOverflow pb-2">
         <div className="ProjectFormHeader bg-white ps-5 py-4">
-          <Link to="/dashboard/projects" className="text-black">
+          <Link to="/dashboard/projects" className="text-black textColer">
             <i className="fa fa-arrow-left me-2"></i>
             View All Projects
           </Link>
-          <h2 className="mt-2">
+          <h2 className="mt-2 textColer">
             {action == "add" ? "Add a New Project" : "Update Project"}
           </h2>
         </div>
@@ -118,7 +118,7 @@ export default function ProjectForm() {
           <div className="line border-top py-4 px-4 row justify-content-between mt-3">
             <div className="cancel col-xxl-3 col-md-6 my-3 row justify-content-start text-center px-1">
               <button
-                className="btn border border-black rounded-5 col-md-5"
+                className="btn border border-black rounded-5 col-md-5 wColer"
                 onClick={() => navigate("/dashboard/projects")}
               >
                 Cancel

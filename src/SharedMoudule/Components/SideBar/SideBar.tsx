@@ -6,8 +6,10 @@ import menu from "../../../assets/menu.png";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../Context/Components/AuthContext.js";
 import ChangePassword from "../../../AuthModule/Components/ChangePassword/ChangePassword";
+import { ThemeContext, ITheme } from "../../../Context/Components/ThemeContext";
 
 export default function SideBar() {
+  const { toggleTheme, isDarkMode }:ITheme = useContext(ThemeContext);
   const [handleSidebar, setHandleSidebar] = useState(false);
   const { userRole }: any = useContext(AuthContext);
   const [show, setShow] = useState(false);
@@ -96,11 +98,21 @@ export default function SideBar() {
             </MenuItem>
 
             <MenuItem
-              icon={<i className="fa fa-arrow-right-from-bracket  me-3"></i>}
+              icon={<i className="fa fa-arrow-right-from-bracket  me-1"></i>}
               onClick={logout}
             >
               Logout
             </MenuItem>
+            {<MenuItem
+            onClick={toggleTheme}
+            icon={
+              isDarkMode === true ? (<i className="fa-solid fa-toggle-on me-1 "></i>) : (<i className="fa-solid fa-toggle-off me-3"></i>)
+            }
+          >
+            {
+              isDarkMode === true ? ("Light theme") : ("Dark theme")
+            }
+          </MenuItem>} 
           </Menu>
         </Sidebar>
       </div>
