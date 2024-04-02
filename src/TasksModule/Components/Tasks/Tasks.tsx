@@ -80,7 +80,7 @@ export default function TasksList() {
   return (
     <>
       <div className="TasksListContainer slide-in-bottom">
-      <div className="title d-flex justify-content-between">
+      <div className="title d-flex justify-content-between bg-white p-3 mb-3 mx-3">
         <h3>Tasks</h3>
         <button
           onClick={goToAddTasks}
@@ -94,7 +94,7 @@ export default function TasksList() {
         <div className="col-md-6">
           <input
             type="text"
-            className="form-control  "
+            className="form-control  py-2"
             placeholder="Search by Title"
             onChange={getTitleValue}
           />
@@ -102,7 +102,7 @@ export default function TasksList() {
 
         {
           <div className="col-md-6">
-            <select className="form-control" onChange={getStatusValue}>
+            <select className="form-select py-2" onChange={getStatusValue}>
               <option value="">search by status</option>
               <option>ToDo</option>
               <option>InProgress</option>
@@ -118,15 +118,6 @@ export default function TasksList() {
           <div className="Taskstable-container  text-center px-5 slide-in-bottom mt-5">
         {taskList.length > 0 ? (
           <table className="table">
-            {/* <thead>
-              <tr>
-                <th scope="col" >title</th>
-                <th scope="col">status</th>
-                <th scope="col">description</th>
-                <th scope="col">project</th>
-                <th>Actions</th>
-              </tr>
-            </thead> */}
             <thead className={`${styles.bg}`}>
                 <tr>
                   <th className={` ${styles.test2}`} scope="col">
