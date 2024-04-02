@@ -97,22 +97,24 @@ export default function SideBar() {
               ChangePassword
             </MenuItem>
 
-            <MenuItem
-              icon={<i className="fa fa-arrow-right-from-bracket  me-1"></i>}
-              onClick={logout}
-            >
-              Logout
-            </MenuItem>
-            {<MenuItem
+             {<MenuItem
             onClick={toggleTheme}
             icon={
-              isDarkMode === true ? (<i className="fa-solid fa-toggle-on me-1 "></i>) : (<i className="fa-solid fa-toggle-off me-3"></i>)
+              isDarkMode === true ? (<i className="fa-solid fa-toggle-on me-1   "></i>) : (<i className="fa-solid fa-toggle-off me-1 "></i>)
             }
           >
             {
               isDarkMode === true ? ("Light theme") : ("Dark theme")
             }
           </MenuItem>} 
+
+            <MenuItem
+              icon={<i className="fa fa-arrow-right-from-bracket  me-1 "></i>}
+              onClick={logout}
+            >
+              Logout
+            </MenuItem>
+           
           </Menu>
         </Sidebar>
       </div>
