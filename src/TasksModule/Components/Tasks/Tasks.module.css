@@ -1,0 +1,33 @@
+  .test1 {
+    border-top-right-radius: 20px;
+  }
+  .test2 {
+    border-top-left-radius: 20px;
+  }
+  .bg th {
+    background-color: #315951;
+    color: #f5f5f5;
+  }
+  .solid {
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+  }
+  
+  .verticalRule {
+    border-left: 1px solid rgb(255, 255, 255);
+    height: 50px; /* Adjust the height as needed */
+  }
+  .paginationBtn {
+    background-color: #315951;
+    border: 1px solid #f6e377;
+    color: rgb(252, 248, 248) !important;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .paginationBtn:hover {
+    background-color: #9ce4d6;
+    color: #000 !important;
+  }
+  

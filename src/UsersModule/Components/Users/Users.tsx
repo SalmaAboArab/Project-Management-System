@@ -10,11 +10,11 @@ import Loading from "../../../SharedMoudule/Components/Loading/Loading";
 import { Button, Modal } from "react-bootstrap";
 import Pagination from "../../../SharedMoudule/Components/Pagination/Pagination";
 import ViewModal from "../../../SharedMoudule/Components/ViewModal/ViewModal";
-import noData from "../../../assets/noData.jpeg";
 import { AuthContext } from "../../../Context/Components/AuthContext";
 import { useNavigate } from "react-router-dom";
 import noActive from "../../../assets/delete.png"
 import active from "../../../assets/Active.jpg"
+import NoData from "../../../SharedMoudule/Components/NoData/NoData";
 export default function UsersList() {
   let { loginData } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -225,10 +225,7 @@ export default function UsersList() {
                 </table>
               </div>
             ) : (
-              <div className="mt-5 text-center">
-                <img src={noData} alt="noData" />
-                <h3 className="text-warning mt-2">No Data!</h3>
-              </div>
+              <NoData/>
             )}
           </>
         ) : (
