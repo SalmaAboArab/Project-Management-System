@@ -118,7 +118,7 @@ export default function SideBar() {
 
             <MenuItem
               icon={<i className="fa fa-arrow-right-from-bracket  me-1 text-warning "></i>}
-              onClick={handleShowLogout}           
+              onClick={handleShowLogout}   >        
               <span className="text-warning">Logout</span>
             </MenuItem>
            
