@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import ChangePassword from "../../../AuthModule/Components/ChangePassword/ChangePassword";
 import { ThemeContext, ITheme } from "../../../Context/Components/ThemeContext";
 import logo1 from "../../../assets/PMS 3.png";
+import Logout from "../Logout/Logout";
 
 
 export default function Navbar() {
@@ -16,6 +17,11 @@ export default function Navbar() {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   let { loginData } = useContext(AuthContext);
+
+  const [showLogout, setShowLogout] = useState(false);
+
+  const handleCloseLogout = () => setShowLogout(false);
+  const handleShowLogout = () => setShowLogout(true);
 
   const logout = () => {
     localStorage.removeItem("userToken");
@@ -114,12 +120,14 @@ export default function Navbar() {
                 </button>
           
               <button
-                onClick={logout}
+                onClick={handleShowLogout}
                 className="rounded-3 mt-1 bg-danger w-25 mx-auto border-0 p-2 text-white"
                 type="button"
               >
                 Logout <i className="fa fa-arrow-right-from-bracket  ms-1"></i>
               </button>
+      <Logout logout={logout}  handleCloseLogout={handleCloseLogout}  showLogout={showLogout}/>
+
             </ul>
           </div>
         </div>

@@ -148,11 +148,11 @@ a {
 
 /* =========================== */
 .header-container {
-  height: 413px;
+  height: 350px;
   background-image: url(../src/assets/Rectangle.png);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center top;
 }
 
 .bg-layout {

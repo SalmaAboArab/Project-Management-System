@@ -10,7 +10,7 @@ import { AuthContext } from "../../../Context/Components/AuthContext";
 
 export default function TasksForm() {
   const navigate = useNavigate();
-  const{userRole}=useContext(AuthContext);
+  let { loginData } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -55,7 +55,7 @@ export default function TasksForm() {
       const response = await axios.get(`${baseUrl}/Task/${curruntTaskId}`, {
         headers: { Authorization: token },
       });
-      console.log("current task ", response.data);
+      // console.log("current task ", response.data);
       // setCurrentTask(response.data);
       const currentTask = response.data;
       setValue("title", currentTask?.title);
@@ -71,7 +71,7 @@ export default function TasksForm() {
       const response = await axios.get(`${baseUrl}/Project/?pageSize=10000&pageNumber=1`, {
         headers: { Authorization: token },
       });
-      console.log("projects list ", response.data.data);
+      // console.log("projects list ", response.data.data);
       setProjectsList(response.data.data);
     } catch (error) {
       console.log(error);
@@ -83,7 +83,7 @@ export default function TasksForm() {
       const response = await axios.get(`${baseUrl}/Users/?pageSize=10000&pageNumber=1`, {
         headers: { Authorization: token },
       });
-      console.log("users list ", response.data.data);
+      // console.log("users list ", response.data.data);
       setUsersList(response.data.data);
     } catch (error) {
       console.log(error);
@@ -91,8 +91,8 @@ export default function TasksForm() {
   };
 
   useEffect(() => {
-    if(userRole!="Manager"){
-      navigate('/dashboard');
+    if (loginData?.userGroup === "Employee") {
+      navigate("/dashboard");
     }
     getusersList();
     if (action == "update") getCurrentTask();

@@ -12,7 +12,7 @@ export default function MasterLayout() {
     <div className="sidebar-container  d-none d-lg-block">
       <SideBar/>
     </div>
-    <div className="main-Content w-100 m-3  overflow-auto pageOverflow vh-100">
+    <div className="main-Content w-100 m-3 rounded-2 overflow-auto pageOverflow vh-100">
       <Outlet/>
     </div>
   </div>

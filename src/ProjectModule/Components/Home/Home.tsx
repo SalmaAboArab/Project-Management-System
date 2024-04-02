@@ -24,7 +24,6 @@ const getTasksCount=async()=>{
     setTaskProgres(response.data.inProgress);
     setTaskDone(response.data.done);
   
-    // console.log(response?.data);
    
   } catch (errors) {
     console.log(errors)
