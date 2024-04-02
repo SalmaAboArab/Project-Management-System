@@ -4,6 +4,8 @@ import axios from "axios";
 import { baseUrl } from "../../../Constants/Components/Urls";
 import { motion } from "framer-motion";
 import { AuthContext } from "../../../Context/Components/AuthContext.js";
+import { useNavigate } from "react-router-dom";
+
 
 type TaskData={
   id:number;
@@ -15,7 +17,8 @@ type updateStatus = (e: any, newStatus: Status) => void;
 
 export default function TasksBoard() {
   const token = localStorage.getItem("userToken");
-  const {userRole}:string=useContext(AuthContext);
+  const {userRole}=useContext(AuthContext);
+  const navigate = useNavigate();
   const [tasks, setTasks] = useState<TaskData[]>([]);
 
   const toDoTasks : TaskData[]= tasks.filter(({status})=> status ==="ToDo");
@@ -63,6 +66,9 @@ export default function TasksBoard() {
     }
   };
   useEffect(() => {
+    if(userRole=='Manager'){
+      navigate('/dashboard');
+    }
     getUserTasks();
   }, []);
   return (

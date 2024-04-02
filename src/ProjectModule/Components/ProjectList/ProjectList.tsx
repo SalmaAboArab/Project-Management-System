@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseUrl } from "../../../Constants/Components/Urls";
 import styles from "./ProjectList.module.css";
-import noData from "../../../assets/noData.jpg"
 import { useNavigate } from "react-router-dom";
 import DeleteModal from "../../../SharedMoudule/Components/DeleteModal/DeleteModal";
 import Loading from "../../../SharedMoudule/Components/Loading/Loading";
+import NoData from "../../../SharedMoudule/Components/NoData/NoData";
 
 export default function ProjectList() {
   const[isLoading,setIsLoading]=useState(true);
@@ -113,7 +113,7 @@ setIsLoading(false)
                     className={` ${styles.test1} ${styles.verticalRule}`}
                     scope="col"
                   >
-                    Action
+                    Actions
                   </th>
                 </tr>
               </thead>
@@ -163,10 +163,7 @@ setIsLoading(false)
              
             </table>
           ) : (
-            <div className="text-center">
-              <img src={noData} className="w-25 "/>
-              <h5 className="mt-3 fw-bold text-warning">No Data</h5>
-            </div>
+            <NoData/>
           )}
         </div>
         <div className="d-flex justify-content-center bg-white pt-2  ">
