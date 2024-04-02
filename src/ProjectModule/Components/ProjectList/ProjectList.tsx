@@ -57,6 +57,7 @@ setIsLoading(false)
       paginationData.title
     );
   }, []);
+  
   // ##################### Filtration ##############################
   const [titleSearch, setTitleSearch] = useState("");
   const searchByTitle = (title: string) => {
@@ -67,14 +68,14 @@ setIsLoading(false)
 
   return (
     <>
-      <div className={`${styles.title} vh-100 slide-in-bottom`}>
-        <div className={`d-flex justify-content-between p-3 bg-white`}>
+      <div className={`${styles.title} vh-100 pt-3 slide-in-bottom`}>
+        <div className={`d-flex justify-content-between rounded-3 mx-3  p-3 bg-white`}>
           <h3 className="textColer">Projects</h3>
           <button
-            className="btn-warning rounded-4 btn"
+            className="btn-warning rounded-4 btn text-white"
             onClick={() => navigate("/dashboard/projects/projects-form/add")}
           >
-            <i className="fa-solid fa-plus"></i>Add New Project
+            <i className="fa-solid fa-plus text-white"></i>Add New Project
           </button>
         </div>
         <div className={`p-3 w-75 m-auto ${styles.borderless}`}>
@@ -92,10 +93,10 @@ setIsLoading(false)
           
         (<>
         
-          <div className="table p-3 ">
+          <div className=" p-3 table-responsive">
           {projects.length > 0 ? (
-            <table className="table table-striped text-center caption-top">
-              <thead className={`${styles.bg}`}>
+            <table className="table table-striped text-center  caption-top">
+              <thead className={`${styles.bg} `}>
                 <tr>
                   <th className={` ${styles.test2}`} scope="col">
                     #
@@ -166,7 +167,8 @@ setIsLoading(false)
             <NoData/>
           )}
         </div>
-        <div className="d-flex justify-content-center bg-white pt-2  ">
+        {projects.length > 0?
+        <div className="d-flex justify-content-center bg-white pt-2 mx-3 rounded-3 ">
           <nav aria-label="Page navigation example">
             <ul className="pagination">
               <li className="page-item">
@@ -207,7 +209,7 @@ setIsLoading(false)
               </li>
             </ul>
           </nav>
-        </div>
+        </div>:""}
         </>)}
        
         

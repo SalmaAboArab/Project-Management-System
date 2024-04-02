@@ -38,7 +38,7 @@ export default function DeleteModal({id,closeDeleteModal,getList,type}) {
             <p>are you sure you want to delete this {type} ? if you are sure just click on delete it</p>
             </div>
             <div className="text-end pt-3 border-top">
-            <button className='btn btn-outline-danger fw-bold' onClick={onSubmitDelete}> {isLoading ? <Loader /> :` Delete this ${type}`}</button>
+            <button className='btn btn-outline-danger fw-bold  bg-danger text-white' onClick={onSubmitDelete}> {isLoading ? <Loader/> :` Delete this ${type}`}</button>
             </div>
           </div>
         </Modal.Body>

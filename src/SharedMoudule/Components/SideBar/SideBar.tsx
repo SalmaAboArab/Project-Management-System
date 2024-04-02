@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../../Context/Components/AuthContext.js";
 import ChangePassword from "../../../AuthModule/Components/ChangePassword/ChangePassword";
 import { ThemeContext, ITheme } from "../../../Context/Components/ThemeContext";
-
+import Logout from "../Logout/Logout.js";
 export default function SideBar() {
   const { toggleTheme, isDarkMode }:ITheme = useContext(ThemeContext);
   const [handleSidebar, setHandleSidebar] = useState(false);
@@ -16,6 +16,11 @@ export default function SideBar() {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const navigate = useNavigate();
+
+  const [showLogout, setShowLogout] = useState(false);
+
+  const handleCloseLogout = () => setShowLogout(false);
+  const handleShowLogout = () => setShowLogout(true);
 
   function toggleCollapse() {
     setHandleSidebar(!handleSidebar);
@@ -29,6 +34,8 @@ export default function SideBar() {
 
   return (
     <>
+      <Logout logout={logout}  handleCloseLogout={handleCloseLogout}  showLogout={showLogout}/>
+
       <ChangePassword show={show} handleClose={handleClose} />
       <div>
         <Sidebar
@@ -110,7 +117,7 @@ export default function SideBar() {
 
             <MenuItem
               icon={<i className="fa fa-arrow-right-from-bracket  me-1 "></i>}
-              onClick={logout}
+              onClick={handleShowLogout}
             >
               Logout
             </MenuItem>

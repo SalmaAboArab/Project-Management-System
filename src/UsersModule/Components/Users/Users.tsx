@@ -148,7 +148,7 @@ export default function UsersList() {
                           <td>
                             <div className="dropdown ">
                               <button
-                                className="border-0 bg-body"
+                                className="border-0 bg-body  rounded-3 pt-2 "
                                 type="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
