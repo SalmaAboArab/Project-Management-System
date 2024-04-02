@@ -1,5 +1,5 @@
 
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, createHashRouter } from 'react-router-dom'
 import './App.css'
 import Login from './AuthModule/Components/Login/Login'
 import NotFound from './SharedMoudule/Components/NotFound/NotFound'
@@ -29,7 +29,7 @@ function App() {
   let {loginData}:any=useContext(AuthContext);
   const {isDarkMode, themeClass}:ITheme = useContext(ThemeContext);
 
-  const routers = createBrowserRouter([
+  const routers = createHashRouter([
     {
       path:"/",element:
       

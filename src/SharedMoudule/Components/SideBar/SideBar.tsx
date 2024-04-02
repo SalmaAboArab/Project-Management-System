@@ -107,7 +107,7 @@ export default function SideBar() {
              {<MenuItem
             onClick={toggleTheme}
             icon={
-              isDarkMode === true ? (<i className="fa-solid fa-toggle-on me-1   "></i>) : (<i className="fa-solid fa-toggle-off me-1 "></i>)
+              isDarkMode === true ? (<i className="fa-solid fa-toggle-on me-1   fs-3"></i>) : (<i className="fa-solid fa-toggle-off me-1 fs-3"></i>)
             }
           >
             {
@@ -115,11 +115,11 @@ export default function SideBar() {
             }
           </MenuItem>} 
 
+
             <MenuItem
-              icon={<i className="fa fa-arrow-right-from-bracket  me-1 "></i>}
-              onClick={handleShowLogout}
-            >
-              Logout
+              icon={<i className="fa fa-arrow-right-from-bracket  me-1 text-warning "></i>}
+              onClick={handleShowLogout}           
+              <span className="text-warning">Logout</span>
             </MenuItem>
            
           </Menu>
