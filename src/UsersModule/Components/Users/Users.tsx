@@ -102,7 +102,7 @@ export default function UsersList() {
   return (
     <>
       <div className="container-fluid d-flex flex-column   slide-in-bottom">
-        <PagesHeader title={"Users"} />
+        <PagesHeader title={"Users"}  />
         {!isLoading ? (
           <>
             <Filter setUsersList={setUsersList} />
