@@ -76,7 +76,7 @@ export default function TasksBoard() {
       <div
         className={`TasksBoardContainer vh-100 bg-light overflow-auto pageOverflow pb-2 slide-in-bottom`}
       >
-        <div className="TasksBoardHeader bg-white ps-5 py-4">
+        <div className="TasksBoardHeader bg-white ps-5 py-4 textColer">
           <h2 className="mt-2">Tasks Board</h2>
         </div>
 
@@ -118,7 +118,7 @@ const Column = ({ title, status, tasksArray, changeStatus }: ColumnProps) => {
 
   return (
 <motion.div
-            className="toDo col-md-4 "
+            className="toDo textColer col-md-4 "
             layout
             
             onDrop={(e) => {
