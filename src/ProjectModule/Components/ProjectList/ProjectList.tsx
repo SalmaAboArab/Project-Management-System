@@ -93,7 +93,7 @@ setIsLoading(false)
           
         (<>
         
-          <div className=" p-3 table-responsive">
+          <div className=" p-3 table-responsive slide-in-bottom">
           {projects.length > 0 ? (
             <table className="table table-striped text-center  caption-top">
               <thead className={`${styles.bg} `}>
@@ -168,7 +168,7 @@ setIsLoading(false)
           )}
         </div>
         {projects.length > 0?
-        <div className="d-flex justify-content-center bg-white pt-2 mx-3 rounded-3 ">
+        <div className="d-flex justify-content-center pt-2 mx-3 rounded-3 slide-in-bottom">
           <nav aria-label="Page navigation example">
             <ul className="pagination">
               <li className="page-item">

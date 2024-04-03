@@ -132,7 +132,7 @@ const Column = ({ title, status, tasksArray, changeStatus }: ColumnProps) => {
             }}
             
           >
-            <h4 className="mb-5">{title}</h4>
+            <h4 className={`mb-5 pt-4 ps-3`}>{title}</h4>
             <div className={`${styles.boardContainer} rounded-4 py-4`}>
               {tasksArray?.map((task) => (
                 <Card key={task.id} card={task} />

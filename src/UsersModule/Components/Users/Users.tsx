@@ -107,7 +107,7 @@ export default function UsersList() {
           <>
             <Filter setUsersList={setUsersList} />
             {usersList.length > 0 ? (
-              <div className={`${styles.userslistContainer} table-responsive w-100`}>
+              <div className={`${styles.userslistContainer} slide-in-bottom table-responsive w-100`}>
                 <table className="w-100   table text-center">
                   <thead className=" p-4">
                     <tr>
