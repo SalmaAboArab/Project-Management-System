@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import axios from "axios";
 import { baseUrl } from "../../../Constants/Components/Urls";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import DeleteModal from "../../../SharedMoudule/Components/DeleteModal/DeleteModal";
 import Loading from "../../../SharedMoudule/Components/Loading/Loading";
 import NoData from "../../../SharedMoudule/Components/NoData/NoData";
+import { AuthContext } from "../../../Context/Components/AuthContext";
 
 export default function ProjectList() {
   const[isLoading,setIsLoading]=useState(true);
@@ -19,14 +20,24 @@ const closeModal = () => {
   const [projects, setProjects] = useState([]);
   const [pageArray, setPageArray] = useState([]);
   const token = localStorage.getItem("userToken");
-
+  const {userRole}=useContext(AuthContext);
 
   const paginationData = { pageNumber: 1, pageSize: 10, title: "" };
 
   const getAllProject = async (data: any) => {
+    let url;
+    if (userRole=='Manager') {
+      url=`${baseUrl}/Project/manager`;
+    }
+    else{
+      url=`${baseUrl}/Project/employee`
+    }
+
     try {
      setIsLoading(true)
-      const response = await axios.get(`${baseUrl}/Project/manager`, {
+    //  employee
+    
+      const response = await axios.get(url, {
         headers: { Authorization: token },
         params: {
           pageSize: data?data.pageSize:paginationData.pageSize,
@@ -71,12 +82,16 @@ setIsLoading(false)
       <div className={`${styles.title} vh-100 pt-3 slide-in-bottom textColer`}>
         <div className={`d-flex justify-content-between rounded-3 mx-3  p-3 bg-white textColer`}>
           <h3 className="">Projects</h3>
-          <button
+          {
+            userRole=='Manager'?
+            <button
             className="btn-warning rounded-4 btn text-white"
             onClick={() => navigate("/dashboard/projects/projects-form/add")}
           >
             <i className="fa-solid fa-plus text-white"></i>Add New Project
           </button>
+          :''
+          }
         </div>
         <div className={`p-3 w-75 m-auto ${styles.borderless}`}>
           <input
@@ -110,12 +125,17 @@ setIsLoading(false)
                   <th className={`${styles.verticalRule}   `} scope="col">
                     TaskNum
                   </th>
-                  <th
+                  {
+                    userRole=='Manager'?
+                    <th
                     className={` ${styles.test1} ${styles.verticalRule}`}
                     scope="col"
                   >
                     Actions
                   </th>
+                  :''
+                  }
+                  
                 </tr>
               </thead>
       
@@ -126,37 +146,39 @@ setIsLoading(false)
      <td>{pro.title}</td>
      <td>{pro.description}</td>
      <td>{pro.task.length}</td>
+     {userRole=='Manager'?
      <td>
-       <button
-         className={`${styles.solid}`}
-         onClick={() => {
-           localStorage.setItem(
-             "curruntProjectId",
-             pro.id
-           );
-           navigate("/dashboard/projects/projects-form/update");
-         }}
+     <button
+       className={`${styles.solid}`}
+       onClick={() => {
+         localStorage.setItem(
+           "curruntProjectId",
+           pro.id
+         );
+         navigate("/dashboard/projects/projects-form/update");
+       }}
+     >
+       <i
+         className="fa fa-edit text-warning mx-2"
+         aria-hidden="true"
        >
-         <i
-           className="fa fa-edit text-warning mx-2"
-           aria-hidden="true"
-         >
-           {" "}
-         </i>
-       </button>
-       <button
-         className={`${styles.solid}`}
-         onClick={() => {
-           setOpenDeleteModal(true);
-           setCurrentProjectId(pro.id);
-         }}
-       >
-         <i
-           className="fa fa-trash text-danger mx-2"
-           aria-hidden="true"
-         ></i>
-       </button>
-     </td>
+         {" "}
+       </i>
+     </button>
+     <button
+       className={`${styles.solid}`}
+       onClick={() => {
+         setOpenDeleteModal(true);
+         setCurrentProjectId(pro.id);
+       }}
+     >
+       <i
+         className="fa fa-trash text-danger mx-2"
+         aria-hidden="true"
+       ></i>
+     </button>
+   </td>
+   :''}
    </tr>
  ))}
 </tbody> 

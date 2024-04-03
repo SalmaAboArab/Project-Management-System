@@ -101,13 +101,12 @@ export default function Navbar() {
               ) : (
                 ""
               )}
-              {userRole == "Employee" ?'':
+              
               <li className="mx-auto smell-screen-link position-relative d-flex align-items-center">
               <Link to={"/dashboard/projects"} className="text-black">
                 Projects
               </Link>
             </li>
-              }
               
 
               {userRole == "Employee" ? 
