@@ -13,10 +13,11 @@ import Logout from "../Logout/Logout";
 
 
 export default function Navbar() {
-  const { isDarkMode }:ITheme = useContext(ThemeContext);
+  const { toggleTheme,isDarkMode }:ITheme = useContext(ThemeContext);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   let { loginData } = useContext(AuthContext);
+  const { userRole }:string = useContext(AuthContext);
 
   const [showLogout, setShowLogout] = useState(false);
 
@@ -60,7 +61,7 @@ export default function Navbar() {
             id="navbarSupportedContent"
           >
             <ul className="ms-auto  navbar-nav mb-2 mb-lg-0">
-              <li className="userInfo bg-light p-3 p-md-2 rounded-4 mx-auto position-relative d-flex flex-wrap align-items-center">
+              <li className={`userInfo ${isDarkMode?'mainColor':'bg-light'} p-3 p-md-2 rounded-4 mx-auto position-relative d-flex flex-wrap align-items-center`}>
                 <div className="Notification">
                   <img src={Notification} alt="Notification-Bill" />
                 </div>
@@ -75,7 +76,7 @@ export default function Navbar() {
                   </div>
                   <div>
                     <h5>{loginData?.userName}</h5>
-                    <h6 className="text-secondary text-opacity-50">
+                    <h6 className={`${isDarkMode?'text-light':'text-secondary'} text-opacity-50`}>
                       {loginData?.userEmail}
                     </h6>
                   </div>
@@ -85,7 +86,7 @@ export default function Navbar() {
 
             {/* smell screen */}
 
-            <ul className="ms-auto  d-lg-none  navbar-nav mb-2 mb-lg-0">
+            <ul className={`ms-auto  d-lg-none  navbar-nav mb-2 mb-lg-0 ${isDarkMode?'':"bg-light rounded-4 py-3"}`}>
               <li className=" mx-auto smell-screen-link  position-relative d-flex align-items-center">
                 <Link to={"/dashboard"} className="text-black">
                   Home
@@ -100,16 +101,32 @@ export default function Navbar() {
               ) : (
                 ""
               )}
+              {userRole == "Employee" ?'':
               <li className="mx-auto smell-screen-link position-relative d-flex align-items-center">
-                <Link to={"/dashboard/projects"} className="text-black">
-                  Projects
-                </Link>
-              </li>
+              <Link to={"/dashboard/projects"} className="text-black">
+                Projects
+              </Link>
+            </li>
+              }
+              
+
+              {userRole == "Employee" ? 
+            (
+              <li className="mx-auto smell-screen-link position-relative d-flex align-items-center">
+              <Link to={"/dashboard/tasks-board"} className="text-black">
+              Tasks Board
+              </Link>
+            </li>
+            ) 
+            : 
+            (
               <li className="mx-auto smell-screen-link position-relative d-flex align-items-center">
                 <Link to={"/dashboard/tasks"} className="text-black">
                   Tasks
                 </Link>
               </li>
+            )
+            }
 
                 <button
                   type="button"
@@ -118,7 +135,27 @@ export default function Navbar() {
                 >
                  🛠 ChangePassword 🛠
                 </button>
-          
+                
+            <li className="mx-auto ">
+            {<button
+            className={isDarkMode === true ?"btn btn-secondary rounded-3 mt-1 my-3 p-2 ":"btn btn-dark rounded-3 mt-1 my-3 p-2"}  
+            onClick={toggleTheme}
+            
+          >
+            <i>
+            {
+              isDarkMode === true ? (<i className="fa-solid fa-toggle-on me-2"></i>) : (<i className="fa-solid fa-toggle-off me-2 "></i>)
+            }
+            </i>
+            <h6>
+            {
+              isDarkMode === true ? ("Light theme") : ("Dark theme")
+            }
+            </h6>
+            </button>} 
+            
+            </li>
+         
               <button
                 onClick={handleShowLogout}
                 className="rounded-3 mt-1 bg-danger w-25 mx-auto border-0 p-2 text-white"

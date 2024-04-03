@@ -129,7 +129,7 @@
   color: var(--main-dark-color);
 }
 .dark-theme .navbar {
-  background-color: #394251 !important;
+  background-color: #ef9b28 !important;
   color: #fff;
 }
 .dark-theme .nav-text,
@@ -196,7 +196,7 @@
   color: #fff !important;
 }
 .dark-theme .textColer {
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .dark-theme .wColer {
@@ -206,5 +206,13 @@
 }
 
 .dark-theme .TasksBoardContainer {
-  background-color: #bfc3cb !important;
+  background-color: #183331b2 !important;
 }
+.mainColor{
+  background-color: #315951;
+  color: #fff;
+}
+/*#244c49b2*/
+/*#183331b2*/
+/*#315951*/
+/*#f09a22 =>orange*/

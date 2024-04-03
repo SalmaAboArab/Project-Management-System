@@ -198,7 +198,7 @@ function clearInputs() {
           
           <button
                 type="submit"
-                className={`btn btn-warning rounded-5 w-50 text-center me-3 text-white   ${
+                className={`btn btn-warning rounded-3 w-50 text-center me-3 text-white   ${
                   isLoading ? "noClick" : ""
                 }`}
               >

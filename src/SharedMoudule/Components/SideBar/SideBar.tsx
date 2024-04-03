@@ -69,13 +69,16 @@ export default function SideBar() {
               Users
             </MenuItem>
             :""}
-            <MenuItem
+            {userRole == "Employee" ?'':
+              <MenuItem
               // icon={<i className="   fa-solid fa-briefcase" ></i>}
               icon={<img src={menu} className=" me-3" />}
               component={<Link to={"/dashboard/projects"} />}
             >
               Projects
             </MenuItem>
+              }
+            
 
             {userRole == "Employee" ? 
             (
@@ -107,7 +110,7 @@ export default function SideBar() {
              {<MenuItem
             onClick={toggleTheme}
             icon={
-              isDarkMode === true ? (<i className="fa-solid fa-toggle-on me-1   fs-3"></i>) : (<i className="fa-solid fa-toggle-off me-1 fs-3"></i>)
+              isDarkMode === true ? (<i className="fa-solid fa-toggle-on me-2   fs-3"></i>) : (<i className="fa-solid fa-toggle-off me-2 fs-3"></i>)
             }
           >
             {

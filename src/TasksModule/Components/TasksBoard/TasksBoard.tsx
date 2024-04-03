@@ -5,6 +5,7 @@ import { baseUrl } from "../../../Constants/Components/Urls";
 import { motion } from "framer-motion";
 import { AuthContext } from "../../../Context/Components/AuthContext.js";
 import { useNavigate } from "react-router-dom";
+import { ITheme, ThemeContext } from "../../../Context/Components/ThemeContext.js";
 
 
 type TaskData={
@@ -16,6 +17,7 @@ type TaskData={
 type updateStatus = (e: any, newStatus: Status) => void;
 
 export default function TasksBoard() {
+  const { isDarkMode }:ITheme = useContext(ThemeContext);
   const token = localStorage.getItem("userToken");
   const {userRole}=useContext(AuthContext);
   const navigate = useNavigate();
@@ -76,7 +78,7 @@ export default function TasksBoard() {
       <div
         className={`TasksBoardContainer vh-100 bg-light overflow-auto pageOverflow pb-2 slide-in-bottom`}
       >
-        <div className="TasksBoardHeader bg-white ps-5 py-4 textColer">
+        <div className={`TasksBoardHeader ${isDarkMode?"mainColor":'bg-white'} ps-5 py-4 textColer`}>
           <h2 className="mt-2">Tasks Board</h2>
         </div>
 

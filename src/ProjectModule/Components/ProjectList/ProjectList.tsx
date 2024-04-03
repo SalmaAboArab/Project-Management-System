@@ -23,15 +23,15 @@ const closeModal = () => {
 
   const paginationData = { pageNumber: 1, pageSize: 10, title: "" };
 
-  const getAllProject = async (paginationData: any) => {
+  const getAllProject = async (data: any) => {
     try {
      setIsLoading(true)
       const response = await axios.get(`${baseUrl}/Project/manager`, {
         headers: { Authorization: token },
         params: {
-          pageSize: paginationData.pageSize,
-          pageNumber: paginationData.pageNo,
-          title: paginationData.title,
+          pageSize: data?data.pageSize:paginationData.pageSize,
+          pageNumber: data?data.pageNo:paginationData.pageNumber,
+          title: data?data.title:paginationData.title,
         },
       });
 

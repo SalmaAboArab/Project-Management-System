@@ -24,7 +24,7 @@ export default function Login() {
       navigate("/dashboard");
     } catch (error: any) {
       
-      toast.error(error?.message || "There's a mistake.");
+      toast.error(error?.response?.data?.message || "There's a mistake.");
     }
     setIsLoading(false);
   }
