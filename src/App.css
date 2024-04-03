@@ -91,8 +91,8 @@
 :root {
   --main-color: #ef9b28;
   --second-color: #f7f9fe;
-  --main-dark-color: #121826;
-  --main-bg-dark-color: #060f20;
+  --main-dark-color: #183331b2;
+  --main-bg-dark-color: #315951;
 }
 
 .dark-theme {
@@ -190,19 +190,27 @@
 }
 .dark-theme .text-black {
   color: #fff !important;
+  background-color: #183331b2 !important;
 }
 .dark-theme .TaskFormContainer {
-  background-color: var(--second-color) !important;
+ 
+  background-color: var(--main-dark-color) !important;
   color: #fff !important;
+}
+.dark-theme .TaskFormHeader{
+  background-color: #183331b2 !important;
+  color: #fff;
+
 }
 .dark-theme .textColer {
   color: #fff !important;
+  background-color: #183331b2 !important;
 }
 
 .dark-theme .wColer {
   color: #fff !important;
 
-  background-color: #394251 !important;
+ 
 }
 
 .dark-theme .TasksBoardContainer {
@@ -212,6 +220,13 @@
   background-color: #315951;
   color: #fff;
 }
+
+.dark-theme .ProjectFormHeader{
+  background-color: #183331b2 !important;
+  color: #fff;
+
+}
+
 /*#244c49b2*/
 /*#183331b2*/
 /*#315951*/
