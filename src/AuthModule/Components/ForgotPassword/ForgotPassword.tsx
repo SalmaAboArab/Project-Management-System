@@ -39,7 +39,7 @@ const submitEmail=async(data:any)=>{
         </div>
         <form
           onSubmit={handleSubmit(submitEmail)}
-          className="form  col-xl-5 col-lg-6 col-md-7 col-sm-9 col-10 bg-info rounded-4 p-sm-5 p-3"
+          className="form  col-xl-5 col-lg-6 col-md-7 col-sm-9 col-10 bg-info rounded-4 p-sm-5 p-5"
         >
           <p className="text-light mb-0 mt-3">welcome to PMS</p>
           <h2 className="form-Name ">
