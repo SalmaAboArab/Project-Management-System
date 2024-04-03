@@ -69,7 +69,7 @@ export default function SideBar() {
               Users
             </MenuItem>
             :""}
-            {userRole == "Employee" ?'':
+            
               <MenuItem
               // icon={<i className="   fa-solid fa-briefcase" ></i>}
               icon={<img src={menu} className=" me-3" />}
@@ -77,7 +77,6 @@ export default function SideBar() {
             >
               Projects
             </MenuItem>
-              }
             
 
             {userRole == "Employee" ? 
