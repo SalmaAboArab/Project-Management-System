@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 export default function Pagination({ pageNum, pagesArray, setPageNum }) {
+  // console.log({ pageNum, pagesArray, setPageNum });
+  
   const [currentPage, setCurrentPage] = useState(pageNum);
   const itemsPerPage = 5;
   const startIndex = Math.max(1, currentPage - Math.floor(itemsPerPage / 2));
@@ -45,7 +47,7 @@ export default function Pagination({ pageNum, pagesArray, setPageNum }) {
       <ul className="pagination">
         <li className="page-item">
           <button
-            className="border-0 p-0"
+            className="border-0 p-0 rounded-5"
             type="button"
             onClick={handlePrevious}
           >
@@ -78,8 +80,8 @@ export default function Pagination({ pageNum, pagesArray, setPageNum }) {
           </li>
         ))}
         <li className="page-item">
-          <button className="border-0 p-0" type="button" onClick={handleNext}>
-            <a className="page-link" aria-label="Next">
+          <button className="border-0 p-0 rounded-5" type="button" onClick={handleNext}>
+            <a className="page-link " aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
               <span className="sr-only">Next</span>
             </a>

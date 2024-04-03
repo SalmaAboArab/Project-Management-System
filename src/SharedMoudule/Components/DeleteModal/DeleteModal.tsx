@@ -6,7 +6,7 @@ import axios from 'axios'
 import { baseUrl } from '../../../Constants/Components/Urls';
 import Loader from "../../../SharedMoudule/Components/Loading/Loading";
 
-export default function DeleteModal({id,closeDeleteModal,getList,type}) {
+export default function DeleteModal({id,closeDeleteModal,getList,type,pageNum,titleSearch}) {
     const [deleteShow, setDeleteShow] = useState(true);
     let token=localStorage.getItem('userToken')
     const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,7 @@ export default function DeleteModal({id,closeDeleteModal,getList,type}) {
           // console.log(response);
           deleteHandleClose();
           toast.success(`${type} deleted succefully`)
-          getList()
+          getList(pageNum,titleSearch)
         }catch(error){
           setIsLoading(false);
           // console.log(error);

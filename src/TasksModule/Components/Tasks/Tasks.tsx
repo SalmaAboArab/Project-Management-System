@@ -8,15 +8,18 @@ import NoData from "../../../SharedMoudule/Components/NoData/NoData.js";
 import DeleteModal from "../../../SharedMoudule/Components/DeleteModal/DeleteModal.js";
 import { AuthContext } from "../../../Context/Components/AuthContext.js";
 import styles from "./Tasks.module.css";
+import Pagination from "../../../SharedMoudule/Components/Pagination/Pagination.js";
 
 export default function TasksList() {
   const [taskList, setTaskList] = useState([]);
   const [searchByTitle, setSearchByTitle] = useState("");
-  const [statusSearch, setStatusSearch] = useState([]);
+  const [statusSearch, setStatusSearch] = useState("");
   const [pagesArray, setPagesArray] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [currentTaskId, setCurrentTaskId] = useState(null);
+  const [pageNum, setPageNum] = useState(1);
+
   let { loginData } = useContext(AuthContext);
 
   const closeModal = () => {
@@ -24,34 +27,33 @@ export default function TasksList() {
   };
 
   const token = localStorage.getItem("userToken");
+
   const getTitleValue = (e: string) => {
     setSearchByTitle(e.target.value);
-
-    getTasksList(1, 10, statusSearch, e.target.value);
   };
   const getStatusValue = (e: string) => {
     setStatusSearch(e.target.value);
-    getTasksList(1, 10, e.target.value, searchByTitle);
   };
+
   const navigate = useNavigate();
   const goToAddTasks = () => {
     navigate("/dashboard/tasks/tasks-form/add");
   };
   const getTasksList = async (
     pageNo: number,
-    pageSize: number,
     status: string,
     title: string
   ) => {
-    
+    console.log(pageNo, status, title);
+
     try {
       let response = await axios.get(`${baseUrl}/Task/manager?`, {
         headers: { Authorization: token },
         params: {
-          pageNumber: pageNo ? pageNo : 1,
-          pageSize: pageSize ? pageSize : 10,
-          status: status,
-          title: title,
+          pageNumber: pageNo,
+          pageSize: 10,
+          status,
+          title,
         },
       });
 
@@ -61,10 +63,8 @@ export default function TasksList() {
           .map((_, i) => i + 1)
       );
 
-      // console.log(response.data.totalNumberOfPages);
       setTaskList(response.data.data);
       setIsLoading(false);
-      //toast.success("password changed successfully");
     } catch (error: string) {
       toast.error(error?.response?.data?.message || "There's a mistake.");
       setIsLoading(false);
@@ -72,16 +72,16 @@ export default function TasksList() {
   };
 
   useEffect(() => {
-   if (loginData?.userGroup === "Employee") {
+    if (loginData?.userGroup === "Employee") {
       navigate("/dashboard");
     }
-    getTasksList(1, 10,"","");
+    getTasksList(pageNum, statusSearch, searchByTitle);
     setIsLoading(true);
-  }, []);
+  }, [searchByTitle, statusSearch, pageNum]);
   return (
     <>
       <div className="TasksListContainer slide-in-bottom">
-        <div className="title d-flex justify-content-between rounded-3 bg-white p-3 mb-3 mx-3">
+        <div className="title d-flex justify-content-between rounded-3 bg-white p-3 mb-3 ">
           <h3 className="textColer">Tasks</h3>
           <button
             onClick={goToAddTasks}
@@ -91,19 +91,22 @@ export default function TasksList() {
           </button>
         </div>
 
-        <div className="row p-3 ">
-          <div className="col-md-6 mt-2">
+        <div className="row py-3 mb-2 bg-white rounded-2 mx-1  ">
+          <div className="col-md-3 mt-md-0 mt-2 ">
             <input
               type="text"
-              className="form-control  py-2"
+              className="form-control  py-2 shadow rounded-5"
               placeholder="Search by Title"
               onChange={getTitleValue}
             />
           </div>
 
           {
-            <div className="col-md-6 mt-2">
-              <select className="form-select py-2" onChange={getStatusValue}>
+            <div className="col-md-2 mt-md-0 mt-2">
+              <select
+                className="form-select py-2 shadow rounded-5"
+                onChange={getStatusValue}
+              >
                 <option value="">search by status</option>
                 <option>ToDo</option>
                 <option>InProgress</option>
@@ -118,9 +121,11 @@ export default function TasksList() {
             <Loading components={1} />
           </div>
         ) : (
-          <div className="Taskstable-container  table-responsive  text-center px-5 slide-in-bottom mt-5">
+          <div
+            className={`${styles.userslistContainer} table-responsive w-100`}
+          >
             {taskList.length > 0 ? (
-              <table className="table  ">
+              <table className="table table-striped  text-center ">
                 <thead className={`${styles.bg}`}>
                   <tr>
                     <th className={` ${styles.test2}`} scope="col">
@@ -146,11 +151,11 @@ export default function TasksList() {
                 <tbody>
                   {taskList.map((task: object) => (
                     <tr key={task.id}>
-                      <td>{task.title}</td>
-                      <td>{task.status}</td>
-                      <td>{task.description}</td>
-                      <td>{task.project.title}</td>
-                      <td>
+                      <td className="p-3">{task.title}</td>
+                      <td className="p-3">{task.status}</td>
+                      <td className="p-3">{task.description}</td>
+                      <td className="p-3">{task.project.title}</td>
+                      <td className="p-3">
                         <button
                           className={`btn`}
                           onClick={() => {
@@ -181,12 +186,27 @@ export default function TasksList() {
                     </tr>
                   ))}
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <td colSpan={10} className="rounded-bottom-4 border-0 ">
+                      {taskList.length > 0 ? (
+                        <Pagination
+                          pagesArray={pagesArray}
+                          setPageNum={setPageNum}
+                          pageNum={pageNum}
+                        />
+                      ) : (
+                        ""
+                      )}
+                    </td>
+                  </tr>
+                </tfoot>
               </table>
             ) : (
               <NoData />
             )}
 
-            {taskList.length > 0 ? (
+            {/* {taskList.length > 0 ? (
               <nav aria-label="Page navigation example">
                 <div className="d-flex justify-content-center  pt-2  ">
                   <nav aria-label="Page navigation example">
@@ -238,9 +258,10 @@ export default function TasksList() {
               </nav>
             ) : (
               ""
-            )}
+            )} */}
           </div>
         )}
+
         {openDeleteModal && (
           <DeleteModal
             id={currentTaskId}

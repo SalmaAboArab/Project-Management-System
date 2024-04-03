@@ -107,8 +107,8 @@ export default function UsersList() {
           <>
             <Filter setUsersList={setUsersList} />
             {usersList.length > 0 ? (
-              <div className={`${styles.userslistContainer} table-responsive w-100`}>
-                <table className="w-100   table text-center">
+              <div className={`${styles.userslistContainer}  table-responsive w-100`}>
+                <table className="w-100 table table-striped  mb-4  text-center">
                   <thead className=" p-4">
                     <tr>
                       <th>UserName</th>
@@ -130,9 +130,9 @@ export default function UsersList() {
                         creationDate,
                       } = user) => (
                         <tr className="tr-info" key={id}>
-                          <td>{userName}</td>
-                          <td>{email}</td>
-                          <td>
+                          <td  className="p-3">{userName}</td>
+                          <td  className="p-3">{email}</td>
+                          <td  className="p-3">
                             {isActivated ? (
                               <span className="text-bg-success p-1 rounded-1">
                                 Active
@@ -143,9 +143,9 @@ export default function UsersList() {
                               </span>
                             )}
                           </td>
-                          <td>{phoneNumber}</td>
-                          <td>{formatDate(creationDate)}</td>{" "}
-                          <td>
+                          <td  className="p-3">{phoneNumber}</td>
+                          <td  className="p-3">{formatDate(creationDate)}</td>{" "}
+                          <td  className="p-3">
                             <div className="dropdown ">
                               <button
                                 className="border-0 bg-body  rounded-3 pt-2 "
@@ -182,7 +182,7 @@ export default function UsersList() {
                                     className="dropdown-item "
                                     type="button"
                                   >
-                                    <i className="fa-solid fa-eye me-1 text-success"></i>
+                                    <i className="fa-solid h4 fa-eye me-2 text-success"></i>
                                     View
                                   </button>
                                 </li>
@@ -193,13 +193,13 @@ export default function UsersList() {
                                       setIsActivatedUser(isActivated);
                                       handleShowToggle();
                                     }}
-                                    className="dropdown-item "
+                                    className="dropdown-item  d-flex align-items-center"
                                     type="button"
                                   >
                                     {isActivated ? (
-                                      <i className="text-danger fa-solid fa-toggle-off me-1"></i>
+                                      <i className="text-danger  fa-solid fa-toggle-off me-1"></i>
                                     ) : (
-                                      <i className="h5 text-success fa-solid fa-toggle-on me-1"></i>
+                                      <i className=" text-success fa-solid fa-toggle-on me-1"></i>
                                     )}
                                     Toggle
                                   </button>
@@ -213,7 +213,7 @@ export default function UsersList() {
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td colSpan={10}>
+                      <td colSpan={10} className="rounded-bottom-4 border-0 ">
                         <Pagination
                           pageNum={pageNum}
                           setPageNum={setPageNum}

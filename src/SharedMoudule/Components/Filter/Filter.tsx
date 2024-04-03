@@ -48,12 +48,12 @@ export default function Filter({ setUsersList }) {
       <input
         onChange={handleInputChange}
         placeholder="Search Fleets"
-        className={`${styles.searchInput} rounded-5 p-2 form-control border-1 shadow-sm border-dark`}
+        className={`${styles.searchInput} rounded-5 p-2 form-control   shadow`}
         type="text"
       />
       <select
         onChange={handleSelectChange}
-        className="rounded-pill shadow-sm p-2"
+        className="rounded-pill  p-2 shadow"
       >
         <option value="">Filter</option>
         <option value="userName">Search By User Name</option>
