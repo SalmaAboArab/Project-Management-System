@@ -45,7 +45,6 @@ export default function TasksList() {
   ) => {
     
     try {
-      console.log(pageNo,pageSize,status,title);
       let response = await axios.get(`${baseUrl}/Task/manager?`, {
         headers: { Authorization: token },
         params: {

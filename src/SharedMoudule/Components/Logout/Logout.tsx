@@ -7,12 +7,13 @@ export default function Logout({
 }) {
   return (
     <>
-      <Modal show={showLogout} onHide={handleCloseLogout}>
+      <Modal show={showLogout} onHide={handleCloseLogout} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Are you sure you want to logout?</Modal.Title>
+          <Modal.Title className="text-danger">Logout</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          Clicking on the logout button will log you out of the system.
+        <Modal.Body className="text-center">
+        <h5>Are you sure you want to logout?</h5>
+          By clicking on this button you will get out of this app
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseLogout}>
