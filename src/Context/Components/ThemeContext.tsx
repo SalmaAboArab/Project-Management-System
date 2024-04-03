@@ -21,7 +21,7 @@ const ThemeContextProvider: React.FC<ThemeContextProviderProps> = (props) => {
 
   // JSON.parse(localStorage.getItem("isDarkMode")) / convert string "true" or "false" to true and false
   const [isDarkMode, setIsDarkMode] = useState<boolean>(
-    () => JSON.parse(localStorage.getItem("isDarkMode")) ?? true
+    () => JSON.parse(localStorage.getItem("isDarkMode")) ?? false
   );
 
   const toggleTheme = () => {
