@@ -45,7 +45,7 @@ export default function Login() {
   };
   return (
     <>
-      <div className="auth-container vh-100  d-flex flex-column justify-content-center align-items-center">
+      <div className="auth-container vh-100  d-flex flex-column justify-content-center align-items-center overflow-auto pageOverflow">
         <div className="logo">
           <img className="form-logo pb-2 " src={logo} alt="logo" />
         </div>
@@ -108,7 +108,7 @@ export default function Login() {
             </div>
           </div>
           <div className="links flex-wrap d-flex justify-content-between align-items-center text-white mb-5 ">
-            <Link to={"/register"}>Register Now ?</Link>
+            <Link to={"/register"} className="me-2">Register Now ?</Link>
             <Link to={"/forgot-password"}>Forget Password ?</Link>
           </div>
 
