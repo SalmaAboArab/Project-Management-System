@@ -27,7 +27,7 @@ export default function Navbar() {
   const logout = () => {
     localStorage.removeItem("userToken");
     localStorage.removeItem("loginData");
-    toast.success("BYE BYE 🙁");
+    toast.success("BYE BYE");
     navigate("/");
   };
   const handleShow = () => setShow(true);
