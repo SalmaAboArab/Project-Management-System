@@ -68,9 +68,9 @@ setIsLoading(false)
 
   return (
     <>
-      <div className={`${styles.title} vh-100 pt-3 slide-in-bottom`}>
-        <div className={`d-flex justify-content-between rounded-3 mx-3  p-3 bg-white`}>
-          <h3 className="textColer">Projects</h3>
+      <div className={`${styles.title} vh-100 pt-3 slide-in-bottom textColer`}>
+        <div className={`d-flex justify-content-between rounded-3 mx-3  p-3 bg-white textColer`}>
+          <h3 className="">Projects</h3>
           <button
             className="btn-warning rounded-4 btn text-white"
             onClick={() => navigate("/dashboard/projects/projects-form/add")}

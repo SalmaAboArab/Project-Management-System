@@ -44,7 +44,7 @@ export default function Filter({ setUsersList }) {
   }
 
   return (
-    <div className="bg-white p-3 rounded-3 mb-3 d-flex flex-wrap justify-content-md-start justify-content-center align-items-center gap-3">
+    <div className="bg-white textColer p-3 rounded-3 mb-3 d-flex flex-wrap justify-content-md-start justify-content-center align-items-center gap-3">
       <input
         onChange={handleInputChange}
         placeholder="Search Fleets"
