@@ -93,7 +93,7 @@ useEffect(()=>{
     <div className="container-fluid  pt-5 slide-in-bottom">
       <div className="row justify-content-center">
         <div className="col-md-6 ">
-<div className="row">
+<div className={`row gy-3 ${styles.middle}`}>
   <div>
   <div className='d-flex '>
       <div className={`${styles.vertical}`}></div>
@@ -102,7 +102,7 @@ useEffect(()=>{
         
       </div>
   </div>
-  <div className="col-lg-4 col-md-6 ">
+  <div className={`col-lg-4 col-md-6 `}>
   <div className={` ${styles.designTask} rounded-4 pt-2 px-3 `} style={{backgroundColor:"#d5d7e7"}}>
 
 <i className={`fa-brands fa-squarespace  rounded-4 p-2 fa-2x mx-2 my-2`} style={{backgroundColor:"#ced1f5"}}></i>
@@ -130,7 +130,7 @@ useEffect(()=>{
         </div>
       {userRole=="Employee"?"":(
  <div className="col-md-6 ">
- <div className='row  ' >
+ <div className={`row gy-3 ${styles.middle}`} >
 <div className='d-flex '>
 <div className={`${styles.vertical}`}></div>
 <div className='p-3'><h3>Users</h3>
@@ -163,7 +163,7 @@ useEffect(()=>{
          
         </div>
 
-    <div className="row m-auto pt-2 justify-content-center">
+    <div className="row m-auto pt-2 justify-content-center gy-3">
       <div className="col-md-6 ">
         <div style={{width:"50%"}} className='m-auto pt-1'>
         <Doughnut  data={dataProgress}/>
