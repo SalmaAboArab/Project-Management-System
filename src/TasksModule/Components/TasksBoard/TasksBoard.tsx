@@ -83,7 +83,7 @@ export default function TasksBoard() {
         </div>
 
         <div
-          className={`${styles.boards} row mt-5 vh-100 justify-content-center mx-2 container mx-auto`}
+          className={`${styles.boards} row mt-5 vh-100 justify-content-center mx-2 container mx-auto overflow-auto pageOverflow `}
         >
           <Column
         changeStatus={changeTaskStatus}
