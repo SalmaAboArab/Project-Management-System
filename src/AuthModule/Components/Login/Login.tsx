@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { emailValidation, passwordValidation } from "../Validator/Validator.js";
 import logo from "../../../assets/PMS 3.svg";
 import { Link, useNavigate } from "react-router-dom";
@@ -33,8 +33,14 @@ export default function Login() {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
 
+  useEffect(() => {
+    setValue("email","manager@email.com")
+    setValue("password","@Password123!")
+  }, [])
+  
   const onSubmit = async (values: any) => {
     setIsLoading(true);
     handleLogin(values);
@@ -51,7 +57,7 @@ export default function Login() {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="form  col-xl-5 col-lg-6 col-md-7 col-sm-9 col-10 bg-info rounded-4 p-sm-5 p-5"
+          className="form  col-xl-5 col-lg-6 col-md-7 col-sm-9 col-10 bg-info rounded-4 p-sm-5 p-3"
         >
           <p className="text-light mb-0 mt-3">welcome to PMS</p>
           <h2 className="form-Name ">

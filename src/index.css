@@ -204,16 +204,22 @@ html {
 /* =============Pagination================ */
 .page-link{
     color: #000 !important; 
+    font-weight: 600;
     cursor: pointer;
+    background: #3d5f57;
+    border: solid var(--main-color) 1px ;
 }
 .page-link:hover {
   color: #000 !important; 
 }
 
 .active-link ,.active-link:hover  {
-background: #3d5f57 ;
-color: white !important;
-    font-weight: 900; 
+background: var(--main-color) !important;
+    font-weight: 700; 
+  }
+  .page-item:hover button a{
+    background: var(--main-color) !important;
+
   }
   /* =============================== */
   .form-input-change-pass {
@@ -221,4 +227,27 @@ color: white !important;
   }
   .logout {
     cursor: pointer;
+  }
+  /* ========bordersInputs search======== */
+  .bordersInputs {
+    border: #315951 solid 2px !important;
+    color: #565a66 ;
+  }
+
+  /* ==================== */
+  @media screen and (min-width: 768px) {
+    .undefined  .toDo:first-child{
+      border-radius: 20px 0 0 20px  !important;
+    }
+    .undefined  .toDo:last-child{
+      border-radius: 0 20px  20px 0  !important;
+    }
+  }
+  .undefined .toDo {
+    padding-bottom: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .btn-addProject,.btn-add-Tasks{
+    background: #f09a22;
   }

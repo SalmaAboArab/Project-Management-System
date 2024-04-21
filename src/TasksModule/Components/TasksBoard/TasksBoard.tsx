@@ -83,7 +83,7 @@ export default function TasksBoard() {
         </div>
 
         <div
-          className={`${styles.boards} row mt-5 vh-100 justify-content-center mx-2 container mx-auto overflow-auto pageOverflow `}
+          className={`${styles.boards} row mt-5 vh-100 mb-5  mx-2 container mx-auto`}
         >
           <Column
         changeStatus={changeTaskStatus}
@@ -98,6 +98,7 @@ export default function TasksBoard() {
         title="In Progress"
       />
       <Column
+      
         changeStatus={changeTaskStatus}
         tasksArray={doneTasks}
         status="Done"
@@ -133,7 +134,7 @@ const Column = ({ title, status, tasksArray, changeStatus }: ColumnProps) => {
             
           >
             <h4 className={`mb-5 pt-4 ps-3`}>{title}</h4>
-            <div className={`${styles.boardContainer} rounded-4 py-4`}>
+            <div className={`${styles.boardContainer} rounded-4 py-4 mb-5`}>
               {tasksArray?.map((task) => (
                 <Card key={task.id} card={task} />
               ))}
@@ -150,7 +151,7 @@ const Card = ({ card }: CardProps) => {
   const { id, title, status } = card;
   return (
     <motion.section
-                  className={`p-4 rounded-3 mx-3 text-white mt-4 `}
+                  className={`p-4 rounded-3 mx-3 text-white mt-4  `}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.9 }}
                   layout

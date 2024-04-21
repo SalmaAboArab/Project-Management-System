@@ -37,8 +37,8 @@ export default function Navbar() {
       <ChangePassword show={show} handleClose={handleClose} />
 
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid px-4">
-          <Link to={"/dashboard"}>
+        <div className="container-fluid ">
+          <Link className="mb-3" to={"/dashboard"}>
           {isDarkMode ? (
         <img className="w-100 main-logo" src={logo1} alt="Dark Logo" />
       ) : (
@@ -46,7 +46,7 @@ export default function Navbar() {
           )}
           </Link>
           <button
-            className="navbar-toggler "
+            className="navbar-toggler p-1 border-0 "
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -130,7 +130,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={handleShow}
-                  className="rounded-3 mt-1 bg-success my-3 w-50 mx-auto border-0 p-2 text-white"
+                  className="rounded-3 mt-1 bg-success my-3  mx-auto border-0 p-2 text-white"
                 >
                  🛠 ChangePassword 🛠
                 </button>
