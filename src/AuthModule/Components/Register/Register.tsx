@@ -77,13 +77,13 @@ function handlePic(e:any) {
 }
   return (
     <>
-      <div className="auth-container py-5 p-md-0 d-flex flex-column justify-content-center align-items-center">
-        <div className="logo">
+      <div className="auth-container py-5 p-md-0 d-flex flex-column justify-content-center align-items-center ">
+        <div className="logo mt-5">
           <img className="form-logo pb-2" src={logo} alt="logo" />
         </div>
         <form   
                   onSubmit={handleSubmit(onSubmit)}
-          className="form col-md-8 col-sm-9 col-10 bg-info rounded-4 p-md-5  p-3"
+          className="form col-md-8 col-sm-9 col-10 bg-info rounded-4 p-sm-5 p-3 mb-5"
         >
          <div className=" pt-3">
            <p className=" text-light mb-0">welcome to PMS</p>
@@ -250,7 +250,7 @@ function handlePic(e:any) {
                   
                                     
                   
-                  placeholder="Confirm New Password"
+                  placeholder="Confirm Password"
                   aria-label="readonly input example"
                 />
                 <button

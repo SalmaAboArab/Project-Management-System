@@ -10,14 +10,17 @@ color: black;
 .userslistContainer{
     th {
         background: #0e382fcb !important ;
-        padding: 30px !important;
+        padding: 20px !important;
         color: white !important;
+        border-left: 1px solid rgb(255, 255, 255);
+
     }
     th:last-child {
     border-radius: 0 20px 0 0 !important;
     
-    }
-    th:first-child {
+}
+th:first-child {
+        border-left: none;
     border-radius:  20px 0 0 0  !important;
     
     }

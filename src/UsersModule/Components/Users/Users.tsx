@@ -1,20 +1,19 @@
-import { useContext, useEffect, useState } from "react";
-import { Watch } from "react-loader-spinner";
-import PagesHeader from "../../../SharedMoudule/Components/PagesHeader/PagesHeader";
-import Filter from "../../../SharedMoudule/Components/Filter/Filter";
 import axios from "axios";
-import { baseUrl } from "../../../Constants/Components/Urls";
+import { useContext, useEffect, useState } from "react";
+import { Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import styles from "./Users.module.css";
+import { baseUrl } from "../../../Constants/Components/Urls";
+import { AuthContext } from "../../../Context/Components/AuthContext";
+import Filter from "../../../SharedMoudule/Components/Filter/Filter";
 import Loading from "../../../SharedMoudule/Components/Loading/Loading";
-import { Button, Modal } from "react-bootstrap";
+import NoData from "../../../SharedMoudule/Components/NoData/NoData";
+import PagesHeader from "../../../SharedMoudule/Components/PagesHeader/PagesHeader";
 import Pagination from "../../../SharedMoudule/Components/Pagination/Pagination";
 import ViewModal from "../../../SharedMoudule/Components/ViewModal/ViewModal";
-import { AuthContext } from "../../../Context/Components/AuthContext";
-import { useNavigate } from "react-router-dom";
-import noActive from "../../../assets/delete.png"
-import active from "../../../assets/Active.jpg"
-import NoData from "../../../SharedMoudule/Components/NoData/NoData";
+import active from "../../../assets/Active.jpg";
+import noActive from "../../../assets/delete.png";
+import styles from "./Users.module.css";
 export default function UsersList() {
   let { loginData } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -86,10 +85,10 @@ export default function UsersList() {
   useEffect(() => {
     if (loginData?.userGroup === "Manager") {
       getUsersList();
-    } else  if (loginData?.userGroup === "Employee"){
-      navigate("/dashboard")
+    } else if (loginData?.userGroup === "Employee") {
+      navigate("/dashboard");
     }
-  }, [pageNum,loginData?.userGroup ]);
+  }, [pageNum, loginData?.userGroup]);
 
   //? ===========handle Date==============>>
   const formatDate = (timestamp: string) => {
@@ -101,22 +100,24 @@ export default function UsersList() {
   };
   return (
     <>
-      <div className="container-fluid d-flex flex-column   slide-in-bottom">
-        <PagesHeader title={"Users"}  />
+      <div className="container-fluid d-flex flex-column textColer rounded-3 p-3  slide-in-bottom">
+        <PagesHeader title={"Users"} />
         {!isLoading ? (
           <>
             <Filter setUsersList={setUsersList} />
             {usersList.length > 0 ? (
-              <div className={`${styles.userslistContainer}  table-responsive w-100`}>
+              <div
+                className={`${styles.userslistContainer}  table-responsive w-100`}
+              >
                 <table className="w-100 table table-striped  mb-4  text-center">
-                  <thead className=" p-4">
+                  <thead >
                     <tr>
                       <th>UserName</th>
                       <th>Email</th>
                       <th>Statues</th>
                       <th>Phone Number</th>
                       <th>Date Created</th>
-                      <th></th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody className="position-relative">
@@ -130,9 +131,9 @@ export default function UsersList() {
                         creationDate,
                       } = user) => (
                         <tr className="tr-info" key={id}>
-                          <td  className="p-3">{userName}</td>
-                          <td  className="p-3">{email}</td>
-                          <td  className="p-3">
+                          <td className="p-3">{userName}</td>
+                          <td className="p-3">{email}</td>
+                          <td className="p-3">
                             {isActivated ? (
                               <span className="text-bg-success p-1 rounded-1">
                                 Active
@@ -143,12 +144,14 @@ export default function UsersList() {
                               </span>
                             )}
                           </td>
-                          <td  className="p-3">{phoneNumber}</td>
-                          <td  className="p-3">{formatDate(creationDate)}</td>{" "}
-                          <td  className="p-3">
+                          <td className="p-3">{phoneNumber}</td>
+                          <td className="p-3">
+                            {formatDate(creationDate)}
+                          </td>{" "}
+                          <td className="p-3">
                             <div className="dropdown ">
                               <button
-                                className="border-0 bg-body  rounded-3 pt-2 "
+                                className="border-0 bg-×  rounded-3 pt-2 "
                                 type="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
@@ -211,21 +214,22 @@ export default function UsersList() {
                       )
                     )}
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colSpan={10} className="rounded-bottom-4 border-0 ">
-                        <Pagination
-                          pageNum={pageNum}
-                          setPageNum={setPageNum}
-                          pagesArray={pagesArray}
-                        />
-                      </td>
-                    </tr>
-                  </tfoot>
                 </table>
+                <div>
+                  {" "}
+                  {usersList.length > 0 ? (
+                    <Pagination
+                      pagesArray={pagesArray}
+                      setPageNum={setPageNum}
+                      pageNum={pageNum}
+                    />
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
             ) : (
-              <NoData/>
+              <NoData />
             )}
           </>
         ) : (
@@ -242,35 +246,43 @@ export default function UsersList() {
           centered
           keyboard={true}
         >
-
-          <Modal.Header closeButton>
-          </Modal.Header>
+          <Modal.Header closeButton></Modal.Header>
           <Modal.Body className="h5 text-center">
-            
-          
-            {isActivatedUser? 
-              <div className='my-2 mx-5'>
-            <div className="text-center">
-            <img src={noActive} alt="noActive" className='w-100' />
-            <h5 className='fw-bold mt-2'>Deactive This User  ?</h5>
-            <h6>Are you sure you want to deactivate this user ?</h6>
-            </div>
-            <div className="text-end pt-3 border-top">
-            <button className='btn btn-outline-danger fw-bold' onClick={() => getToggleActivatedEmployee()}> Yes</button>
-            </div>
-          </div>
-              : 
-              <div className='my-2 mx-5'>
-            <div className="text-center">
-            <img src={active} alt="active" className='w-75 mb-3' />
-            <h5 className='fw-bold mt-2'>Active This User  ?</h5>
-            <h6>Are you sure to make this user active ?</h6>
-            </div>
-            <div className="text-end pt-3 border-top">
-            <button className='btn btn-outline-danger fw-bold' onClick={() => getToggleActivatedEmployee()}> Yes</button>
-            </div>
-          </div>
-              }
+            {isActivatedUser ? (
+              <div className="my-2 mx-5">
+                <div className="text-center">
+                  <img src={noActive} alt="noActive" className="w-100" />
+                  <h5 className="fw-bold mt-2">Deactive This User ?</h5>
+                  <h6>Are you sure you want to deactivate this user ?</h6>
+                </div>
+                <div className="text-end pt-3 border-top">
+                  <button
+                    className="btn btn-outline-danger fw-bold"
+                    onClick={() => getToggleActivatedEmployee()}
+                  >
+                    {" "}
+                    Yes
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="my-2 mx-5">
+                <div className="text-center">
+                  <img src={active} alt="active" className="w-75 mb-3" />
+                  <h5 className="fw-bold mt-2">Active This User ?</h5>
+                  <h6>Are you sure to make this user active ?</h6>
+                </div>
+                <div className="text-end pt-3 border-top">
+                  <button
+                    className="btn btn-outline-danger fw-bold"
+                    onClick={() => getToggleActivatedEmployee()}
+                  >
+                    {" "}
+                    Yes
+                  </button>
+                </div>
+              </div>
+            )}
           </Modal.Body>
         </Modal>
 

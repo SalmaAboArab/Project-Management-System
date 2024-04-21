@@ -16,7 +16,7 @@ export default function SideBar() {
     if (storedValue === "true") {
       return true;
     } else {
-      return true; 
+      return false; 
     }
   });
   const { userRole }: any = useContext(AuthContext);
@@ -87,24 +87,25 @@ export default function SideBar() {
             ) : (
               ""
             )}
-            {userRole === "Employee" ? (
-              ""
-            ) : (
-              <MenuItem
+          
+
+          <MenuItem
                 icon={<img src={menu} className="me-3" />}
                 component={<Link to={"/dashboard/projects"} />}
               >
                 Projects
               </MenuItem>
-            )}
-
-            {userRole === "Employee" ? (
+            {userRole === "Employee" ? (<>
+             
+              
               <MenuItem
                 icon={<i className="fa-solid fa-list-check me-3"></i>}
                 component={<Link to={"/dashboard/tasks-board"} />}
               >
                 Tasks Board
               </MenuItem>
+            </>
+            
             ) : (
               <MenuItem
                 icon={<i className="fa-solid fa-list-check me-3"></i>}

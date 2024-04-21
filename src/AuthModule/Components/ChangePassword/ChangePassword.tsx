@@ -90,7 +90,7 @@ function clearInputs() {
           <form
           autoComplete="off"
             onSubmit={handleSubmit(onSubmit)}
-            className="rounded-2 p-4"
+            className="rounded-2 p-sm-4 p-1"
           >
 
             <div className=" d-flex flex-column gap-3  mt-4">

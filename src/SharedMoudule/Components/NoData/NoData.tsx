@@ -1,4 +1,4 @@
-import noData from "../../../assets/noData.jpg";
+import noData from "../../../assets/noData.png";
 
 export default function NoData() {
   return <>

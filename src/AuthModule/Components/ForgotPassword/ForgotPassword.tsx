@@ -33,7 +33,7 @@ const submitEmail=async(data:any)=>{
 
   return (
     <>
-<div className="auth-container vh-100  d-flex flex-column justify-content-center align-items-center">
+<div className="auth-container vh-100  d-flex flex-column justify-content-center align-items-center  overflow-auto pageOverflow">
         <div className="logo">
           <img className="form-logo pb-2 " src={logo} alt="logo" />
         </div>

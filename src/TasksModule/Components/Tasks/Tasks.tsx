@@ -80,22 +80,22 @@ export default function TasksList() {
   }, [searchByTitle, statusSearch, pageNum]);
   return (
     <>
-      <div className="TasksListContainer slide-in-bottom">
-        <div className="title d-flex justify-content-between rounded-3 bg-white p-3 mb-3 ">
-          <h3 className="textColer">Tasks</h3>
+      <div className="TasksListContainer slide-in-bottom textColer rounded-3 p-3">
+        <div className="d-flex flex-wrap align-items-center  justify-content-center justify-content-sm-between  title textColer  rounded-3 bg-white p-3 mb-3 mx-1">
+          <h3 className="me-2">Tasks</h3>
           <button
             onClick={goToAddTasks}
-            className="btn btn-warning rounded-5 text-white"
+            className="btn btn-warning btn-add-Tasks rounded-5 text-white ms-2"
           >
             <i className="fa fa-plus "></i> Add New Task
           </button>
         </div>
 
-        <div className="row py-3 mb-2 bg-white rounded-2 mx-1  ">
+        <div className="row py-3 mb-2 bg-white rounded-2 mx-1  textColer">
           <div className="col-md-3 mt-md-0 mt-2 ">
             <input
               type="text"
-              className="form-control  py-2 shadow rounded-5"
+              className="form-control bordersInputs  py-2 shadow rounded-5 "
               placeholder="Search by Title"
               onChange={getTitleValue}
             />
@@ -104,7 +104,7 @@ export default function TasksList() {
           {
             <div className="col-md-2 mt-md-0 mt-2">
               <select
-                className="form-select py-2 shadow rounded-5"
+                className="form-select py-2 shadow rounded-5 bordersInputs"
                 onChange={getStatusValue}
               >
                 <option value="">search by status</option>
@@ -121,9 +121,7 @@ export default function TasksList() {
             <Loading components={1} />
           </div>
         ) : (
-          <div
-            className={`${styles.userslistContainer} table-responsive w-100`}
-          >
+          <div className={`${styles.userslistContainer} table-responsive `}>
             {taskList.length > 0 ? (
               <table className="table table-striped  text-center ">
                 <thead className={`${styles.bg}`}>
@@ -186,79 +184,21 @@ export default function TasksList() {
                     </tr>
                   ))}
                 </tbody>
-                <tfoot>
-                  <tr>
-                    <td colSpan={10} className="rounded-bottom-4 border-0 ">
-                      {taskList.length > 0 ? (
-                        <Pagination
-                          pagesArray={pagesArray}
-                          setPageNum={setPageNum}
-                          pageNum={pageNum}
-                        />
-                      ) : (
-                        ""
-                      )}
-                    </td>
-                  </tr>
-                </tfoot>
               </table>
             ) : (
               <NoData />
             )}
-
-            {/* {taskList.length > 0 ? (
-              <nav aria-label="Page navigation example">
-                <div className="d-flex justify-content-center  pt-2  ">
-                  <nav aria-label="Page navigation example">
-                    <ul className="pagination">
-                      <li className="page-item">
-                        <button
-                          className={`${styles.solid} p-0 m-0`}
-                          aria-label="Previous"
-                        >
-                          <span
-                            className={`page-link ${styles.paginationBtn}`}
-                            aria-hidden="true"
-                          >
-                            &laquo;
-                          </span>
-                        </button>
-                      </li>
-                      {pagesArray.map((pageNo, index) => (
-                        <li key={index} className="page-item">
-                          <button
-                            className={`${styles.solid} p-0 m-0`}
-                            onClick={() => getTasksList(pageNo)}
-                            aria-label={`go to page${pageNo}`}
-                          >
-                            <span
-                              className={`page-link ${styles.paginationBtn}`}
-                            >
-                              {pageNo}
-                            </span>
-                          </button>
-                        </li>
-                      ))}
-                      <li className="page-item">
-                        <button
-                          className={`${styles.solid} p-0 m-0`}
-                          aria-label="Next"
-                        >
-                          <span
-                            className={`page-link ${styles.paginationBtn}`}
-                            aria-hidden="true"
-                          >
-                            &raquo;
-                          </span>
-                        </button>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </nav>
-            ) : (
-              ""
-            )} */}
+            <div>
+              {taskList.length > 0 ? (
+                <Pagination
+                  pagesArray={pagesArray}
+                  setPageNum={setPageNum}
+                  pageNum={pageNum}
+                />
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         )}
 

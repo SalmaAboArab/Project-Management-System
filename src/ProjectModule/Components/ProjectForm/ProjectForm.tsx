@@ -64,9 +64,9 @@ export default function ProjectForm() {
 
   return (
     <>
-      <div className="ProjectFormContainer slide-in-bottom vh-100 bg-light overflow-auto pageOverflow pb-2">
+      <div className="ProjectFormContainer slide-in-bottom textColer vh-100 bg-light overflow-auto pageOverflow pb-2">
         <div className="ProjectFormHeader bg-white ps-5 py-4">
-          <Link to="/dashboard/projects" className="text-black textColer">
+          <Link to="/dashboard/projects" className="text-black ">
             <i className="fa fa-arrow-left me-2"></i>
             View All Projects
           </Link>
