@@ -29,13 +29,13 @@ export const emailValidation = {
       message: "User Name must be at least 3 characters",
     },
     maxLength: {
-        value: 16,
-        message: "User Name must be at most 16 characters",
+        value: 8,
+        message: "User Name must be at most 8 characters",
       },
     pattern: {
       value: /^[a-zA-Z]+[0-9]+$/,
       message:
-        "User Name must contain characters and end with numbers without spaces",
+        "User Name must contain only characters and end with numbers without spaces",
     },
   };
   
