@@ -36,10 +36,7 @@ export default function Login() {
     setValue,
   } = useForm();
 
-  useEffect(() => {
-    setValue("email","manager@email.com")
-    setValue("password","@Password123!")
-  }, [])
+
   
   const onSubmit = async (values: any) => {
     setIsLoading(true);
